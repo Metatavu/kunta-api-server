@@ -6,60 +6,56 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
-import org.apache.commons.lang3.StringUtils;
 
 import fi.metatavu.ptv.client.model.V4VmOpenApiFintoItem;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannelInBase;
 import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressContact;
 import fi.metatavu.ptv.client.model.V7VmOpenApiAddressContactIn;
-import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannelInBase;
+import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDelivery;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDeliveryIn;
-import fi.metatavu.ptv.client.model.V8VmOpenApiAddressWithMoving;
-import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiService;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannelInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiAddressLocation;
+import fi.metatavu.ptv.client.model.V9VmOpenApiAddressLocationIn;
+import fi.metatavu.ptv.client.model.V9VmOpenApiContactDetails;
+import fi.metatavu.ptv.client.model.V9VmOpenApiContactDetailsInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPhoneChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPrintableFormChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiService;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceLocationChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceProducerIn;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceServiceChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiWebPage;
+import fi.metatavu.ptv.client.model.V9VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiWebPageChannelInBase;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressOther;
+import fi.metatavu.ptv.client.model.VmOpenApiAddressOtherIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBox;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreet;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinates;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
-import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithOrder;
 import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachmentWithType;
-import fi.metatavu.ptv.client.model.V8VmOpenApiContactDetails;
-import fi.metatavu.ptv.client.model.V8VmOpenApiContactDetailsInBase;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
-import fi.metatavu.ptv.client.model.VmOpenApiServiceProducerIn;
-import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 
 /**
  * Translator for translating resources from PTV out format into PTV in format
@@ -69,20 +65,15 @@ import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 @ApplicationScoped
 public class PtvOutPtvInTranslator extends AbstractTranslator {
   
-  private static final String UNKNOWN_SUBTYPE = "Unknown subtype %s";
-
-  @Inject
-  private Logger logger;
-
   /**
    * Translates PTV out service location channel into PTV in service location channel
    * 
    * @param ptvResource PTV out service location channel
    * @return PTV in service location channel
    */
-  public V8VmOpenApiServiceLocationChannelInBase translateServiceLocationChannel(V8VmOpenApiServiceLocationChannel ptvResource) {
-    V8VmOpenApiServiceLocationChannelInBase result = new V8VmOpenApiServiceLocationChannelInBase();
-    result.setAddresses(translateAddressesWithMoving(ptvResource.getAddresses()));
+  public V9VmOpenApiServiceLocationChannelInBase translateServiceLocationChannel(V9VmOpenApiServiceLocationChannel ptvResource) {
+    V9VmOpenApiServiceLocationChannelInBase result = new V9VmOpenApiServiceLocationChannelInBase();
+    result.setAddresses(translateAddressesLocation(ptvResource.getAddresses()));
     result.setAreas(translateAreas(ptvResource.getAreas()));
     result.setAreaType(ptvResource.getAreaType());
     result.setDeleteAllEmails(true);
@@ -91,18 +82,20 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setDeleteAllWebPages(true);
     result.setIsVisibleForAll(true);
     result.setDeleteAllPhoneNumbers(true);
+    result.setDeleteOid(false);
+    result.setDisplayNameType(ptvResource.getDisplayNameType());
     result.setEmails(ptvResource.getEmails());
     result.setFaxNumbers(translateFaxNumbers(ptvResource.getPhoneNumbers()));
     result.setLanguages(ptvResource.getLanguages());
+    result.setOid(ptvResource.getOid());
     result.setOrganizationId(ptvResource.getOrganizationId().toString());
     result.setPhoneNumbers(translatePhoneNumbers(ptvResource.getPhoneNumbers()));
     result.setPublishingStatus(ptvResource.getPublishingStatus());
     result.setServiceChannelDescriptions(ptvResource.getServiceChannelDescriptions());
-    result.setServiceChannelNames(translateLocalizedListItemsToLanguageItems(ptvResource.getServiceChannelNames()));
+    result.setServiceChannelNames(ptvResource.getServiceChannelNames());
     result.setServiceHours(ptvResource.getServiceHours());
     result.setSourceId(ptvResource.getSourceId());
     result.setWebPages(ptvResource.getWebPages());
-    
     return result;
   }
 
@@ -112,9 +105,11 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    * @param ptvResource PTV out service location channel
    * @return PTV in service location channel
    */
-  public V8VmOpenApiElectronicChannelInBase translateElectronicChannel(V8VmOpenApiElectronicChannel ptvResource) {
-    V8VmOpenApiElectronicChannelInBase result = new V8VmOpenApiElectronicChannelInBase();
+  public V9VmOpenApiElectronicChannelInBase translateElectronicChannel(V9VmOpenApiElectronicChannel ptvResource) {
+    V9VmOpenApiElectronicChannelInBase result = new V9VmOpenApiElectronicChannelInBase();
     
+    result.setAccessibilityClassificationLevel(ptvResource.getAccessibilityClassificationLevel());
+    result.setAccessibilityStatementWebPage(ptvResource.getAccessibilityStatementWebPage());
     result.setAreas(translateAreas(ptvResource.getAreas()));
     result.setAreaType(ptvResource.getAreaType());
     result.setAttachments(translateAttachments(ptvResource.getAttachments()));
@@ -130,6 +125,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setSourceId(ptvResource.getSourceId());
     result.setSupportEmails(ptvResource.getSupportEmails());
     result.setSupportPhones(ptvResource.getSupportPhones());
+    result.setWcagLevel(ptvResource.getWcagLevel());
     result.setWebPage(translateWebPagesToLanguageItems(ptvResource.getWebPages()));
     
     return result;
@@ -141,12 +137,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    * @param ptvResource PTV out phone service channel
    * @return PTV in phone service channel
    */
-  public V8VmOpenApiPhoneChannelInBase translatePhoneChannel(V8VmOpenApiPhoneChannel ptvResource) {
+  public V9VmOpenApiPhoneChannelInBase translatePhoneChannel(V9VmOpenApiPhoneChannel ptvResource) {
     if (ptvResource == null) {
       return null;
     }
     
-    V8VmOpenApiPhoneChannelInBase result = new V8VmOpenApiPhoneChannelInBase();
+    V9VmOpenApiPhoneChannelInBase result = new V9VmOpenApiPhoneChannelInBase();
     result.setAreas(translateAreas(ptvResource.getAreas()));
     result.setAreaType(ptvResource.getAreaType());
     result.setDeleteAllServiceHours(true);
@@ -161,6 +157,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setServiceHours(ptvResource.getServiceHours());
     result.setSourceId(ptvResource.getSourceId());
     result.setSupportEmails(ptvResource.getSupportEmails());
+    result.setWebPage(translateWebPagesToLanguageItems(ptvResource.getWebPages()));
     
     return result;
   }
@@ -171,16 +168,22 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    * @param ptvResource PTV out service channel
    * @return PTV in service channel
    */
-  public V8VmOpenApiPrintableFormChannelInBase translatePrintableFormChannel(V8VmOpenApiPrintableFormChannel ptvResource) {
+  public V9VmOpenApiPrintableFormChannelInBase translatePrintableFormChannel(V9VmOpenApiPrintableFormChannel ptvResource) {
     if (ptvResource == null) {
       return null;
     }
     
-    V8VmOpenApiPrintableFormChannelInBase result = new V8VmOpenApiPrintableFormChannelInBase();
+    V9VmOpenApiPrintableFormChannelInBase result = new V9VmOpenApiPrintableFormChannelInBase();
     result.setAreas(translateAreas(ptvResource.getAreas()));
     result.setAreaType(ptvResource.getAreaType());
     result.setAttachments(translateAttachments(ptvResource.getAttachments()));
     result.setChannelUrls(ptvResource.getChannelUrls());
+    result.setDeleteAllAttachments(true);
+    result.setDeleteAllChannelUrls(true);
+    result.setDeleteAllFormIdentifiers(true);
+    result.setDeleteAllSupportEmails(true);
+    result.setDeleteAllSupportPhones(true);
+    result.setDeleteAllDeliveryAddresses(true);
     result.setDeliveryAddresses(translateDeliveryAddresses(ptvResource.getDeliveryAddresses()));
     result.setFormIdentifier(ptvResource.getFormIdentifier());
     result.setIsVisibleForAll(true);
@@ -191,18 +194,21 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setSourceId(ptvResource.getSourceId());
     result.setSupportEmails(ptvResource.getSupportEmails());
     result.setSupportPhones(ptvResource.getSupportPhones());
-    result.setDeleteAllAttachments(true);
-    result.setDeleteAllChannelUrls(true);
-    result.setDeleteAllFormIdentifiers(true);
-    result.setDeleteAllSupportEmails(true);
-    result.setDeleteAllSupportPhones(true);
-    result.setDeleteAllDeliveryAddresses(true);
-
+    
     return result;
   }
 
-  public V8VmOpenApiWebPageChannelInBase translateWebPageChannel(V8VmOpenApiWebPageChannel ptvResource) {
-    V8VmOpenApiWebPageChannelInBase result = new V8VmOpenApiWebPageChannelInBase();
+  /**
+   * Translates PTV out service channel into PTV in service channel
+   * 
+   * @param ptvResource PTV out service channel
+   * @return PTV in service channel
+   */
+  public V9VmOpenApiWebPageChannelInBase translateWebPageChannel(V9VmOpenApiWebPageChannel ptvResource) {
+    V9VmOpenApiWebPageChannelInBase result = new V9VmOpenApiWebPageChannelInBase();
+
+    result.setAccessibilityClassificationLevel(ptvResource.getAccessibilityClassificationLevel());
+    result.setAccessibilityStatementWebPage(ptvResource.getAccessibilityStatementWebPage());
     result.setDeleteAllSupportEmails(true);
     result.setDeleteAllSupportPhones(true);
     result.setIsVisibleForAll(true);
@@ -214,6 +220,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setSourceId(ptvResource.getSourceId());
     result.setSupportEmails(ptvResource.getSupportEmails());
     result.setSupportPhones(ptvResource.getSupportPhones());
+    result.setWcagLevel(ptvResource.getWcagLevel());  
     result.setWebPage(translateWebPagesToLanguageItems(ptvResource.getWebPages()));
     
     return result;
@@ -225,15 +232,14 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    * @param service PTV out service
    * @return PTV in service
    */
-  public V8VmOpenApiServiceInBase translateService(V8VmOpenApiService service) {
+  public V9VmOpenApiServiceInBase translateService(V9VmOpenApiService service) {
     if (service == null) {
       return null;
     }
     
     String mainResponsibleOrganization = null;
     List<UUID> otherResponsibleOrganizations = new ArrayList<>();
-    List<VmOpenApiServiceProducerIn> serviceProducers = new ArrayList<>();
-    int serviceProducerOrderNumber = 0;
+    List<V9VmOpenApiServiceProducerIn> serviceProducers = new ArrayList<>();
     
     List<V6VmOpenApiServiceOrganization> organizations = service.getOrganizations();
     for (V6VmOpenApiServiceOrganization organization : organizations) {
@@ -249,22 +255,21 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
             otherResponsibleOrganizations.add(UUID.fromString(organizationId));
           }
         } else {
-          VmOpenApiServiceProducerIn apiServiceProducer = new VmOpenApiServiceProducerIn();
+          V9VmOpenApiServiceProducerIn apiServiceProducer = new V9VmOpenApiServiceProducerIn();
           apiServiceProducer.setAdditionalInformation(organization.getAdditionalInformation());
-          apiServiceProducer.setOrderNumber(serviceProducerOrderNumber);
           apiServiceProducer.setOrganizations(Arrays.asList(organizationUuid));
           apiServiceProducer.setProvisionType(organization.getProvisionType());
           serviceProducers.add(apiServiceProducer); 
-          serviceProducerOrderNumber++;
         }
       }
     }
     
-    V8VmOpenApiServiceInBase result = new V8VmOpenApiServiceInBase();
+    V9VmOpenApiServiceInBase result = new V9VmOpenApiServiceInBase();
     
     result.setAreas(translateAreas(service.getAreas()));
     result.setAreaType(service.getAreaType());
     result.setFundingType(service.getFundingType());
+    result.setGeneralDescriptionId(translateUuid(service.getGeneralDescriptionId()));
     result.setIndustrialClasses(translateFintoItems(service.getIndustrialClasses()));
     result.setKeywords(service.getKeywords());
     result.setLanguages(service.getLanguages());
@@ -283,7 +288,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     result.setServiceVouchers(service.getServiceVouchers());
     result.setServiceVouchersInUse(service.getServiceVouchersInUse());
     result.setSourceId(service.getSourceId());
-    result.setGeneralDescriptionId(translateUuid(service.getGeneralDescriptionId()));
+    result.setSubType(service.getSubType());
     result.setTargetGroups(translateFintoItems(service.getTargetGroups()));
     result.setType(service.getType());
     
@@ -296,20 +301,20 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    * @param serviceChannel service's service channel connection in PTV out format
    * @return service's service channel connection in PTV in format
    */
-  public V8VmOpenApiServiceServiceChannelInBase translateServiceServiceChannel(V8VmOpenApiServiceServiceChannel serviceChannel) {
+  public V9VmOpenApiServiceServiceChannelInBase translateServiceServiceChannel(V9VmOpenApiServiceServiceChannel serviceChannel) {
     if (serviceChannel == null || serviceChannel.getServiceChannel() == null) {
       return null;
     }
     
-    V8VmOpenApiServiceServiceChannelInBase result = new V8VmOpenApiServiceServiceChannelInBase();
+    V9VmOpenApiServiceServiceChannelInBase result = new V9VmOpenApiServiceServiceChannelInBase();
     result.setContactDetails(translateContractDetails(serviceChannel.getContactDetails()));
+    result.setDeleteAllDescriptions(false);
+    result.setDeleteAllServiceHours(false);
+    result.setDeleteServiceChargeType(false);
     result.setDescription(serviceChannel.getDescription());
     result.setServiceChannelId(serviceChannel.getServiceChannel().getId().toString());
     result.setServiceChargeType(serviceChannel.getServiceChargeType());
     result.setServiceHours(serviceChannel.getServiceHours());
-    result.setDeleteAllDescriptions(false);
-    result.setDeleteAllServiceHours(false);
-    result.setDeleteServiceChargeType(false);
     
     return result;
   }
@@ -320,7 +325,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    * @param webPages PTV web pages
    * @return PTV language items
    */
-  private List<VmOpenApiLanguageItem> translateWebPagesToLanguageItems(List<VmOpenApiWebPageWithOrderNumber> webPages) {
+  private List<VmOpenApiLanguageItem> translateWebPagesToLanguageItems(List<V9VmOpenApiWebPage> webPages) {
     if (webPages == null || webPages.isEmpty()) {
       return Collections.emptyList();
     }
@@ -337,7 +342,7 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
    * @param webPage PTV web page
    * @return PTV language item
    */
-  private VmOpenApiLanguageItem translateWebPageToLanguageItem(VmOpenApiWebPageWithOrderNumber webPage) {
+  private VmOpenApiLanguageItem translateWebPageToLanguageItem(V9VmOpenApiWebPage webPage) {
     if (webPage == null) {
       return null;
     }
@@ -349,20 +354,27 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result; 
   }
 
-  private V8VmOpenApiContactDetailsInBase translateContractDetails(V8VmOpenApiContactDetails contactDetails) {
+  /**
+   * Translates PTV out contact details into PTV in contact details
+   * 
+   * @param contactDetails PTV out contact details
+   * @return PTV in contact details
+   */
+  private V9VmOpenApiContactDetailsInBase translateContractDetails(V9VmOpenApiContactDetails contactDetails) {
     if (contactDetails == null) {
       return null;
     }
     
-    V8VmOpenApiContactDetailsInBase result = new V8VmOpenApiContactDetailsInBase();
+    V9VmOpenApiContactDetailsInBase result = new V9VmOpenApiContactDetailsInBase();
     result.setAddresses(translateAddressContacts(contactDetails.getAddresses()));
-    result.setEmails(contactDetails.getEmails());
-    result.setPhoneNumbers(contactDetails.getPhoneNumbers());
-    result.setWebPages(contactDetails.getWebPages());
     result.setDeleteAllAddresses(true);
     result.setDeleteAllEmails(true);
     result.setDeleteAllPhones(true);
     result.setDeleteAllWebPages(true);
+    result.setEmails(contactDetails.getEmails());
+    result.setFaxNumbers(translateFaxNumbers(contactDetails.getPhoneNumbers()));
+    result.setPhoneNumbers(translatePhoneNumbers(contactDetails.getPhoneNumbers()));
+    result.setWebPages(contactDetails.getWebPages());
     
     return result;
   }
@@ -398,20 +410,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     V7VmOpenApiAddressContactIn result = new V7VmOpenApiAddressContactIn();
     result.setCountry(addressContact.getCountry());
     result.setLocationAbroad(addressContact.getLocationAbroad());
-    result.setPostOfficeBoxAddress(translateAddressPostOfficeBox(addressContact.getPostOfficeBoxAddress()));
+    result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(addressContact.getPostOfficeBoxAddress()));
     result.setStreetAddress(translateAddressStreetWithCoordinates(addressContact.getStreetAddress()));
     result.setSubType(addressContact.getSubType());
     result.setType(addressContact.getType());
     
     return result;
-  }
-
-  private String translateUuid(UUID uuid) {
-    if (uuid == null) {
-      return null;
-    }
-    
-    return uuid.toString();
   }
 
   /**
@@ -448,15 +452,21 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
       .collect(Collectors.toList());
   }
 
-  private List<V7VmOpenApiAddressWithMovingIn> translateAddressesWithMoving(List<V8VmOpenApiAddressWithMoving> addresses) {
+  /**
+   * Translates address locations from PTV out to PTV in
+   * 
+   * @param addresses address locations in PTV out format
+   * @return address locations in PTV in format
+   */
+  private List<V9VmOpenApiAddressLocationIn> translateAddressesLocation(List<V9VmOpenApiAddressLocation> addresses) {
     if (addresses == null || addresses.isEmpty()) {
       return Collections.emptyList();
     }
     
-    List<V7VmOpenApiAddressWithMovingIn> result = new ArrayList<>();
+    List<V9VmOpenApiAddressLocationIn> result = new ArrayList<>();
     
-    for (V8VmOpenApiAddressWithMoving address : addresses) {
-      result.add(translateAddressWithMoving(address));
+    for (V9VmOpenApiAddressLocation address : addresses) {
+      result.add(translateAddressLocation(address));
     }
     
     return result;
@@ -492,77 +502,93 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     V8VmOpenApiAddressDeliveryIn result = new V8VmOpenApiAddressDeliveryIn();
     result.setDeliveryAddressInText(address.getDeliveryAddressInText());
-    result.setSubType(address.getSubType());
-    result.setPostOfficeBoxAddress(null);
-    result.setStreetAddress(null);
     result.setFormReceiver(address.getReceiver());
-    
-    PtvAddressSubtype subtype = getAddressSubtype(result.getSubType());
-    switch (subtype) {
-      case POST_OFFICE_BOX:
-        result.setPostOfficeBoxAddress(translateAddressPostOfficeBox(address.getPostOfficeBoxAddress()));
-      break;
-      case NO_ADDRESS:
-      break;
-      case SINGLE:
-      case STREET:
-        result.setStreetAddress(translateAddressStreet(address.getStreetAddress()));
-      break;
-    
-      default:
-        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
-      break;
-    }
+    result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(address.getPostOfficeBoxAddress()));
+    result.setStreetAddress(translateAddressStreet(address.getStreetAddress()));
+    result.setSubType(address.getSubType());
     
     return result;
   }
 
-  private V7VmOpenApiAddressWithMovingIn translateAddressWithMoving(V8VmOpenApiAddressWithMoving address) {
+  /**
+   * Translates address location from PTV out to PTV in
+   * 
+   * @param address address location in PTV out format
+   * @return address location in PTV in format
+   */
+  private V9VmOpenApiAddressLocationIn translateAddressLocation(V9VmOpenApiAddressLocation address) {
     if (address == null) {
       return null;
     }
     
-    V7VmOpenApiAddressWithMovingIn result = new V7VmOpenApiAddressWithMovingIn();
+    V9VmOpenApiAddressLocationIn result = new V9VmOpenApiAddressLocationIn();
     
     result.setCountry(address.getCountry());
-    result.setType(address.getType());
+    result.setLocationAbroad(address.getLocationAbroad());
+    result.setOtherAddress(translateOtherAddress(address.getOtherAddress()));
+    result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(address.getPostOfficeBoxAddress()));
+    result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
     result.setSubType(address.getSubType());
+    result.setType(address.getType());
     
     if ("Visiting".equals(result.getType())) {
       result.setType("Location");
       result.setSubType(PtvAddressSubtype.SINGLE.getPtvValue());
     }
-    
-    result.setLocationAbroad(null);
-    result.setMultipointLocation(null);
-    result.setPostOfficeBoxAddress(null);
-    result.setStreetAddress(null);
-    
-    PtvAddressSubtype subtype = getAddressSubtype(result.getSubType());
-    switch (subtype) {
-      case ABROAD:
-        result.setLocationAbroad(address.getLocationAbroad());
-      break;
-      case MULTIPOINT:
-        result.setMultipointLocation(translateAddressesStreetWithCoordinates(address.getMultipointLocation()));
-      break;
-      case POST_OFFICE_BOX:
-        result.setPostOfficeBoxAddress(translateAddressPostOfficeBox(address.getPostOfficeBoxAddress()));
-      break;
-      case NO_ADDRESS:
-      break;
-      case SINGLE:
-      case STREET:
-        result.setStreetAddress(translateAddressStreetWithCoordinates(address.getStreetAddress()));
-      break;
-      default:
-        logger.log(Level.SEVERE, () -> String.format(UNKNOWN_SUBTYPE, result.getSubType()));
-      break;
+        
+    return result;
+  }
+
+  /**
+   * Translates address post office box from PTV out to PTV in
+   * 
+   * @param postOfficeBoxAddress address post office box in PTV out format
+   * @return address post office box in PTV in format
+   */
+  private VmOpenApiAddressPostOfficeBoxIn translatePostOfficeBoxAddress(VmOpenApiAddressPostOfficeBox postOfficeBoxAddress) {
+    if (postOfficeBoxAddress == null) {
+      return null;
     }
+    
+    VmOpenApiAddressPostOfficeBoxIn result = new VmOpenApiAddressPostOfficeBoxIn();
+    result.setAdditionalInformation(postOfficeBoxAddress.getAdditionalInformation());
+    
+    if (postOfficeBoxAddress.getMunicipality() != null) {
+      result.setMunicipality(postOfficeBoxAddress.getMunicipality().getCode());
+    }
+    
+    result.setPostalCode(postOfficeBoxAddress.getPostalCode());
+    result.setPostOfficeBox(postOfficeBoxAddress.getPostOfficeBox());
     
     return result;
   }
 
+  /**
+   * Translates other address from PTV out to PTV in
+   * 
+   * @param otherAddress other address in PTV out format
+   * @return other address in PTV in format
+   */
+  private VmOpenApiAddressOtherIn translateOtherAddress(VmOpenApiAddressOther otherAddress) {
+    if (otherAddress == null) {
+      return null;
+    }
+    
+    VmOpenApiAddressOtherIn result = new VmOpenApiAddressOtherIn();
+    result.setAdditionalInformation(otherAddress.getAdditionalInformation());
+    result.setLatitude(otherAddress.getLatitude());
+    result.setLongitude(otherAddress.getLongitude());
+    result.setPostalCode(otherAddress.getPostalCode());
+
+    return result;
+  }
+
+  /**
+   * Translates street address from PTV out to PTV in
+   * 
+   * @param streetAddress street address in PTV out format
+   * @return street address in PTV in format
+   */
   private VmOpenApiAddressStreetIn translateAddressStreet(VmOpenApiAddressStreet streetAddress) {
     if (streetAddress == null) {
       return null;
@@ -578,6 +604,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
   
+  /**
+   * Translates street address from PTV out to PTV in
+   * 
+   * @param streetAddress street address in PTV out format
+   * @return street address in PTV in format
+   */
   private VmOpenApiAddressStreetWithCoordinatesIn translateAddressStreetWithCoordinates(VmOpenApiAddressStreetWithCoordinates streetAddress) {
     if (streetAddress == null) {
       return null;
@@ -594,76 +626,13 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
-  
-  private VmOpenApiAddressStreetWithCoordinatesIn translateAddressStreetWithCoordinates(VmOpenApiAddressStreetWithOrder streetAddress) {
-    if (streetAddress == null) {
-      return null;
-    }
-    
-    VmOpenApiAddressStreetWithCoordinatesIn result = new VmOpenApiAddressStreetWithCoordinatesIn();
-    result.setAdditionalInformation(streetAddress.getAdditionalInformation());
-    result.setLatitude(streetAddress.getLatitude());
-    result.setLongitude(streetAddress.getLongitude());
-    result.setMunicipality(streetAddress.getMunicipality() != null ? streetAddress.getMunicipality().getCode() : null);
-    result.setPostalCode(streetAddress.getPostalCode());
-    result.setStreet(streetAddress.getStreet());
-    result.setStreetNumber(streetAddress.getStreetNumber());
-    
-    return result;
-  }
 
-  private VmOpenApiAddressPostOfficeBoxIn translateAddressPostOfficeBox(VmOpenApiAddressPostOfficeBox postOfficeBoxAddress) {
-    if (postOfficeBoxAddress == null) {
-      return null;
-    }
-    
-    VmOpenApiAddressPostOfficeBoxIn result = new VmOpenApiAddressPostOfficeBoxIn();
-    result.setAdditionalInformation(postOfficeBoxAddress.getAdditionalInformation());
-    result.setMunicipality(postOfficeBoxAddress.getMunicipality() != null ? postOfficeBoxAddress.getMunicipality().getCode() : null);
-    result.setPostalCode(postOfficeBoxAddress.getPostalCode());
-    result.setPostOfficeBox(postOfficeBoxAddress.getPostOfficeBox());
-    
-    return result;
-  }
-
-  private List<VmOpenApiAddressStreetWithCoordinatesIn> translateAddressesStreetWithCoordinates(List<VmOpenApiAddressStreetWithOrder> addresses) {
-    if (addresses == null) {
-      return Collections.emptyList();
-    }
-    
-    return addresses.stream()
-      .map(this::translateAddressStreetWithCoordinates)
-      .filter(Objects::nonNull)
-      .collect(Collectors.toList());
-  }
-
-
-  @SuppressWarnings("unused")
-  private List<VmOpenApiLanguageItem> cleanLanguageItems(List<VmOpenApiLanguageItem> items) {
-    if (items == null || items.isEmpty()) {
-      return Collections.emptyList();
-    }
-
-    List<VmOpenApiLanguageItem> result = new ArrayList<>(items.size());
-    
-    for (VmOpenApiLanguageItem item : items) {
-      if (StringUtils.isNotEmpty(item.getValue())) {
-        result.add(item);
-      }
-    }
-    
-    return result;
-  }
-
-  @SuppressWarnings("unused")
-  private String translateMunicipality(VmOpenApiMunicipality municipality) {
-    if (municipality == null) {
-      return null;
-    }
-    
-    return municipality.getCode();
-  }
-
+  /**
+   * Translates areas from PTV out to PTV in
+   * 
+   * @param areas areas in PTV out format
+   * @return areas in PTV in format
+   */
   private List<VmOpenApiAreaIn> translateAreas(List<VmOpenApiArea> areas) {
     if (areas == null || areas.isEmpty()) {
       return Collections.emptyList();
@@ -680,7 +649,13 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
-  
+
+  /**
+   * Translates attachments from PTV out to PTV in
+   * 
+   * @param attachments attachments in PTV out format
+   * @return attachments in PTV in format
+   */
   private List<VmOpenApiAttachment> translateAttachments(List<VmOpenApiAttachmentWithType> attachments) {
     if (attachments == null) {
       return Collections.emptyList();
@@ -692,6 +667,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
       .collect(Collectors.toList());
   }
   
+  /**
+   * Translates attachment from PTV out to PTV in
+   * 
+   * @param attachment attachment in PTV out format
+   * @return attachment in PTV in format
+   */
   private VmOpenApiAttachment translateAttachment(VmOpenApiAttachmentWithType attachment) {
     if (attachment == null) {
       return null;
@@ -705,7 +686,13 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     
     return result;
   }
-
+  
+  /**
+   * Translates area from PTV out to PTV in
+   * 
+   * @param area area in PTV out format
+   * @return area in PTV in format
+   */
   private VmOpenApiAreaIn translateArea(VmOpenApiArea area) {
     if (area == null) {
       return null;
@@ -736,6 +723,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates phone numbers with type from PTV out to PTV in phones
+   * 
+   * @param phoneNumbers phone numbers with type
+   * @return PTV in phones
+   */
   private List<V4VmOpenApiPhone> translatePhoneNumbers(List<V4VmOpenApiPhoneWithType> phoneNumbers) {
     if (phoneNumbers == null || phoneNumbers.isEmpty()) {
       return Collections.emptyList();
@@ -752,6 +745,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates phone numbers with type from PTV out to PTV in fax numbers
+   * 
+   * @param phoneNumbers phone numbers with type
+   * @return PTV in fax numbers
+   */
   private List<V4VmOpenApiPhoneSimple> translateFaxNumbers(List<V4VmOpenApiPhoneWithType> phoneNumbers) {
     if (phoneNumbers == null || phoneNumbers.isEmpty()) {
       return Collections.emptyList();
@@ -768,6 +767,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates phone number with type from PTV out to PTV in phone
+   * 
+   * @param phoneNumber phone numbers with type
+   * @return PTV in phone
+   */
   private V4VmOpenApiPhone translatePhone(V4VmOpenApiPhoneWithType phoneNumber) {
     if (phoneNumber == null) {
       return null;
@@ -785,6 +790,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates phone number with type from PTV out to PTV in phone simple
+   * 
+   * @param phoneNumber phone numbers with type
+   * @return PTV in phone simple
+   */
   private V4VmOpenApiPhoneSimple translatePhoneSimple(V4VmOpenApiPhoneWithType phoneNumber) {
     if (phoneNumber == null) {
       return null;
@@ -799,6 +810,12 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
     return result;
   }
 
+  /**
+   * Translates localized list items into language items
+   * 
+   * @param listItems localized list items
+   * @return language items
+   */
   private List<VmOpenApiLanguageItem> translateLocalizedListItemsToLanguageItems(List<VmOpenApiLocalizedListItem> listItems) {
     if (listItems == null || listItems.isEmpty()) {
       return Collections.emptyList();
@@ -815,7 +832,13 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
 
     return result;
   }
-
+  
+  /**
+   * Translates localized list item into language item
+   * 
+   * @param listItem localized list item
+   * @return language item
+   */
   private VmOpenApiLanguageItem translateLocalizedListItemsToLanguageItems(VmOpenApiLocalizedListItem listItem) {
     if (listItem == null) {
       return null;
@@ -827,5 +850,18 @@ public class PtvOutPtvInTranslator extends AbstractTranslator {
 
     return result;
   }
-  
+
+  /**
+   * Translates UUID into string
+   * 
+   * @param uuid UUID
+   * @return string
+   */
+  private String translateUuid(UUID uuid) {
+    if (uuid == null) {
+      return null;
+    }
+    
+    return uuid.toString();
+  }
 }

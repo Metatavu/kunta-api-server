@@ -1,101 +1,116 @@
 {
-  "sourceId" : null,
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Naantalin perusopetuksessa työskentelee kolme koulukuraattoria, joilla on omat vastuukoulut ja -esikoulut.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Naantalin perusopetuksessa työskentelee kolme koulukuraattoria, joilla on omat vastuukoulut ja -esikoulut. Vanhemmat tai oppilas itse voi ottaa yhteyttä koulukuraattoriin puhelimitse, sähköpostilla tai Wilma-viestillä.\n\nKoulukuraattoriin voi olla yhteydessä esimerkiksi seuraavissa asioissa:\n* Opiskeluvaikeuksien selvittäminen\n* Mielenterveyteen liittyvissä huolissa, kuten mielialan lasku, ahdistuneisuus, pelot, syömisen ja/tai nukkumisen ongelmat, itsetuhoisuus, päihteiden käyttö\n* Sosiaalisten suhteiden vaikeudet, kuten yksinäisyyden, kaverisuhteiden tai kiusaamisen selvittäminen\n* Nuoren voimakas murrosikä\n* Huoli perheen hyvinvoinnista, kuten vanhempien ero, nuoren ja vanhempien tulehtuneet välit, väkivalta, vanhemman oma jaksaminen",
-    "type" : "Description"
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "areaType" : "LimitedType",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Naantalin koulukuraattorit"
-  } ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "areaCodes" : [ "529" ]
-  } ],
-  
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : "Lietsalan, Suopellon ja Taimon koulut; Nuhjalan, Ruonan, Soinisten, Suovuoren, Taimon ja Tammiston päiväkodit",
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "447334527",
-    "language" : "fi"
-  }, {
-    "type" : "Phone",
-    "additionalInformation" : "Karvetin, Kultarannan, Kuparivuoren, Merimaskun ja Rymättylän koulut; Merimaskun, Rymättylän ja Viialan päiväkodit",
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "447334536",
-    "language" : "fi"
-  }, {
-    "type" : "Phone",
-    "additionalInformation" : "Maijamäen ja Velkuan koulut sekä Naantalin lukio; Karvetin (Lietsalan), Keskustan, Kreivinniityn, Velkuan päiväkodit ja Vuoropäiväkoti",
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "447334634",
-    "language" : "fi"
-  } ],
-  "webPage" : [ ],
-  "supportEmails" : [ ],
-  "languages" : [ "fi" ],
-  "serviceHours": [
+  "sourceId": null,
+  "serviceChannelDescriptions": [
     {
-        "additionalInformation": [
-        ],
-        "isClosed": false,
-        "openingHour": [
-            {
-                "dayFrom": "Monday",
-                "dayTo": null,
-                "from": "09:00:00",
-                "to": "15:00:00"
-            },
-            {
-                "dayFrom": "Tuesday",
-                "dayTo": null,
-                "from": "09:00:00",
-                "to": "15:00:00"
-            },
-            {
-                "dayFrom": "Wednesday",
-                "dayTo": null,
-                "from": "09:00:00",
-                "to": "15:00:00"
-            },
-            {
-                "dayFrom": "Thursday",
-                "dayTo": null,
-                "from": "09:00:00",
-                "to": "15:00:00"
-            },
-            {
-                "dayFrom": "Friday",
-                "dayTo": null,
-                "from": "09:00:00",
-                "to": "15:00:00"
-            }
-        ],
-        "serviceHourType": "DaysOfTheWeek",
-        "validForNow": true,
-        "validFrom": null,
-        "validTo": null
+      "language": "fi",
+      "value": "Naantalin perusopetuksessa työskentelee kolme koulukuraattoria, joilla on omat vastuukoulut ja -esikoulut.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Naantalin perusopetuksessa työskentelee kolme koulukuraattoria, joilla on omat vastuukoulut ja -esikoulut. Vanhemmat tai oppilas itse voi ottaa yhteyttä koulukuraattoriin puhelimitse, sähköpostilla tai Wilma-viestillä.\n\nKoulukuraattoriin voi olla yhteydessä esimerkiksi seuraavissa asioissa:\n* Opiskeluvaikeuksien selvittäminen\n* Mielenterveyteen liittyvissä huolissa, kuten mielialan lasku, ahdistuneisuus, pelot, syömisen ja/tai nukkumisen ongelmat, itsetuhoisuus, päihteiden käyttö\n* Sosiaalisten suhteiden vaikeudet, kuten yksinäisyyden, kaverisuhteiden tai kiusaamisen selvittäminen\n* Nuoren voimakas murrosikä\n* Huoli perheen hyvinvoinnista, kuten vanhempien ero, nuoren ja vanhempien tulehtuneet välit, väkivalta, vanhemman oma jaksaminen",
+      "type": "Description"
     }
   ],
-  "publishingStatus" : "Published",
-  "isVisibleForAll" : true,
-  "deleteAllWebPages" : true,
-  "deleteAllServiceHours" : true
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "areaType": "LimitedType",
+  "serviceChannelNames": [
+    {
+      "value": "Naantalin koulukuraattorit",
+      "language": "fi"
+    }
+  ],
+  "areas": [
+    {
+      "type": "Municipality",
+      "areaCodes": [
+        "529"
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": "Lietsalan, Suopellon ja Taimon koulut; Nuhjalan, Ruonan, Soinisten, Suovuoren, Taimon ja Tammiston päiväkodit",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334527",
+      "language": "fi"
+    },
+    {
+      "type": "Phone",
+      "additionalInformation": "Karvetin, Kultarannan, Kuparivuoren, Merimaskun ja Rymättylän koulut; Merimaskun, Rymättylän ja Viialan päiväkodit",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334536",
+      "language": "fi"
+    },
+    {
+      "type": "Phone",
+      "additionalInformation": "Maijamäen ja Velkuan koulut sekä Naantalin lukio; Karvetin (Lietsalan), Keskustan, Kreivinniityn, Velkuan päiväkodit ja Vuoropäiväkoti",
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334634",
+      "language": "fi"
+    }
+  ],
+  "webPage": [],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
+  "serviceHours": [
+    {
+      "serviceHourType": "DaysOfTheWeek",
+      "validFrom": null,
+      "validTo": null,
+      "isClosed": false,
+      "validForNow": true,
+      "additionalInformation": [],
+      "openingHour": [
+        {
+          "dayFrom": "Monday",
+          "dayTo": null,
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Tuesday",
+          "dayTo": null,
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Wednesday",
+          "dayTo": null,
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Thursday",
+          "dayTo": null,
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Friday",
+          "dayTo": null,
+          "from": "09:00:00",
+          "to": "15:00:00"
+        }
+      ]
+    }
+  ],
+  "publishingStatus": "Published",
+  "isVisibleForAll": true,
+  "validFrom": null,
+  "validTo": null,
+  "deleteAllWebPages": true,
+  "deleteAllServiceHours": true
 }

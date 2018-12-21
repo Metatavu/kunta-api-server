@@ -1,53 +1,72 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "https://esuomi.fi/palveluntarjoajille/palveluvayla/liittyminen/palveluvaylaan-liittyminen/",
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "requiresSignature" : false,
-  "attachments" : [ ],
-  "languages" : [ ],
-  "supportPhones" : [ ],
-  "areas" : [ ],
-  "supportEmails" : [ {
-    "value" : "kapa-asiakaspalvelu@vrk.fi",
-    "language" : "fi"
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "7cf9a776-808e-4e58-a904-863f48887ea2",
-      "name" : "Suomi.fi-palveluväylä"
+  "id": "7374dd89-8e26-4402-90fe-c32942525476",
+  "sourceId": null,
+  "serviceChannelType": "EChannel",
+  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Suomi.fi-palveluväylän käyttöönotto",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja organisaatioiden tietojärjestelmien välillä.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Suomi.fi-palveluväylän käyttöönotto",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "EChannel",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja organisaatioiden tietojärjestelmien välillä.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja niin julkisten kuin yksityistenkin organisaatioiden tietojärjestelmien välillä.",
-    "type" : "Description"
-  } ],
-  "areaType" : null,
-  "publishingStatus" : "Published",
-  "modified" : "2017-09-11T00:00:00",
-  "id" : "7374dd89-8e26-4402-90fe-c32942525476",
-  "signatureQuantity" : 0,
-  "requiresAuthentication" : false
+    {
+      "language": "fi",
+      "value": "Suomi.fi-palveluväylä tarjoaa organisaatioille vakioidun tavan siirtää tietoja niin julkisten kuin yksityistenkin organisaatioiden tietojärjestelmien välillä.",
+      "type": "Description"
+    }
+  ],
+  "areaType": null,
+  "areas": [],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "requiresAuthentication": false,
+  "attachments": [],
+  "supportPhones": [],
+  "supportEmails": [
+    {
+      "value": "kapa-asiakaspalvelu@vrk.fi",
+      "language": "fi"
+    }
+  ],
+  "languages": [],
+  "webPages": [
+    {
+      "url": "https://esuomi.fi/palveluntarjoajille/palveluvayla/liittyminen/palveluvaylaan-liittyminen/",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "7cf9a776-808e-4e58-a904-863f48887ea2",
+        "name": "Suomi.fi-palveluväylä"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-09-11T00:00:00"
 }

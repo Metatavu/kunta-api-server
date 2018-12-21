@@ -35,9 +35,12 @@ import fi.metatavu.ptv.client.model.V4VmOpenApiPhone;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneSimple;
 import fi.metatavu.ptv.client.model.V4VmOpenApiPhoneWithType;
 import fi.metatavu.ptv.client.model.V8VmOpenApiServiceHour;
+import fi.metatavu.ptv.client.model.V9VmOpenApiAddressLocationIn;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceProducerIn;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceVoucher;
+import fi.metatavu.ptv.client.model.V9VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V4VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDeliveryIn;
-import fi.metatavu.ptv.client.model.V7VmOpenApiAddressWithMovingIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBoxIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinatesIn;
@@ -45,9 +48,6 @@ import fi.metatavu.ptv.client.model.VmOpenApiAreaIn;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
-import fi.metatavu.ptv.client.model.VmOpenApiServiceProducerIn;
-import fi.metatavu.ptv.client.model.VmOpenApiServiceVoucher;
-import fi.metatavu.ptv.client.model.VmOpenApiWebPageWithOrderNumber;
 import fi.metatavu.kuntaapi.server.id.IdController;
 import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
@@ -183,15 +183,15 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
    * @param addresses Kunta API addresses
    * @return list of PTV moving in addresses
    */
-  public List<V7VmOpenApiAddressWithMovingIn> translateAddressesMovingIn(List<Address> addresses) {
+  public List<V9VmOpenApiAddressLocationIn> translateAddressesLocationIn(List<Address> addresses) {
     if (addresses == null || addresses.isEmpty()) {
       return Collections.emptyList();
     }
     
-    List<V7VmOpenApiAddressWithMovingIn> result = new ArrayList<>(addresses.size());
+    List<V9VmOpenApiAddressLocationIn> result = new ArrayList<>(addresses.size());
     
     for (Address address : addresses) {
-      V7VmOpenApiAddressWithMovingIn ptvAddress = translateAddressMovingIn(address);
+      V9VmOpenApiAddressLocationIn ptvAddress = translateAddressLocationIn(address);
       if (ptvAddress != null) {
         result.add(ptvAddress);
       }
@@ -275,24 +275,21 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
    * @param webPages list of Kunta API web pages 
    * @return list of PTV web pages
    */
-  public List<VmOpenApiWebPageWithOrderNumber> translateWebPagesWithOrder(List<WebPage> webPages) {
+  public List<V4VmOpenApiWebPage> translateWebPages4(List<WebPage> webPages) {
     if (webPages == null || webPages.isEmpty()) {
       return Collections.emptyList();
     }
     
-    List<VmOpenApiWebPageWithOrderNumber> result = new ArrayList<>(webPages.size());
-    int orderNumber = 1;
+    List<V4VmOpenApiWebPage> result = new ArrayList<>(webPages.size());
     
     for (WebPage webPage : webPages) {
-      VmOpenApiWebPageWithOrderNumber ptvWebPage = translateWebPageWithOrder(webPage, String.valueOf(orderNumber));
+      V4VmOpenApiWebPage ptvWebPage = translateWebPage4(webPage);
       if (ptvWebPage != null) {
         result.add(ptvWebPage);
-        orderNumber++;
       }
     }
     
     return result;
-    
   }
 
   /**
@@ -301,22 +298,21 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
    * @param webPages list of Kunta API web pages 
    * @return list of PTV web pages
    */
-  public List<V4VmOpenApiWebPage> translateWebPages(List<WebPage> webPages) {
+  public List<V9VmOpenApiWebPage> translateWebPages(List<WebPage> webPages) {
     if (webPages == null || webPages.isEmpty()) {
       return Collections.emptyList();
     }
     
-    List<V4VmOpenApiWebPage> result = new ArrayList<>(webPages.size());
+    List<V9VmOpenApiWebPage> result = new ArrayList<>(webPages.size());
     
     for (WebPage webPage : webPages) {
-      V4VmOpenApiWebPage ptvWebPage = translateWebPage(webPage);
+      V9VmOpenApiWebPage ptvWebPage = translateWebPage(webPage);
       if (ptvWebPage != null) {
         result.add(ptvWebPage);
       }
     }
     
     return result;
-    
   }
 
   /**
@@ -399,15 +395,15 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
    * @param vouchers Kunta API vouchers
    * @return PTV vouchers
    */
-  public List<VmOpenApiServiceVoucher> translateVouchers(List<ServiceVoucher> vouchers) {
+  public List<V9VmOpenApiServiceVoucher> translateVouchers(List<ServiceVoucher> vouchers) {
     if (vouchers == null) {
       return Collections.emptyList();
     }
     
-    List<VmOpenApiServiceVoucher> result = new ArrayList<>(vouchers.size());
+    List<V9VmOpenApiServiceVoucher> result = new ArrayList<>(vouchers.size());
     
     for (int i = 0; i < vouchers.size(); i++) {
-      VmOpenApiServiceVoucher voucher = translateVoucher(vouchers.get(i), i);
+      V9VmOpenApiServiceVoucher voucher = translateVoucher(vouchers.get(i));
       if (voucher != null) {
         result.add(voucher);
       }
@@ -422,7 +418,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
    * @param organizations Kunta API service organizations
    * @return PTV Service Producers
    */
-  public List<VmOpenApiServiceProducerIn> translateServiceProducers(List<ServiceOrganization> organizations) {
+  public List<V9VmOpenApiServiceProducerIn> translateServiceProducers(List<ServiceOrganization> organizations) {
     if (organizations == null) {
       return Collections.emptyList();
     }
@@ -431,10 +427,10 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
       .filter(serviceOrganization -> "Producer".equals(serviceOrganization.getRoleType()))
       .collect(Collectors.toList());
     
-    List<VmOpenApiServiceProducerIn> result = new ArrayList<>(serviceProducers.size());
+    List<V9VmOpenApiServiceProducerIn> result = new ArrayList<>(serviceProducers.size());
     
     for (int i = 0; i < serviceProducers.size(); i++) {
-      VmOpenApiServiceProducerIn producer = translateServiceProducer(serviceProducers.get(i), i);
+      V9VmOpenApiServiceProducerIn producer = translateServiceProducer(serviceProducers.get(i));
       if (producer != null) {
         result.add(producer);
       }
@@ -514,7 +510,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
 
-  private VmOpenApiServiceProducerIn translateServiceProducer(ServiceOrganization serviceOrganization, Integer orderNumber) {
+  private V9VmOpenApiServiceProducerIn translateServiceProducer(ServiceOrganization serviceOrganization) {
     if (serviceOrganization == null || !"Producer".equals(serviceOrganization.getRoleType())) {
       return null;
     }
@@ -526,9 +522,8 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
       return null;
     }
     
-    VmOpenApiServiceProducerIn result = new VmOpenApiServiceProducerIn();
+    V9VmOpenApiServiceProducerIn result = new V9VmOpenApiServiceProducerIn();
     result.setAdditionalInformation(translateLocalizedValuesIntoLanguageItems(serviceOrganization.getAdditionalInformation()));
-    result.setOrderNumber(orderNumber);
     result.setOrganizations(Arrays.asList(UUID.fromString(ptvOrganizationId.getId())));
     result.setProvisionType(serviceOrganization.getProvisionType());
     
@@ -542,20 +537,19 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     
     V4VmOpenApiLaw result = new V4VmOpenApiLaw();
     result.setNames(translateLocalizedValuesIntoLanguageItems(law.getNames()));
-    result.setWebPages(translateWebPages(law.getWebPages()));
+    result.setWebPages(translateWebPages4(law.getWebPages()));
     
     return result;
   }
   
-  private VmOpenApiServiceVoucher translateVoucher(ServiceVoucher voucher, Integer orderNumber) {
+  private V9VmOpenApiServiceVoucher translateVoucher(ServiceVoucher voucher) {
     if (voucher == null) {
       return null;
     }
     
-    VmOpenApiServiceVoucher result = new VmOpenApiServiceVoucher();
+    V9VmOpenApiServiceVoucher result = new V9VmOpenApiServiceVoucher();
     result.setAdditionalInformation(voucher.getAdditionalInformation());
     result.setLanguage(voucher.getLanguage());
-    result.setOrderNumber(orderNumber);
     result.setUrl(voucher.getUrl());
     result.setValue(voucher.getValue());
     
@@ -589,7 +583,7 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
 
-  private V4VmOpenApiWebPage translateWebPage(WebPage webPage) {
+  private V4VmOpenApiWebPage translateWebPage4(WebPage webPage) {
     if (webPage == null || (StringUtils.isBlank(webPage.getUrl()) && StringUtils.isBlank(webPage.getValue()))) {
       return null;
     }
@@ -602,15 +596,15 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     
     return result;
   }
-  
-  private VmOpenApiWebPageWithOrderNumber translateWebPageWithOrder(WebPage webPage, String orderNumber) {
-    if (webPage == null) {
+
+  private V9VmOpenApiWebPage translateWebPage(WebPage webPage) {
+    if (webPage == null || (StringUtils.isBlank(webPage.getUrl()) && StringUtils.isBlank(webPage.getValue()))) {
       return null;
     }
+
     
-    VmOpenApiWebPageWithOrderNumber result = new VmOpenApiWebPageWithOrderNumber();
+    V9VmOpenApiWebPage result = new V9VmOpenApiWebPage();
     result.setLanguage(webPage.getLanguage());
-    result.setOrderNumber(orderNumber);
     result.setUrl(webPage.getUrl());
     result.setValue(webPage.getValue());
     
@@ -713,15 +707,14 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     return result;
   }
   
-  private V7VmOpenApiAddressWithMovingIn translateAddressMovingIn(Address address) {
+  private V9VmOpenApiAddressLocationIn translateAddressLocationIn(Address address) {
     if (address == null) {
       return null;
     }
     
-    V7VmOpenApiAddressWithMovingIn result = new V7VmOpenApiAddressWithMovingIn();
+    V9VmOpenApiAddressLocationIn result = new V9VmOpenApiAddressLocationIn();
     result.setCountry(address.getCountry());
     result.setLocationAbroad(translateLocalizedValuesIntoLanguageItems(address.getLocationAbroad()));
-    result.setMultipointLocation(translateAddressesWithCoordinatesIn(address.getMultipointLocation()));
     result.setPostOfficeBoxAddress(translatePostOfficeBoxAddress(address));
     result.setStreetAddress(translateAddressWithCoordinatesIn(address));
     result.setSubType(address.getSubtype());

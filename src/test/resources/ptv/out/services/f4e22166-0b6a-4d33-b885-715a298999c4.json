@@ -1,155 +1,340 @@
 {
-  "id" : "f4e22166-0b6a-4d33-b885-715a298999c4",
-  "sourceId" : null,
-  "generalDescriptionId" : null,
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Yrityksen puolesta asiointi",
-    "type" : "AlternativeName"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet yrityksen puolesta asiointiin",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : "FreeOfCharge",
-  "areaType" : "Nationwide",
-  "areas" : [ ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Palvelu tarkistaa oikeuden asioida yrityksen puolesta. Palvelun avulla voi valtuuttaa henkilön tai yrityksen asioimaan yrityksen puolesta verkossa.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla testipalvelussa.",
-    "type" : "Description"
-  } ],
-  "languages" : [ "sv", "fi" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Tietosuoja ja henkilötiedot",
-      "language" : "fi"
-    }, {
-      "value" : "Datasekretess och personuppgifter",
-      "language" : "sv"
-    }, {
-      "value" : "Data protection and personal data",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
-      "language" : "en"
-    }, {
-      "value" : "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
-      "language" : "fi"
-    }, {
-      "value" : "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
-      "language" : "sv"
-    } ],
-    "code" : "P7.9",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1085",
-    "parentId" : "487549b3-a7de-4312-badb-2ee6bb390950",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "tietoon perustuva suostumus",
-      "language" : "fi"
-    }, {
-      "value" : "informerat samtycke",
-      "language" : "sv"
-    }, {
-      "value" : "informed consent",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "TERO",
-    "uri" : "http://www.yso.fi/onto/koko/p51717",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p53859"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
-    }, {
-      "value" : "Businesses and non-government organizations",
-      "language" : "en"
-    }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
-    } ],
-    "code" : "KR2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ {
-    "value" : "Asiointilupa, asiointivaltuudet",
-    "language" : "fi"
-  } ],
-  "requirements" : [ {
-    "value" : "Tulevaisuudessa kun valtuuksien hallinnointi on mahdollista, valtuuttaminen edellyttää tunnistautumista Suomi.fi-verkkopalveluun. Tunnistautuminen tapahtuu verkkopankkitunnuksilla, mobiilivarmenteella tai varmennekortilla (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti).",
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "6631f997-eb58-401e-b0a9-274f7d51cb0a",
-      "name" : "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa"
+  "id": "f4e22166-0b6a-4d33-b885-715a298999c4",
+  "sourceId": null,
+  "generalDescriptionId": null,
+  "subType": "subType",
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "Yrityksen puolesta asiointi",
+      "type": "AlternativeName"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet yrityksen puolesta asiointiin",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": "FreeOfCharge",
+  "areaType": "Nationwide",
+  "areas": [],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": null,
+      "type": "UserInstruction"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "b458d033-042d-4cbe-b030-34e81da28821",
-      "name" : "Väestörekisterikeskus"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": "Palvelu tarkistaa oikeuden asioida yrityksen puolesta. Palvelun avulla voi valtuuttaa henkilön tai yrityksen asioimaan yrityksen puolesta verkossa.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
+    },
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos haluat asioida edustamasi yrityksen puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Trafin Oma asiointi -palvelussa oikeutesi asioida yrityksen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa yritys voi valtuuttaa toisen yrityksen tai henkilön asioimaan puolestaan sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla testipalvelussa.",
+      "type": "Description"
+    }
+  ],
+  "languages": [
+    "sv",
+    "fi"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Tietosuoja ja henkilötiedot",
+          "language": "fi"
+        },
+        {
+          "value": "Datasekretess och personuppgifter",
+          "language": "sv"
+        },
+        {
+          "value": "Data protection and personal data",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "This service subclass contains services related to personal data and privacy protection, personal identifiers, travel documents and registers containing personal data. It also contains matters pertaining to a citizen's rights to control and use their personal data.",
+          "language": "en"
+        },
+        {
+          "value": "Tässä palvelualaluokassa käsitellään henkilötietojen ja yksityisyyden suojaan, henkilötunnuksiin ja -tunnisteisiin, matkustusasiakirjoihin ja henkilötietoja sisältäviin rekistereihin liittyviä palveluja sekä kansalaisen oikeuksia hallita ja käyttää omia tietojaan.",
+          "language": "fi"
+        },
+        {
+          "value": "Denna serviceundergrupp omfattar tjänster relaterad till skyddet av personuppgifter och integritet, personbeteckningar och -koder, resedokument och register med personuppgifter samt medborgarnas rättigheter att kontrollera och begränsa användningen av deras personuppgifter.",
+          "language": "sv"
+        }
+      ],
+      "code": "P7.9",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1085",
+      "parentId": "487549b3-a7de-4312-badb-2ee6bb390950",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1076"
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "tietoon perustuva suostumus",
+          "language": "fi"
+        },
+        {
+          "value": "informerat samtycke",
+          "language": "sv"
+        },
+        {
+          "value": "informed consent",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "TERO",
+      "uri": "http://www.yso.fi/onto/koko/p51717",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p53859"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Yritykset ja yhteisöt",
+          "language": "fi"
+        },
+        {
+          "value": "Businesses and non-government organizations",
+          "language": "en"
+        },
+        {
+          "value": "Företag och samfund",
+          "language": "sv"
+        }
+      ],
+      "code": "KR2",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [
+    {
+      "value": "Asiointilupa, asiointivaltuudet",
+      "language": "fi"
+    }
+  ],
+  "requirements": [
+    {
+      "value": "Tulevaisuudessa kun valtuuksien hallinnointi on mahdollista, valtuuttaminen edellyttää tunnistautumista Suomi.fi-verkkopalveluun. Tunnistautuminen tapahtuu verkkopankkitunnuksilla, mobiilivarmenteella tai varmennekortilla (henkilökortti, organisaatiokortti ja sosiaali- ja terveydenhuollon ammattikortti).",
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "6631f997-eb58-401e-b0a9-274f7d51cb0a",
+        "name": "Sähköisten valtuuksien luonti yrityksen puolesta asioinnissa"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": []
+    },
+    {
+      "organization": {
+        "id": "b458d033-042d-4cbe-b030-34e81da28821",
+        "name": "Väestörekisterikeskus"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProducedServices",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

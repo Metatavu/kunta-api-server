@@ -19,8 +19,8 @@ import fi.metatavu.kuntaapi.server.persistence.model.clients.ClientOrganizationP
 import fi.metatavu.kuntaapi.server.rest.model.PrintableFormServiceChannel;
 import fi.metatavu.kuntaapi.server.rest.model.ServiceChannelAttachment;
 import fi.metatavu.kuntaapi.test.AbstractPtvMocker;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannelInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPrintableFormChannelInBase;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachment;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 
@@ -80,8 +80,8 @@ public class PrintableFormServiceChannelInTestsIT extends AbstractPtvInTest {
     grantOrganizationPermission(AccessType.READ_WRITE, organizationId, ClientOrganizationPermission.UPDATE_SERVICE_CHANNELS);
 
     PrintableFormServiceChannel kuntaApiResource = getPrintableFormServiceChannel(0, TestPtvConsts.PRINTABLE_FORM_SERVICE_CHANNELS.length);
-    V8VmOpenApiPrintableFormChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiPrintableFormChannelInBase.class);
-    V8VmOpenApiPrintableFormChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiPrintableFormChannel.class);
+    V9VmOpenApiPrintableFormChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V9VmOpenApiPrintableFormChannelInBase.class);
+    V9VmOpenApiPrintableFormChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V9VmOpenApiPrintableFormChannel.class);
     
     getPtvServiceChannelMocker().mockPrintableFormPut(ptvId, ptvOutResource);
     
@@ -122,7 +122,7 @@ public class PrintableFormServiceChannelInTestsIT extends AbstractPtvInTest {
       createPhone("en", "Fax", "+258", "54321-FAKE", "Free", "Testing fax", true, "Test fax")
     ));
     
-    V8VmOpenApiPrintableFormChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V8VmOpenApiPrintableFormChannelInBase.class);
+    V9VmOpenApiPrintableFormChannelInBase ptvInResource = getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_IN_API, ptvId, V9VmOpenApiPrintableFormChannelInBase.class);
     ptvInResource.setAreas(Arrays.asList(createArea("Municipality", "12345")));
     ptvInResource.setAreaType("AreaType");
     ptvInResource.setAttachments(createPtvInAttachments("en", "https://www.example.com", "Example PDF", "PDF file for testing"));
@@ -136,7 +136,7 @@ public class PrintableFormServiceChannelInTestsIT extends AbstractPtvInTest {
     ptvInResource.setSupportEmails(createPtvInLanguageItems("en", "fake@example.com"));
     ptvInResource.setSupportPhones(createPtvInPhones("en", "+358", "12345-FAKE", "Charged", "Testing", false, "Test phone"));
     
-    V8VmOpenApiPrintableFormChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V8VmOpenApiPrintableFormChannel.class);
+    V9VmOpenApiPrintableFormChannel ptvOutResource =  getPtvServiceChannelMocker().readEntity(AbstractPtvMocker.PTV_OUT_API, ptvId, V9VmOpenApiPrintableFormChannel.class);
     
     getPtvServiceChannelMocker().mockPrintableFormPut(ptvId, ptvOutResource);
     

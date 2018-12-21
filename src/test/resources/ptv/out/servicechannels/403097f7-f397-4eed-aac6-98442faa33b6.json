@@ -1,123 +1,154 @@
 {
-  "sourceId" : null,
-  "webPages" : [ ],
-  "languages" : [ "fi" ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "71fc2285-4e69-4aa3-9f87-16511595d5a1",
-      "name" : "Maahanmuuttajien valmistava opetus"
+  "id": "403097f7-f397-4eed-aac6-98442faa33b6",
+  "sourceId": null,
+  "serviceChannelType": "Phone",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Sivistyspalvelujen toimistosihteeri",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Sivistyspalvelujen toimistosihteeri neuvoo perusopetukseen liittyvissä käytännön asioissa.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
-      "name" : "Perusopetus"
+    {
+      "language": "fi",
+      "value": "Sivistyspalvelujen toimistosihteeri neuvoo perusopetukseen liittyvissä käytännön asioissa. ",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "24345264",
+      "language": "fi"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "24345264",
-    "language" : "fi"
-  }, {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "447334643",
-    "language" : "fi"
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Sivistyspalvelujen toimistosihteeri",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ {
-    "serviceHourType" : "DaysOfTheWeek",
-    "validFrom" : null,
-    "validTo" : null,
-    "isClosed" : false,
-    "validForNow" : true,
-    "additionalInformation" : [ {
-      "value" : null,
-      "language" : "fi"
-    } ],
-    "openingHour" : [ {
-      "dayFrom" : "Monday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Tuesday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Wednesday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Thursday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Friday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    } ]
-  } ],
-  "serviceChannelType" : "Phone",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Sivistyspalvelujen toimistosihteeri neuvoo perusopetukseen liittyvissä käytännön asioissa.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Sivistyspalvelujen toimistosihteeri neuvoo perusopetukseen liittyvissä käytännön asioissa. ",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:57:51.341538",
-  "id" : "403097f7-f397-4eed-aac6-98442faa33b6"
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334643",
+      "language": "fi"
+    }
+  ],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
+  "webPages": [],
+  "serviceHours": [
+    {
+      "serviceHourType": "DaysOfTheWeek",
+      "validFrom": null,
+      "validTo": null,
+      "isClosed": false,
+      "validForNow": true,
+      "additionalInformation": [
+        {
+          "value": null,
+          "language": "fi"
+        }
+      ],
+      "openingHour": [
+        {
+          "dayFrom": "Monday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Tuesday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Wednesday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Thursday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Friday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "71fc2285-4e69-4aa3-9f87-16511595d5a1",
+        "name": "Maahanmuuttajien valmistava opetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:57:51.341538"
 }

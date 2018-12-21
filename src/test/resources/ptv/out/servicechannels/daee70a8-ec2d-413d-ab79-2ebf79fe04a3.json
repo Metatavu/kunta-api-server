@@ -1,61 +1,82 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "https://www.suomi.fi/valtuudet",
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "requiresSignature" : false,
-  "attachments" : [ ],
-  "languages" : [ ],
-  "supportPhones" : [ {
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : null,
-    "isFinnishServiceNumber" : true,
-    "number" : "0295000",
-    "language" : "fi"
-  } ],
-  "areas" : [ ],
-  "supportEmails" : [ {
-    "value" : "palveluneuvoja@kansalaisneuvonta.fi",
-    "language" : "fi"
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "0a94d54d-febd-4149-bceb-f3cc0fd648e6",
-      "name" : "Suomi.fi-valtuudet henkilön puolesta asiointiin"
+  "id": "daee70a8-ec2d-413d-ab79-2ebf79fe04a3",
+  "sourceId": null,
+  "serviceChannelType": "EChannel",
+  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Sähköisten valtuuksien luonti henkilön puolesta asioinnissa",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet, Henkilön puolesta asiointi",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Sähköisten valtuuksien luonti henkilön puolesta asioinnissa",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "EChannel",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet, Henkilön puolesta asiointi",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos asioit toisen henkilön puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa taustatoimintona oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Kelan Omakannassa oikeutesi asioida lapsen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa voit valtuuttaa toisen henkilön tai yrityksen asioimaan puolestasi sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla osoitteessa https://www.suomi.fi/valtuudet",
-    "type" : "Description"
-  } ],
-  "areaType" : null,
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-13T13:48:06.065176",
-  "id" : "daee70a8-ec2d-413d-ab79-2ebf79fe04a3",
-  "signatureQuantity" : 0,
-  "requiresAuthentication" : true
+    {
+      "language": "fi",
+      "value": "Suomi.fi-valtuudet-palvelu voidaan jakaa kahteen osaan: Jos asioit toisen henkilön puolesta jossakin julkishallinnon tai yksityisen sektorin verkkopalvelussa, Suomi.fi-valtuudet tarkistaa taustatoimintona oikeutesi puolesta-asiointiin. Tämä edellyttää, että verkkopalvelu on ottanut Suomi.fi-valtuudet käyttöön. Esimerkiksi Kelan Omakannassa oikeutesi asioida lapsen puolesta tarkistetaan Suomi.fi-valtuuksien avulla. Tulevaisuudessa voit valtuuttaa toisen henkilön tai yrityksen asioimaan puolestasi sähköisissä asiointipalveluissa. Valtuuttaminen tapahtuu Suomi.fi-verkkopalvelussa. Valtuuksien hallintaa voi jo nyt kokeilla testihenkilöiden tunnuksilla osoitteessa https://www.suomi.fi/valtuudet",
+      "type": "Description"
+    }
+  ],
+  "areaType": null,
+  "areas": [],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "requiresAuthentication": true,
+  "attachments": [],
+  "supportPhones": [
+    {
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": null,
+      "isFinnishServiceNumber": true,
+      "number": "0295000",
+      "language": "fi"
+    }
+  ],
+  "supportEmails": [
+    {
+      "value": "palveluneuvoja@kansalaisneuvonta.fi",
+      "language": "fi"
+    }
+  ],
+  "languages": [],
+  "webPages": [
+    {
+      "url": "https://www.suomi.fi/valtuudet",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "0a94d54d-febd-4149-bceb-f3cc0fd648e6",
+        "name": "Suomi.fi-valtuudet henkilön puolesta asiointiin"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-13T13:48:06.065176"
 }

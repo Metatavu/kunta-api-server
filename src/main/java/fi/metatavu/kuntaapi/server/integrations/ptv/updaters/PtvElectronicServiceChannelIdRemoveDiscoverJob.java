@@ -22,7 +22,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceChannelTasksQue
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannel;
 
 @ApplicationScoped
 @Singleton
@@ -82,7 +82,7 @@ public class PtvElectronicServiceChannelIdRemoveDiscoverJob extends IdDiscoverJo
       }
 
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvElectronicServiceChannelId.getId());
-      ApiResponse<V8VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V8VmOpenApiElectronicChannel>() {}, null, null);
+      ApiResponse<V9VmOpenApiElectronicChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V9VmOpenApiElectronicChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(new ElectronicServiceChannelRemoveTask(false, ptvElectronicServiceChannelId));
       }

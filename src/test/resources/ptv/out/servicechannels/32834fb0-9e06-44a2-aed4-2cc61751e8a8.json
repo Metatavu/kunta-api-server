@@ -1,99 +1,123 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "http://www.naantali.fi/kaavoitus_ja_mittaus/kaavoitus/fi_FI/kaava-aloite/_files/97767125706623491/default/maksuluettelo%202017.pdf",
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "supportPhones" : [ ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "0739289c-cc26-4097-b029-fa9c58c8d4e9",
-      "name" : "Rajankäynti asemakaava-alueella"
+  "id": "32834fb0-9e06-44a2-aed4-2cc61751e8a8",
+  "sourceId": null,
+  "serviceChannelType": "WebPage",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Ympäristöviraston maksuluettelo",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Maksuluettelossa on kerrottu Naantalin kaupungin Ympäristoviraston palveluista perittävät maksut.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "28f7d831-f0da-44e3-ad16-ee56d5ea536f",
-      "name" : "Tontin lohkominen"
+    {
+      "language": "fi",
+      "value": "Maksuluettelossa on lueteltu Ympäristöviraston palveluiden hinnat osastoittain. Luttelossa on listattu Ympäristönsuojelun, Asemakaavoituksen ja Maanmittauksen palveluiden hinnat. ",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
+  "webPages": [
+    {
+      "url": "http://www.naantali.fi/kaavoitus_ja_mittaus/kaavoitus/fi_FI/kaava-aloite/_files/97767125706623491/default/maksuluettelo%202017.pdf",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "0739289c-cc26-4097-b029-fa9c58c8d4e9",
+        "name": "Rajankäynti asemakaava-alueella"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "57b33ac6-d390-4c22-9074-958b8826d179",
-      "name" : "Rasitetoimitus"
+    {
+      "service": {
+        "id": "28f7d831-f0da-44e3-ad16-ee56d5ea536f",
+        "name": "Tontin lohkominen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a4938740-1f65-43f1-a725-a3d280dc77bd",
-      "name" : "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen"
+    {
+      "service": {
+        "id": "57b33ac6-d390-4c22-9074-958b8826d179",
+        "name": "Rasitetoimitus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "bc01adca-4a7e-456f-97df-521c1484222d",
-      "name" : "Tonttijako"
+    {
+      "service": {
+        "id": "a4938740-1f65-43f1-a725-a3d280dc77bd",
+        "name": "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "c341d34a-8d76-4001-9635-c528ee1d8914",
-      "name" : "Kaavoitusaloite"
+    {
+      "service": {
+        "id": "bc01adca-4a7e-456f-97df-521c1484222d",
+        "name": "Tonttijako"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Ympäristöviraston maksuluettelo",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "WebPage",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Maksuluettelossa on kerrottu Naantalin kaupungin Ympäristoviraston palveluista perittävät maksut.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Maksuluettelossa on lueteltu Ympäristöviraston palveluiden hinnat osastoittain. Luttelossa on listattu Ympäristönsuojelun, Asemakaavoituksen ja Maanmittauksen palveluiden hinnat. ",
-    "type" : "Description"
-  } ],
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "32834fb0-9e06-44a2-aed4-2cc61751e8a8"
+    {
+      "service": {
+        "id": "c341d34a-8d76-4001-9635-c528ee1d8914",
+        "name": "Kaavoitusaloite"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627"
 }

@@ -1,100 +1,129 @@
 {
-  "sourceId" : null,
-  "webPages" : [ ],
-  "attachments" : [ ],
-  "languages" : [ ],
-  "deliveryAddresses" : [ {
-    "subType" : "NoAddress",
-    "postOfficeBoxAddress" : null,
-    "streetAddress" : null,
-    "deliveryAddressInText" : [ ],
-    "receiver" : [ {
-      "value" : null,
-      "language" : "fi"
-    }, {
-      "value" : null,
-      "language" : "sv"
-    } ]
-  } ],
-  "supportPhones" : [ ],
-  "formIdentifier" : [ {
-    "value" : null,
-    "language" : "fi"
-  }, {
-    "value" : null,
-    "language" : "sv"
-  } ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "905",
-      "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
-        "value" : "Vasa",
-        "language" : "sv"
-      }, {
-        "value" : "Vaasa",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
-      "name" : "Hissiavustus"
+  "id": "7de53057-287b-4899-b4b3-86291bf47b45",
+  "sourceId": null,
+  "serviceChannelType": "PrintableForm",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Hissiavustusanomus",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "channelUrls" : [ {
-    "language" : "fi",
-    "value" : "https://www.vaasa.fi/sites/default/files/hissiavustusanomus_uusi.pdf",
-    "type" : "PDF"
-  }, {
-    "language" : "sv",
-    "value" : "https://www.vaasa.fi/sites/default/files/hissiavustusanomus_uusi_ruotsi.pdf",
-    "type" : "PDF"
-  } ],
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Hissiavustusanomus",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Ansökan om hissunderstöd",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "PrintableForm",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Vasa stads hissunderstöd kan du söka med hissunderstödsblanketten.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Vasa stads hussunderstöd kan du söka med hissunderstödsblanketten. ",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "7de53057-287b-4899-b4b3-86291bf47b45"
+    {
+      "language": "sv",
+      "value": "Ansökan om hissunderstöd",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin hissiavustusta voit hakea hissiavustusanomuksella.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Vasa stads hissunderstöd kan du söka med hissunderstödsblanketten.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Vasa stads hussunderstöd kan du söka med hissunderstödsblanketten. ",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "formIdentifier": [
+    {
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "deliveryAddresses": [
+    {
+      "subType": "NoAddress",
+      "postOfficeBoxAddress": null,
+      "streetAddress": null,
+      "deliveryAddressInText": [],
+      "receiver": [
+        {
+          "value": null,
+          "language": "fi"
+        },
+        {
+          "value": null,
+          "language": "sv"
+        }
+      ]
+    }
+  ],
+  "channelUrls": [
+    {
+      "language": "fi",
+      "value": "https://www.vaasa.fi/sites/default/files/hissiavustusanomus_uusi.pdf",
+      "type": "PDF"
+    },
+    {
+      "language": "sv",
+      "value": "https://www.vaasa.fi/sites/default/files/hissiavustusanomus_uusi_ruotsi.pdf",
+      "type": "PDF"
+    }
+  ],
+  "attachments": [],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [],
+  "webPages": [],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "83e5fa7f-a22c-43b7-aa27-06474d21ec59",
+        "name": "Hissiavustus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627"
 }

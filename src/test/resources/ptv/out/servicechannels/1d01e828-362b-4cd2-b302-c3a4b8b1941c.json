@@ -1,53 +1,72 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "https://esuomi.fi/palveluntarjoajille/palvelutietovaranto/kayttoonotto/liittymisohje/",
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "requiresSignature" : false,
-  "attachments" : [ ],
-  "languages" : [ ],
-  "supportPhones" : [ ],
-  "areas" : [ ],
-  "supportEmails" : [ {
-    "value" : "kapa-asiakaspalvelu@vrk.fi",
-    "language" : "fi"
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "b7fb6633-d754-45fb-8241-35f22b75c2dd",
-      "name" : "Suomi.fi-palvelutietovaranto"
+  "id": "1d01e828-362b-4cd2-b302-c3a4b8b1941c",
+  "sourceId": null,
+  "serviceChannelType": "EChannel",
+  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Suomi.fi-palvelutietovarannon käyttöönotto",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Suomi.fi-palvelutietovaranto on keskitetty tietovaranto, johon organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Suomi.fi-palvelutietovarannon käyttöönotto",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "EChannel",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Suomi.fi-palvelutietovaranto on keskitetty tietovaranto, johon organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Suomi.fi-palvelutietovaranto (PTV) on keskitetty tietovaranto, johon organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista ja niiden asiointikanavista. Kun organisaatio on kuvannut tiedot palveluistaan Suomi.fi-palvelutietovarantoon, niitä voi jatkossa päivittää suoraan Palvelutietovarantoon osana normaalia palvelutuotantoa. Palvelutietovarantoon päivitettyjä tai siihen integroituja tietoja voi käyttää hyväksi avoimen rajapinnan avulla missä tahansa verkkopalvelussa. Esimerkiksi kaikki julkisen hallinnon organisaatiot kuvaavat palvelunsa Palvelutietovarantoon, josta ne tuodaan kansalaisten ja yritysten nähtäville uudistuvaan Suomi.fi-verkkopalveluun (aukeaa vuonna 2017). \n\nOrganisaatio kuvaa palvelunsa yhteisen tietomallin mukaisesti. Jokainen palvelujaan kuvaava organisaatio on velvollinen tekemään kuvailutyön ja sen jälkeen tapahtuvan tietojen ylläpidon itse. Laki hallinnon yhteisistä sähköisen asioinnin tukipalveluista (571/2016) velvoittaa julkishallinnon organisaatioita kuvaamaan palvelunsa Suomi.fi-palvelutietovarantoon.",
-    "type" : "Description"
-  } ],
-  "areaType" : null,
-  "publishingStatus" : "Published",
-  "modified" : "2017-09-11T00:00:00",
-  "id" : "1d01e828-362b-4cd2-b302-c3a4b8b1941c",
-  "signatureQuantity" : 0,
-  "requiresAuthentication" : false
+    {
+      "language": "fi",
+      "value": "Suomi.fi-palvelutietovaranto (PTV) on keskitetty tietovaranto, johon organisaatiot tuottavat yhdenmukaisesti tiedot tarjoamistaan palveluista ja niiden asiointikanavista. Kun organisaatio on kuvannut tiedot palveluistaan Suomi.fi-palvelutietovarantoon, niitä voi jatkossa päivittää suoraan Palvelutietovarantoon osana normaalia palvelutuotantoa. Palvelutietovarantoon päivitettyjä tai siihen integroituja tietoja voi käyttää hyväksi avoimen rajapinnan avulla missä tahansa verkkopalvelussa. Esimerkiksi kaikki julkisen hallinnon organisaatiot kuvaavat palvelunsa Palvelutietovarantoon, josta ne tuodaan kansalaisten ja yritysten nähtäville uudistuvaan Suomi.fi-verkkopalveluun (aukeaa vuonna 2017). \n\nOrganisaatio kuvaa palvelunsa yhteisen tietomallin mukaisesti. Jokainen palvelujaan kuvaava organisaatio on velvollinen tekemään kuvailutyön ja sen jälkeen tapahtuvan tietojen ylläpidon itse. Laki hallinnon yhteisistä sähköisen asioinnin tukipalveluista (571/2016) velvoittaa julkishallinnon organisaatioita kuvaamaan palvelunsa Suomi.fi-palvelutietovarantoon.",
+      "type": "Description"
+    }
+  ],
+  "areaType": null,
+  "areas": [],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "requiresAuthentication": false,
+  "attachments": [],
+  "supportPhones": [],
+  "supportEmails": [
+    {
+      "value": "kapa-asiakaspalvelu@vrk.fi",
+      "language": "fi"
+    }
+  ],
+  "languages": [],
+  "webPages": [
+    {
+      "url": "https://esuomi.fi/palveluntarjoajille/palvelutietovaranto/kayttoonotto/liittymisohje/",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "b7fb6633-d754-45fb-8241-35f22b75c2dd",
+        "name": "Suomi.fi-palvelutietovaranto"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-09-11T00:00:00"
 }

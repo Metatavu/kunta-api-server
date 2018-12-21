@@ -69,11 +69,11 @@ import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
 import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 import fi.metatavu.kuntaapi.server.utils.LocalizationUtils;
-import fi.metatavu.ptv.client.model.V8VmOpenApiElectronicChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPhoneChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiPrintableFormChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
-import fi.metatavu.ptv.client.model.V8VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPhoneChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiPrintableFormChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiWebPageChannel;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -195,7 +195,7 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     }
   }
   
-  private void updateElectronicServiceChannel(Long orderIndex, V8VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
+  private void updateElectronicServiceChannel(Long orderIndex, V9VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
     if (ptvElectronicServiceChannel == null) {
       return;
     }
@@ -223,7 +223,7 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     indexElectronicServiceChannel(orderIndex, electronicServiceChannel);
   }
 
-  private void updateServiceLocationServiceChannel(Long orderIndex, V8VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
+  private void updateServiceLocationServiceChannel(Long orderIndex, V9VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
     if (ptvServiceLocationServiceChannel == null) {
       return;
     }
@@ -253,7 +253,7 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     updateParentPageIds(parentPageIds);
   }
 
-  private void updatePrintableFormServiceChannel(Long orderIndex, V8VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
+  private void updatePrintableFormServiceChannel(Long orderIndex, V9VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     if (ptvPrintableFormServiceChannel == null) {
       return;
     }
@@ -280,7 +280,7 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     indexPrintableFormServiceChannel(orderIndex, printableFormServiceChannel);
   }
   
-  private void updatePhoneServiceChannel(Long orderIndex, V8VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
+  private void updatePhoneServiceChannel(Long orderIndex, V9VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
     if (ptvPhoneServiceChannel == null) {
       return;
     }
@@ -307,7 +307,7 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     indexPhoneServiceChannel(orderIndex, phoneServiceChannel);
   }
   
-  private void updateWebPageServiceChannel(Long orderIndex, V8VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
+  private void updateWebPageServiceChannel(Long orderIndex, V9VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
     if (ptvWebPageServiceChannel == null) {
       return;
     }
