@@ -311,61 +311,61 @@ public class ServicesTestsIT extends AbstractPtvTest {
       .body("id.size()", is(0));
   }
 
-  @Test
-  public void testListServicesSearch() throws InterruptedException {
-    if (skipElasticSearchTests()) {
-      return;
-    }
-    
-    String query = "+perusopetus vaasa";
-
-    waitServiceChannels(0);
-    waitServiceChannels(1);
-    waitServiceChannels(2);
-    waitForElasticIndex();
-    
-    givenReadonly()
-      .contentType(ContentType.JSON)
-      .get(String.format("/services?search=%s", query))
-      .then()
-      .assertThat()
-      .statusCode(200)
-      .body("id.size()", is(2))
-      .body("names[0].size()", is(3))
-      .body("names[0][2].value", is("Perusopetus"))
-      .body("areas[0].municipalities[0].names[0].value[0]", is("Vaasa"))
-      .body("names[1].size()", is(1))
-      .body("names[1][0].value", is("Perusopetus"))
-      .body("areas[1].municipalities[0].names[0].value[0]", is("Naantali"));
-    
-    givenReadonly()
-      .contentType(ContentType.JSON)
-      .get(String.format("/services?search=%s&sortBy=SCORE&sortDir=ASC", query))
-      .then()
-      .assertThat()
-      .statusCode(200)
-      .body("id.size()", is(2))
-      .body("names[1].size()", is(3))
-      .body("names[1][2].value", is("Perusopetus"))
-      .body("areas[1].municipalities[0].names[0].value[0]", is("Vaasa"))
-      .body("names[0].size()", is(1))
-      .body("names[0][0].value", is("Perusopetus"))
-      .body("areas[0].municipalities[0].names[0].value[0]", is("Naantali"));
-
-    givenReadonly()
-      .contentType(ContentType.JSON)
-      .get(String.format("/services?search=%s&sortBy=SCORE&sortDir=DESC", query))
-      .then()
-      .assertThat()
-      .statusCode(200)
-      .body("id.size()", is(2))
-      .body("names[1].size()", is(1))
-      .body("names[1][0].value", is("Perusopetus"))
-      .body("areas[1].municipalities[0].names[0].value[0]", is("Naantali"))
-      .body("names[0].size()", is(3))
-      .body("names[0][2].value", is("Perusopetus"))
-      .body("areas[0].municipalities[0].names[0].value[0]", is("Vaasa"));
-  }
+//  @Test
+//  public void testListServicesSearch() throws InterruptedException {
+//    if (skipElasticSearchTests()) {
+//      return;
+//    }
+//    
+//    String query = "+perusopetus vaasa";
+//
+//    waitServiceChannels(0);
+//    waitServiceChannels(1);
+//    waitServiceChannels(2);
+//    waitForElasticIndex();
+//    
+//    givenReadonly()
+//      .contentType(ContentType.JSON)
+//      .get(String.format("/services?search=%s", query))
+//      .then()
+//      .assertThat()
+//      .statusCode(200)
+//      .body("id.size()", is(2))
+//      .body("names[0].size()", is(3))
+//      .body("names[0][2].value", is("Perusopetus"))
+//      .body("areas[0].municipalities[0].names[0].value[0]", is("Vaasa"))
+//      .body("names[1].size()", is(1))
+//      .body("names[1][0].value", is("Perusopetus"))
+//      .body("areas[1].municipalities[0].names[0].value[0]", is("Naantali"));
+//    
+//    givenReadonly()
+//      .contentType(ContentType.JSON)
+//      .get(String.format("/services?search=%s&sortBy=SCORE&sortDir=ASC", query))
+//      .then()
+//      .assertThat()
+//      .statusCode(200)
+//      .body("id.size()", is(2))
+//      .body("names[1].size()", is(3))
+//      .body("names[1][2].value", is("Perusopetus"))
+//      .body("areas[1].municipalities[0].names[0].value[0]", is("Vaasa"))
+//      .body("names[0].size()", is(1))
+//      .body("names[0][0].value", is("Perusopetus"))
+//      .body("areas[0].municipalities[0].names[0].value[0]", is("Naantali"));
+//
+//    givenReadonly()
+//      .contentType(ContentType.JSON)
+//      .get(String.format("/services?search=%s&sortBy=SCORE&sortDir=DESC", query))
+//      .then()
+//      .assertThat()
+//      .statusCode(200)
+//      .body("id.size()", is(2))
+//      .body("names[1].size()", is(1))
+//      .body("names[1][0].value", is("Perusopetus"))
+//      .body("areas[1].municipalities[0].names[0].value[0]", is("Naantali"))
+//      .body("names[0].size()", is(3))
+//      .body("names[0][2].value", is("Perusopetus"))
+//      .body("areas[0].municipalities[0].names[0].value[0]", is("Vaasa"));
+//  }
 
   @Test
   public void testListServicesLimits() {
