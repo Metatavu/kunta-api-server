@@ -719,7 +719,6 @@ public class KuntaApiPtvTranslator extends AbstractTranslator {
     result.setStreetAddress(translateAddressWithCoordinatesIn(address));
     result.setSubType(address.getSubtype());
     result.setType(address.getType());
-    result.setOtherAddress(null);
     
     return result;
   }
