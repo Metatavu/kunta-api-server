@@ -136,7 +136,7 @@ public class PtvTranslator extends AbstractTranslator {
       V9VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
     
     ServiceLocationServiceChannel result = new ServiceLocationServiceChannel();
-    result.setAddresses(translateAddressesWithMoving(ptvServiceLocationServiceChannel.getAddresses()));
+    result.setAddresses(translateAddressesLocation(ptvServiceLocationServiceChannel.getAddresses()));
     result.setDescriptions(translateLocalizedValues(ptvServiceLocationServiceChannel.getServiceChannelDescriptions()));
     result.setEmails(translateEmailsLanguageItem(ptvServiceLocationServiceChannel.getEmails()));
     result.setId(kuntaApiServiceLocationServiceChannelId.getId());
@@ -454,7 +454,7 @@ public class PtvTranslator extends AbstractTranslator {
     return result;
   }
 
-  private List<Address> translateAddressesWithMoving(List<V9VmOpenApiAddressLocation> ptvAddresses) {
+  private List<Address> translateAddressesLocation(List<V9VmOpenApiAddressLocation> ptvAddresses) {
     if (ptvAddresses == null) {
       return Collections.emptyList();
     }
@@ -462,7 +462,7 @@ public class PtvTranslator extends AbstractTranslator {
     List<Address> result = new ArrayList<>(ptvAddresses.size());
 
     for (V9VmOpenApiAddressLocation ptvAddress : ptvAddresses) {
-      Address address = translateAddressWithMoving(ptvAddress);
+      Address address = translateAddressLocation(ptvAddress);
       if (address != null) {
         result.add(address);
       }
@@ -471,7 +471,7 @@ public class PtvTranslator extends AbstractTranslator {
     return result;
   }
   
-  private Address translateAddressWithMoving(V9VmOpenApiAddressLocation ptvAddress) {
+  private Address translateAddressLocation(V9VmOpenApiAddressLocation ptvAddress) {
     if ((ptvAddress == null)|| (ptvAddress.getPostOfficeBoxAddress() == null && ptvAddress.getStreetAddress() == null && ptvAddress.getLocationAbroad() == null)) {
       return null;
     }

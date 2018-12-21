@@ -83,17 +83,7 @@
         "latitude": "6713890.211",
         "longitude": "226225.47"
       },
-      "otherAddress": {
-        "latitude": "61.6887",
-        "longitude": "27.2721",
-        "postalCode": "12345",
-        "additionalInformation": [
-          {
-            "value": "value",
-            "language": "en"
-          }
-        ]
-      },
+      "otherAddress": null,
       "locationAbroad": [],
       "country": "FI"
     },
@@ -115,17 +105,7 @@
         "latitude": "6713925.933",
         "longitude": "226321.604"
       },
-      "otherAddress": {
-        "latitude": "61.6887",
-        "longitude": "27.2721",
-        "postalCode": "12345",
-        "additionalInformation": [
-          {
-            "value": "value",
-            "language": "en"
-          }
-        ]
-      },
+      "otherAddress": null,
       "locationAbroad": [],
       "country": "FI"
     }
