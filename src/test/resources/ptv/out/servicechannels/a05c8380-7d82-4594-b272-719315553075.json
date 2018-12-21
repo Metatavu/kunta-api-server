@@ -1,78 +1,104 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "https://www.vaasa.fi/node/3221",
-    "value" : null,
-    "language" : "fi"
-  }, {
-    "orderNumber" : "0",
-    "url" : "https://www.vaasa.fi/en/node/3221",
-    "value" : null,
-    "language" : "en"
-  }, {
-    "orderNumber" : "0",
-    "url" : "https://www.vaasa.fi/sv/node/3221",
-    "value" : null,
-    "language" : "sv"
-  } ],
-  "languages" : [ "fi", "sv" ],
-  "supportPhones" : [ ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "bedd6808-8472-4f82-a412-e9521f14c621",
-      "name" : "Avoimet työpaikat"
+  "id": "a05c8380-7d82-4594-b272-719315553075",
+  "sourceId": null,
+  "serviceChannelType": "WebPage",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
+    {
+      "language": "sv",
+      "value": "Lediga arbetsplatser",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "serviceChannelNames" : [ {
-    "language" : "sv",
-    "value" : "Lediga arbetsplatser",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Avoimet työpaikat",
-    "type" : "Name"
-  }, {
-    "language" : "en",
-    "value" : "Vacancies",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "WebPage",
-  "serviceChannelDescriptions" : [ {
-    "language" : "sv",
-    "value" : "På webbsidorna hittar du kontaktuppgifter och nyttiga länkar samt tilläggsinformation om lediga arbetsplatser och om ansökan till dem. ",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : "På webbsidorna hittar du kontaktuppgifter och nyttiga länkar samt tilläggsinformation om lediga arbetsplatser och om ansökan till dem.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Verkkosivuilta löydät yhteystietoja ja hyödyllisiä linkkejä sekä lisätietoa avoimista työpaikoista ja niiden hakemisesta. ",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Verkkosivuilta löydät yhteystietoja ja hyödyllisiä linkkejä sekä lisätietoa avoimista työpaikoista ja niiden hakemisesta.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
-    "value" : "You can find contact information and useful links as well as further information about the vacancies and how to apply those from the web pages.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
-    "value" : "You can find contact information and useful links as well as further information about the vacancies and how to apply those from the web pages.\n",
-    "type" : "Description"
-  } ],
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "a05c8380-7d82-4594-b272-719315553075"
+    {
+      "language": "fi",
+      "value": "Avoimet työpaikat",
+      "type": "Name"
+    },
+    {
+      "language": "en",
+      "value": "Vacancies",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "sv",
+      "value": "På webbsidorna hittar du kontaktuppgifter och nyttiga länkar samt tilläggsinformation om lediga arbetsplatser och om ansökan till dem. ",
+      "type": "Description"
+    },
+    {
+      "language": "sv",
+      "value": "På webbsidorna hittar du kontaktuppgifter och nyttiga länkar samt tilläggsinformation om lediga arbetsplatser och om ansökan till dem.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Verkkosivuilta löydät yhteystietoja ja hyödyllisiä linkkejä sekä lisätietoa avoimista työpaikoista ja niiden hakemisesta. ",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Verkkosivuilta löydät yhteystietoja ja hyödyllisiä linkkejä sekä lisätietoa avoimista työpaikoista ja niiden hakemisesta.",
+      "type": "Summary"
+    },
+    {
+      "language": "en",
+      "value": "You can find contact information and useful links as well as further information about the vacancies and how to apply those from the web pages.",
+      "type": "Summary"
+    },
+    {
+      "language": "en",
+      "value": "You can find contact information and useful links as well as further information about the vacancies and how to apply those from the web pages.\n",
+      "type": "Description"
+    }
+  ],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "webPages": [
+    {
+      "url": "https://www.vaasa.fi/node/3221",
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "url": "https://www.vaasa.fi/en/node/3221",
+      "value": null,
+      "language": "en"
+    },
+    {
+      "url": "https://www.vaasa.fi/sv/node/3221",
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "bedd6808-8472-4f82-a412-e9521f14c621",
+        "name": "Avoimet työpaikat"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627"
 }

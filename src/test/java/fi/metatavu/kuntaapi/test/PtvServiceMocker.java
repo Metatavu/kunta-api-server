@@ -9,13 +9,13 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 
-import fi.metatavu.ptv.client.model.V8VmOpenApiService;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceAndChannelRelationInBase;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiService;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceAndChannelRelationInBase;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceInBase;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 
 @SuppressWarnings ("squid:S1450")
-public class PtvServiceMocker extends AbstractPtvMocker<V8VmOpenApiService> {
+public class PtvServiceMocker extends AbstractPtvMocker<V9VmOpenApiService> {
 
   private static final String BASE_PATH = String.format("/ptv/api/%s/Service", PtvConsts.VERSION);
 
@@ -30,11 +30,11 @@ public class PtvServiceMocker extends AbstractPtvMocker<V8VmOpenApiService> {
   }
   
   @Override
-  public String getEntityId(V8VmOpenApiService entity) {
+  public String getEntityId(V9VmOpenApiService entity) {
     return entity.getId().toString();
   }
 
-  public void mockServicePut(String id, V8VmOpenApiService responseEntity) {
+  public void mockServicePut(String id, V9VmOpenApiService responseEntity) {
     stubFor(put(urlPathEqualTo(String.format("/ptv/api/%s/Service/%s", PtvConsts.VERSION, id)))
       .withQueryParam("attachProposedChannels", equalTo("false"))
       .willReturn(aResponse()
@@ -49,14 +49,14 @@ public class PtvServiceMocker extends AbstractPtvMocker<V8VmOpenApiService> {
         .withBody(toJSON(responseEntity)))); 
   }
   
-  public void verifyService(String id, V8VmOpenApiServiceInBase entity) {
+  public void verifyService(String id, V9VmOpenApiServiceInBase entity) {
     String payload = toJSON(entity);
     verify(1, putRequestedFor(urlPathEqualTo(String.format("/ptv/api/%s/Service/%s", PtvConsts.VERSION, id)))
       .withQueryParam("attachProposedChannels", equalTo("false"))
       .withRequestBody(equalToJson(payload, true, true)));
   }
 
-  public void verifyServiceConnection(String id, V8VmOpenApiServiceAndChannelRelationInBase entity) {
+  public void verifyServiceConnection(String id, V9VmOpenApiServiceAndChannelRelationInBase entity) {
     String payload = toJSON(entity);
     
     verify(1, putRequestedFor(urlPathEqualTo(String.format("/ptv/api/%s/Connection/serviceId/%s", PtvConsts.VERSION, id)))

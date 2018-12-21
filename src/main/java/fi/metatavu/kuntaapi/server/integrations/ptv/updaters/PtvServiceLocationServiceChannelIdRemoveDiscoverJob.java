@@ -22,7 +22,7 @@ import fi.metatavu.kuntaapi.server.integrations.ptv.tasks.ServiceLocationService
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.ResultType;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceLocationChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceLocationChannel;
 
 @ApplicationScoped
 @Singleton
@@ -82,7 +82,7 @@ public class PtvServiceLocationServiceChannelIdRemoveDiscoverJob extends IdDisco
       }
       
       String path = String.format("/api/%s/ServiceChannel/%s", PtvConsts.VERSION, ptvServiceLocationServiceChannelId.getId());
-      ApiResponse<V8VmOpenApiServiceLocationChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V8VmOpenApiServiceLocationChannel>() {}, null, null);
+      ApiResponse<V9VmOpenApiServiceLocationChannel> response = ptvClient.doGETRequest(null, path, new ResultType<V9VmOpenApiServiceLocationChannel>() {}, null, null);
       if (response.getStatus() == 404) {
         serviceChannelTasksQueue.enqueueTask(new ServiceLocationServiceChannelRemoveTask(false, ptvServiceLocationServiceChannelId));
       }

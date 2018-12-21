@@ -1,158 +1,192 @@
 {
-  "sourceId" : null,
-  "webPages" : [ ],
-  "languages" : [ "fi" ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "704cb442-2423-43ec-ae70-089b503932c9",
-      "name" : "Suomen opetus toisena kielenä"
+  "id": "6894ee49-f5ac-4a69-b9f0-bf3de2a02f0c",
+  "sourceId": null,
+  "serviceChannelType": "Phone",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Naantalin kaupungin johtava rehtori",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Johtava rehtori ohjaa ja neuvoo opetukseen ja koulutukseen liittyvissä asioissa.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "71fc2285-4e69-4aa3-9f87-16511595d5a1",
-      "name" : "Maahanmuuttajien valmistava opetus"
+    {
+      "language": "fi",
+      "value": "Johtava rehtori ohjaa ja neuvoo opetukseen ja koulutukseen liittyvissä asioissa.",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "445334368",
+      "language": "fi"
+    }
+  ],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
+  "webPages": [],
+  "serviceHours": [
+    {
+      "serviceHourType": "DaysOfTheWeek",
+      "validFrom": null,
+      "validTo": null,
+      "isClosed": false,
+      "validForNow": true,
+      "additionalInformation": [
+        {
+          "value": null,
+          "language": "fi"
+        }
+      ],
+      "openingHour": [
+        {
+          "dayFrom": "Monday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Tuesday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Wednesday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Thursday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        },
+        {
+          "dayFrom": "Friday",
+          "dayTo": "",
+          "from": "09:00:00",
+          "to": "15:00:00"
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "704cb442-2423-43ec-ae70-089b503932c9",
+        "name": "Suomen opetus toisena kielenä"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "aa770428-0ee1-433d-8d2c-90c060c477cd",
-      "name" : "Perusopetuksen erityisopetus"
+    {
+      "service": {
+        "id": "71fc2285-4e69-4aa3-9f87-16511595d5a1",
+        "name": "Maahanmuuttajien valmistava opetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
-      "name" : "Perusopetus"
+    {
+      "service": {
+        "id": "aa770428-0ee1-433d-8d2c-90c060c477cd",
+        "name": "Perusopetuksen erityisopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f20366fd-b41d-406b-bfab-e6928359a008",
-      "name" : "Painotettu opetus"
+    {
+      "service": {
+        "id": "e45cae1e-dfbc-44eb-b57b-ef73f21b38c4",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "f8d7f555-a02c-47b3-9219-7f36767b979a",
-      "name" : "Avustajapalvelut ja apuvälineet perusopetuksen oppilaalle"
+    {
+      "service": {
+        "id": "f20366fd-b41d-406b-bfab-e6928359a008",
+        "name": "Painotettu opetus"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "445334368",
-    "language" : "fi"
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Naantalin kaupungin johtava rehtori",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ {
-    "serviceHourType" : "DaysOfTheWeek",
-    "validFrom" : null,
-    "validTo" : null,
-    "isClosed" : false,
-    "validForNow" : true,
-    "additionalInformation" : [ {
-      "value" : null,
-      "language" : "fi"
-    } ],
-    "openingHour" : [ {
-      "dayFrom" : "Monday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Tuesday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Wednesday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Thursday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    }, {
-      "dayFrom" : "Friday",
-      "dayTo" : "",
-      "from" : "09:00:00",
-      "to" : "15:00:00"
-    } ]
-  } ],
-  "serviceChannelType" : "Phone",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Johtava rehtori ohjaa ja neuvoo opetukseen ja koulutukseen liittyvissä asioissa.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Johtava rehtori ohjaa ja neuvoo opetukseen ja koulutukseen liittyvissä asioissa.",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "6894ee49-f5ac-4a69-b9f0-bf3de2a02f0c"
+    {
+      "service": {
+        "id": "f8d7f555-a02c-47b3-9219-7f36767b979a",
+        "name": "Avustajapalvelut ja apuvälineet perusopetuksen oppilaalle"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627"
 }

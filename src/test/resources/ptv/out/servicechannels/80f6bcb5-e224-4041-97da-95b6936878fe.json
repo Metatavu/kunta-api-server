@@ -1,223 +1,274 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "https://asiointi.vrk.fi/#!/login",
-    "value" : null,
-    "language" : "fi"
-  }, {
-    "orderNumber" : "0",
-    "url" : "https://asiointi.vrk.fi/#!/login",
-    "value" : null,
-    "language" : "sv"
-  } ],
-  "requiresSignature" : false,
-  "attachments" : [ ],
-  "languages" : [ ],
-  "supportPhones" : [ ],
-  "areas" : [ ],
-  "supportEmails" : [ {
-    "value" : "asiointi@vrk.fi",
-    "language" : "fi"
-  }, {
-    "value" : "asiointi@vrk.fi",
-    "language" : "sv"
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "2106d1a1-4d10-4d42-b6af-a97f1e14d17f",
-      "name" : "Henkilötietojen VTJ-rajapinta"
+  "id": "80f6bcb5-e224-4041-97da-95b6936878fe",
+  "sourceId": null,
+  "serviceChannelType": "EChannel",
+  "organizationId": "b458d033-042d-4cbe-b030-34e81da28821",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Väestörekisterikeskuksen verkkoasiointi",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "236e2996-112b-4950-baed-45fa03b31cb8",
-      "name" : "VTJ-ylläpitokäyttöliittymä"
+    {
+      "language": "sv",
+      "value": "Befolkningsregistercentralens e-tjänster",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "sv",
+      "value": "Via e-tjänsten kan du elektroniskt ansöka om och administrera de tjänster som Befolkningsregistercentralen erbjuder.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "47e7c82b-9d67-4a7e-93f7-c6ff87adf2fa",
-      "name" : "Muutostietopalvelu"
+    {
+      "language": "sv",
+      "value": "Befolkningsregistercentralens organisationskunder kan via e-tjänsten ansöka om olika tillstånd och användningsrättigheter som gäller ajourhållning av befolkningsdatasystemets person- och byggnadsuppgifter och informationstjänster samt BRC:s certifikattjänster. E-tjänsten kan inte användas av enskilda medborgare.",
+      "type": "Description"
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4b9ee1d2-3f49-47a7-a69d-6708a1e44a4c",
-      "name" : "Toimikorttien hankinta julkishallinnon organisaatioille "
+    {
+      "language": "fi",
+      "value": "Verkkoasioinnissa voit sähköisesti hakea ja hallinnoida Väestörekisterikeskuksen tarjoamia palveluja.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "4f46ba03-9bcc-46c8-95fd-c9fb32e097d7",
-      "name" : "VTJ-ylläpitorajapinta"
+    {
+      "language": "fi",
+      "value": "Väestörekisterikeskuksen organisaatioasiakkaat voivat verkkoasioinnissa hakea erilaisia väestötietojärjestelmän henkilö- ja rakennustietojen ylläpitoon ja tietopalveluihin sekä VRK:n varmennepalveluihin liittyviä lupia ja käyttöoikeuksia. VRK:n verkkoasiointi ei ole kansalaisten käytössä.\n",
+      "type": "Description"
+    }
+  ],
+  "areaType": null,
+  "areas": [],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "requiresAuthentication": true,
+  "attachments": [],
+  "supportPhones": [],
+  "supportEmails": [
+    {
+      "value": "asiointi@vrk.fi",
+      "language": "fi"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "86edec78-b8ea-4603-a88f-3540d0bfde6b",
-      "name" : "Toimikorttien hankinta sosiaali- ja terveydenhuollon organisaatioille"
+    {
+      "value": "asiointi@vrk.fi",
+      "language": "sv"
+    }
+  ],
+  "languages": [],
+  "webPages": [
+    {
+      "url": "https://asiointi.vrk.fi/#!/login",
+      "value": null,
+      "language": "fi"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "9e63c517-812a-42a0-9e5b-3c1a0f0ff630",
-      "name" : "Poimintapalvelu"
+    {
+      "url": "https://asiointi.vrk.fi/#!/login",
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "serviceHours": [
+    {
+      "serviceHourType": "DaysOfTheWeek",
+      "validFrom": null,
+      "validTo": null,
+      "isClosed": false,
+      "validForNow": true,
+      "additionalInformation": [
+        {
+          "value": null,
+          "language": "fi"
+        }
+      ],
+      "openingHour": []
+    }
+  ],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "2106d1a1-4d10-4d42-b6af-a97f1e14d17f",
+        "name": "Henkilötietojen VTJ-rajapinta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "a683d5eb-ee1a-4869-98ba-a4a00ed880da",
-      "name" : "VTJ-rajapinta"
+    {
+      "service": {
+        "id": "236e2996-112b-4950-baed-45fa03b31cb8",
+        "name": "VTJ-ylläpitokäyttöliittymä"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "d2ea56fe-1bca-4d26-8579-875a4c6c9638",
-      "name" : "Päivityspalvelu"
+    {
+      "service": {
+        "id": "47e7c82b-9d67-4a7e-93f7-c6ff87adf2fa",
+        "name": "Muutostietopalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "faff1729-fd02-4159-8a42-71402db7f701",
-      "name" : "Palveluvarmenne"
+    {
+      "service": {
+        "id": "4b9ee1d2-3f49-47a7-a69d-6708a1e44a4c",
+        "name": "Toimikorttien hankinta julkishallinnon organisaatioille "
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "b458d033-042d-4cbe-b030-34e81da28821",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Väestörekisterikeskuksen verkkoasiointi",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Befolkningsregistercentralens e-tjänster",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ {
-    "serviceHourType" : "DaysOfTheWeek",
-    "validFrom" : null,
-    "validTo" : null,
-    "isClosed" : false,
-    "validForNow" : true,
-    "additionalInformation" : [ {
-      "value" : null,
-      "language" : "fi"
-    } ],
-    "openingHour" : [ ]
-  } ],
-  "serviceChannelType" : "EChannel",
-  "serviceChannelDescriptions" : [ {
-    "language" : "sv",
-    "value" : "Via e-tjänsten kan du elektroniskt ansöka om och administrera de tjänster som Befolkningsregistercentralen erbjuder.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Befolkningsregistercentralens organisationskunder kan via e-tjänsten ansöka om olika tillstånd och användningsrättigheter som gäller ajourhållning av befolkningsdatasystemets person- och byggnadsuppgifter och informationstjänster samt BRC:s certifikattjänster. E-tjänsten kan inte användas av enskilda medborgare.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Verkkoasioinnissa voit sähköisesti hakea ja hallinnoida Väestörekisterikeskuksen tarjoamia palveluja.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Väestörekisterikeskuksen organisaatioasiakkaat voivat verkkoasioinnissa hakea erilaisia väestötietojärjestelmän henkilö- ja rakennustietojen ylläpitoon ja tietopalveluihin sekä VRK:n varmennepalveluihin liittyviä lupia ja käyttöoikeuksia. VRK:n verkkoasiointi ei ole kansalaisten käytössä.\n",
-    "type" : "Description"
-  } ],
-  "areaType" : null,
-  "publishingStatus" : "Published",
-  "modified" : "2017-09-11T00:00:00",
-  "id" : "80f6bcb5-e224-4041-97da-95b6936878fe",
-  "signatureQuantity" : 0,
-  "requiresAuthentication" : true
+    {
+      "service": {
+        "id": "4f46ba03-9bcc-46c8-95fd-c9fb32e097d7",
+        "name": "VTJ-ylläpitorajapinta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "86edec78-b8ea-4603-a88f-3540d0bfde6b",
+        "name": "Toimikorttien hankinta sosiaali- ja terveydenhuollon organisaatioille"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "9e63c517-812a-42a0-9e5b-3c1a0f0ff630",
+        "name": "Poimintapalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "a683d5eb-ee1a-4869-98ba-a4a00ed880da",
+        "name": "VTJ-rajapinta"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "d2ea56fe-1bca-4d26-8579-875a4c6c9638",
+        "name": "Päivityspalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "faff1729-fd02-4159-8a42-71402db7f701",
+        "name": "Palveluvarmenne"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-09-11T00:00:00"
 }

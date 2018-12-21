@@ -22,7 +22,7 @@ import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
 import fi.metatavu.ptv.client.ApiResponse;
-import fi.metatavu.ptv.client.model.V8VmOpenApiService;
+import fi.metatavu.ptv.client.model.V9VmOpenApiService;
 
 @ApplicationScoped
 @Singleton
@@ -81,7 +81,7 @@ public class PtvServiceIdRemoveDiscoverJob extends IdDiscoverJob {
         continue;
       }
       
-      ApiResponse<V8VmOpenApiService> response = ptvApi.getServiceApi(null).apiV8ServiceByIdGet(ptvServiceId.getId());
+      ApiResponse<V9VmOpenApiService> response = ptvApi.getServiceApi(null).apiV9ServiceByIdGet(ptvServiceId.getId());
       if (response.getStatus() == 404) {
         serviceIdTaskQueue.enqueueTask(new IdTask<ServiceId>(false, Operation.REMOVE, ptvServiceId));
       }

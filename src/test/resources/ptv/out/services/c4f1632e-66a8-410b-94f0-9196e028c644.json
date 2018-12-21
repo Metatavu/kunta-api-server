@@ -1,267 +1,625 @@
 {
-  "id" : "c4f1632e-66a8-410b-94f0-9196e028c644",
-  "sourceId" : null,
-  "generalDescriptionId" : "bfd155b8-7eac-406c-99fc-4b6215f9d51a",
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Esiopetuksen oppilashuolto",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : null,
-  "areaType" : "LimitedType",
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Esiopetuksen oppilashuolto on yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat päiväkodeissa, sekä koulupsykologit ja -kuraattorit.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : "Vanhemmat ja varhaiskasvatuksen henkilökunta voivat ottaa huolen syntyessä yhteyttä koulupsykologiin tai -kuraattoriin tai varhaiskasvatuksen erityisopettajiin.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Esiopetuksen oppilashuolto Naantalissa\n* edistää lapsen hyvinvointia ja ehkäisee ongelmia ennalta\n* mahdollistaa varhaisen puuttumisen jo silloin kun huoli on vielä pieni\n* havaitsee lasten kehityksessä ja vanhemmuudessa ilmenevää tuen tarvetta\n* tarjoaa tukea lapsille ja vanhemmille.\n\nEsiopetuksen oppilashuolto on moniammatillista yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat (päiväkodeissa), sekä koulupsykologit ja -kuraattorit. Koulupsykologin tuki on tarkoitettu lapsille, joilla voi olla oppimisen, tarkkaavuuden tai tunne-elämän häiriöitä. Koulukuraattori puolestaan auttaa lapsia, joilla voi olla sosiaalisia tai tunne-elämän pulmia tai perheen tilanteessa tarvitaan sosiaalityön osaamista.",
-    "type" : "Description"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Esiopetus",
-      "language" : "fi"
-    }, {
-      "value" : "Förskoleundervisning",
-      "language" : "sv"
-    }, {
-      "value" : "Pre-school education",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Tähän palvelualaluokkaan kuuluvat sekä varsinainen esiopetus sisältöineen että esiopetuksen paikallinen järjestäminen ja vaihtoehdot lasten ja heidän perheidensä kannalta.",
-      "language" : "fi"
-    }, {
-      "value" : "Till denna servicearbetsgrupp hör både den egentliga förskoleundervisningen med innehåll och det lokala ordnandet av förskoleundervisning och alternativ med tanke på barnen och deras familjer.",
-      "language" : "sv"
-    }, {
-      "value" : "This service subclass contains pre-school education itself and its contents, the local organisation of pre-school education, and alternatives for children and their parents.",
-      "language" : "en"
-    } ],
-    "code" : "P6.1",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1061",
-    "parentId" : "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
-  }, {
-    "name" : [ {
-      "value" : "Koulu- ja opiskelijahuollon sosiaalipalvelut",
-      "language" : "fi"
-    }, {
-      "value" : "Socialtjänster för skol- och studerandevård",
-      "language" : "sv"
-    }, {
-      "value" : "Pupil and student welfare social services",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut sosiaalipalvelut kuten koulukuraattorin palvelut sekä toisen ja korkea-asteen opiskelijoille suunnatut arjessa pärjäämistä tukevat palvelut, kuten vertaistukiryhmät ja neuvontapalvelut, jotka eivät ole terveyden- tai sairaanhoidon palveluja.",
-      "language" : "fi"
-    }, {
-      "value" : "Till denna underservicegrupp hör socialtjänster som är avsedda för skolelever och studeranden på heltid såsom skolkuratortjänster samt tjänster som stöder studeranden inom andra gradens utbildning och yrkesutbildning på högre nivå att klara sig i vardagen. Sådana är t.ex. kamratstöd och rådgivningstjänster som inte är hälso- eller sjukvårdstjänster.",
-      "language" : "sv"
-    }, {
-      "value" : "This service subclass contains social services intended for pupils and full-time students, including a school social worker’s services and services targeted at secondary and tertiary level students that support coping with everyday life, such as peer support groups and advisory services that are not health or medical care services.",
-      "language" : "en"
-    } ],
-    "code" : "P4.9",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1032",
-    "parentId" : "079b55da-af80-41ab-9346-c8fdd284afcf",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
-  }, {
-    "name" : [ {
-      "value" : "Perheiden palvelut",
-      "language" : "fi"
-    }, {
-      "value" : "Tjänster för familjer",
-      "language" : "sv"
-    }, {
-      "value" : "Services for families",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "I denna servicegrupp behandlas tjänster för barnfamiljer, som i huvudsak omfattar perioden från graviditeten till att en ung person blir myndig. I innehållet i servicegruppen granskas tjänsterna för familjer och situationer ofta via aktörer, situationer och synvinklar.",
-      "language" : "sv"
-    }, {
-      "value" : "Tässä palveluluokassa käsitellään lapsiperheen palveluja, jotka pääosin kattavat ajanjakson raskausajasta nuoren täysi-ikäiseksi tulemiseen. Palveluluokan sisällössä perheen palveluja ja tilanteita tarkastellaan useiden toimijoiden, tilanteiden ja näkökulmien kautta.",
-      "language" : "fi"
-    }, {
-      "value" : "This service class contains services for families with children, mainly covering the period from pregnancy until a young person turns 18. In the contents of this service class, family services are examined from the perspective of different actors, situations and viewpoints.",
-      "language" : "en"
-    } ],
-    "code" : "P3",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ ],
-    "code" : null,
-    "ontologyType" : null,
-    "uri" : "http://www.yso.fi/onto/yso/p15089",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "oppilashuolto",
-      "language" : "fi"
-    }, {
-      "value" : "elevvård",
-      "language" : "sv"
-    }, {
-      "value" : "pupil welfare",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p7638",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p36160"
-  }, {
-    "name" : [ {
-      "value" : "förskoleundervisning",
-      "language" : "sv"
-    }, {
-      "value" : "esiopetus",
-      "language" : "fi"
-    }, {
-      "value" : "preschool education",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p5766",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p33827"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Lapset ja lapsiperheet",
-      "language" : "fi"
-    }, {
-      "value" : "Children and families with children",
-      "language" : "en"
-    }, {
-      "value" : "Barn och barnfamiljer",
-      "language" : "sv"
-    } ],
-    "code" : "KR1.2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
-    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
-  }, {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "6dc68be3-cfc9-44b5-afc4-adc9fae54763",
-      "name" : "Päivähoidon esimies"
+  "id": "c4f1632e-66a8-410b-94f0-9196e028c644",
+  "sourceId": null,
+  "generalDescriptionId": "bfd155b8-7eac-406c-99fc-4b6215f9d51a",
+  "subType": "subType",
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "Esiopetuksen oppilashuolto",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": null,
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": "Esiopetuksen oppilashuolto on yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat päiväkodeissa, sekä koulupsykologit ja -kuraattorit.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "bc91db9e-2f56-4044-a375-30987de714eb",
-      "name" : "Naantalin koulukuraattorit"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "fi",
+      "value": "Vanhemmat ja varhaiskasvatuksen henkilökunta voivat ottaa huolen syntyessä yhteyttä koulupsykologiin tai -kuraattoriin tai varhaiskasvatuksen erityisopettajiin.",
+      "type": "UserInstruction"
+    },
+    {
+      "language": "fi",
+      "value": "Esiopetuksen oppilashuolto Naantalissa\n* edistää lapsen hyvinvointia ja ehkäisee ongelmia ennalta\n* mahdollistaa varhaisen puuttumisen jo silloin kun huoli on vielä pieni\n* havaitsee lasten kehityksessä ja vanhemmuudessa ilmenevää tuen tarvetta\n* tarjoaa tukea lapsille ja vanhemmille.\n\nEsiopetuksen oppilashuolto on moniammatillista yhteistyötä, johon osallistuvat varhaiskasvatuksen erityisopettajat (päiväkodeissa), sekä koulupsykologit ja -kuraattorit. Koulupsykologin tuki on tarkoitettu lapsille, joilla voi olla oppimisen, tarkkaavuuden tai tunne-elämän häiriöitä. Koulukuraattori puolestaan auttaa lapsia, joilla voi olla sosiaalisia tai tunne-elämän pulmia tai perheen tilanteessa tarvitaan sosiaalityön osaamista.",
+      "type": "Description"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Esiopetus",
+          "language": "fi"
+        },
+        {
+          "value": "Förskoleundervisning",
+          "language": "sv"
+        },
+        {
+          "value": "Pre-school education",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "Tähän palvelualaluokkaan kuuluvat sekä varsinainen esiopetus sisältöineen että esiopetuksen paikallinen järjestäminen ja vaihtoehdot lasten ja heidän perheidensä kannalta.",
+          "language": "fi"
+        },
+        {
+          "value": "Till denna servicearbetsgrupp hör både den egentliga förskoleundervisningen med innehåll och det lokala ordnandet av förskoleundervisning och alternativ med tanke på barnen och deras familjer.",
+          "language": "sv"
+        },
+        {
+          "value": "This service subclass contains pre-school education itself and its contents, the local organisation of pre-school education, and alternatives for children and their parents.",
+          "language": "en"
+        }
+      ],
+      "code": "P6.1",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1061",
+      "parentId": "fd1bb60e-4206-4f0a-994f-8ffcb4ffaaa4",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1060"
+    },
+    {
+      "name": [
+        {
+          "value": "Koulu- ja opiskelijahuollon sosiaalipalvelut",
+          "language": "fi"
+        },
+        {
+          "value": "Socialtjänster för skol- och studerandevård",
+          "language": "sv"
+        },
+        {
+          "value": "Pupil and student welfare social services",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "Tähän alapalveluluokkaan kuuluvat koululaisille ja kokopäivisille opiskelijoille tarkoitetut sosiaalipalvelut kuten koulukuraattorin palvelut sekä toisen ja korkea-asteen opiskelijoille suunnatut arjessa pärjäämistä tukevat palvelut, kuten vertaistukiryhmät ja neuvontapalvelut, jotka eivät ole terveyden- tai sairaanhoidon palveluja.",
+          "language": "fi"
+        },
+        {
+          "value": "Till denna underservicegrupp hör socialtjänster som är avsedda för skolelever och studeranden på heltid såsom skolkuratortjänster samt tjänster som stöder studeranden inom andra gradens utbildning och yrkesutbildning på högre nivå att klara sig i vardagen. Sådana är t.ex. kamratstöd och rådgivningstjänster som inte är hälso- eller sjukvårdstjänster.",
+          "language": "sv"
+        },
+        {
+          "value": "This service subclass contains social services intended for pupils and full-time students, including a school social worker’s services and services targeted at secondary and tertiary level students that support coping with everyday life, such as peer support groups and advisory services that are not health or medical care services.",
+          "language": "en"
+        }
+      ],
+      "code": "P4.9",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1032",
+      "parentId": "079b55da-af80-41ab-9346-c8fdd284afcf",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1023"
+    },
+    {
+      "name": [
+        {
+          "value": "Perheiden palvelut",
+          "language": "fi"
+        },
+        {
+          "value": "Tjänster för familjer",
+          "language": "sv"
+        },
+        {
+          "value": "Services for families",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "I denna servicegrupp behandlas tjänster för barnfamiljer, som i huvudsak omfattar perioden från graviditeten till att en ung person blir myndig. I innehållet i servicegruppen granskas tjänsterna för familjer och situationer ofta via aktörer, situationer och synvinklar.",
+          "language": "sv"
+        },
+        {
+          "value": "Tässä palveluluokassa käsitellään lapsiperheen palveluja, jotka pääosin kattavat ajanjakson raskausajasta nuoren täysi-ikäiseksi tulemiseen. Palveluluokan sisällössä perheen palveluja ja tilanteita tarkastellaan useiden toimijoiden, tilanteiden ja näkökulmien kautta.",
+          "language": "fi"
+        },
+        {
+          "value": "This service class contains services for families with children, mainly covering the period from pregnancy until a young person turns 18. In the contents of this service class, family services are examined from the perspective of different actors, situations and viewpoints.",
+          "language": "en"
+        }
+      ],
+      "code": "P3",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1013",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [],
+      "code": null,
+      "ontologyType": null,
+      "uri": "http://www.yso.fi/onto/yso/p15089",
+      "parentId": null,
+      "parentUri": null
+    },
+    {
+      "name": [
+        {
+          "value": "oppilashuolto",
+          "language": "fi"
+        },
+        {
+          "value": "elevvård",
+          "language": "sv"
+        },
+        {
+          "value": "pupil welfare",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p7638",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p36160"
+    },
+    {
+      "name": [
+        {
+          "value": "förskoleundervisning",
+          "language": "sv"
+        },
+        {
+          "value": "esiopetus",
+          "language": "fi"
+        },
+        {
+          "value": "preschool education",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p5766",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p33827"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Lapset ja lapsiperheet",
+          "language": "fi"
+        },
+        {
+          "value": "Children and families with children",
+          "language": "en"
+        },
+        {
+          "value": "Barn och barnfamiljer",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1.2",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+      "parentId": "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+    },
+    {
+      "name": [
+        {
+          "value": "Kansalaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Citizens",
+          "language": "en"
+        },
+        {
+          "value": "Medborgare",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [],
+  "requirements": [
+    {
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "6dc68be3-cfc9-44b5-afc4-adc9fae54763",
+        "name": "Päivähoidon esimies"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    },
+    {
+      "serviceChannel": {
+        "id": "bc91db9e-2f56-4044-a375-30987de714eb",
+        "name": "Naantalin koulukuraattorit"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "organization": {
+        "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+        "name": "Naantalin kaupunki"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": []
+    },
+    {
+      "organization": {
+        "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+        "name": "Naantalin kaupunki"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProducedServices",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

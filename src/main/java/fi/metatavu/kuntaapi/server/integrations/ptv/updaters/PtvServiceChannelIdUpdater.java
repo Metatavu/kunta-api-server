@@ -33,7 +33,7 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdDisco
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {
-    return ptvApi.getServiceChannelApi(null).apiV8ServiceChannelGet(page, null, null, PtvConsts.PUBLISHED_STATUS);
+    return ptvApi.getServiceChannelApi(null).apiV9ServiceChannelGet(null, null, page, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override

@@ -1,102 +1,129 @@
 {
-  "sourceId" : null,
-  "webPages" : [ ],
-  "languages" : [ "fi", "sv" ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "905",
-      "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
-        "value" : "Vasa",
-        "language" : "sv"
-      }, {
-        "value" : "Vaasa",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "supportEmails" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "services" : [ {
-    "service" : {
-      "id" : "6d5ea041-0be0-4c1a-b0d7-dcccf825bed5",
-      "name" : "Rajan näyttö"
+  "id": "4faaad5e-5cba-4166-a76b-a2f0a0ba64eb",
+  "sourceId": null,
+  "serviceChannelType": "Phone",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Mittausteknikko",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "8062afa8-41c4-44c0-b1f7-d86c0891e9e3",
-      "name" : "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen"
+    {
+      "language": "sv",
+      "value": "Mätningstekniker",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "400292763",
-    "language" : "fi"
-  }, {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "400292763",
-    "language" : "sv"
-  } ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Mittausteknikko",
-    "type" : "Name"
-  }, {
-    "language" : "sv",
-    "value" : "Mätningstekniker",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "Phone",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar. \n",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "4faaad5e-5cba-4166-a76b-a2f0a0ba64eb"
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin kiinteistötoimen mittausteknikkoon voit olla yhteydessä rakennusvalvontamittauksiin liittyvissä asioissa.",
+      "type": "Description"
+    },
+    {
+      "language": "sv",
+      "value": "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Du kan ta kontakt med Vasa stads fastighetssektors mätningstekniker i ärenden som ansluter sig till byggnadstillsynsmätningar. \n",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "400292763",
+      "language": "fi"
+    },
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "400292763",
+      "language": "sv"
+    }
+  ],
+  "supportEmails": [
+    {
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "webPages": [],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "6d5ea041-0be0-4c1a-b0d7-dcccf825bed5",
+        "name": "Rajan näyttö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "8062afa8-41c4-44c0-b1f7-d86c0891e9e3",
+        "name": "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627"
 }

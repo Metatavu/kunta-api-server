@@ -1,203 +1,677 @@
 {
-  "id" : "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
-  "sourceId" : null,
-  "generalDescriptionId" : "ffb71e57-eb50-479b-9142-3cee2b440b11",
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "fi",
-    "value" : "Tilapäinen päivähoito",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : null,
-  "areaType" : "LimitedType",
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "fi",
-    "value" : "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen. Kotihoidon tuen tai yksityisen hoidon tuen saaminen tai hoitopaikka toisessa kunnassa eivät ole este tilapäisen paikan käytölle.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Tilapäistä päivähoitoa voi tiedustella oman alueen päiväkodin johtajalta tai Naantalin varhaiskasvatusjohtajalta.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : "Tilapäisen päivähoidon hinnat Naantalissa: kokopäivähoito 18 €/päivä, sisältää ateriat. Osapäivähoito 12 €/päivä.",
-    "type" : "ChargeTypeAdditionalInfo"
-  } ],
-  "languages" : [ "fi" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Lasten päivähoito",
-      "language" : "fi"
-    }, {
-      "value" : "Barndagvård",
-      "language" : "sv"
-    }, {
-      "value" : "Day-care for children",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
-      "language" : "sv"
-    }, {
-      "value" : "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
-      "language" : "fi"
-    }, {
-      "value" : "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
-      "language" : "en"
-    } ],
-    "code" : "P3.4",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
-    "parentId" : "77af99fa-93eb-4de6-ac83-1b161a961263",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "barndagvård",
-      "language" : "sv"
-    }, {
-      "value" : "lasten päivähoito",
-      "language" : "fi"
-    }, {
-      "value" : "child day care",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUHO",
-    "uri" : "http://www.yso.fi/onto/koko/p58117",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p3474"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Lapset ja lapsiperheet",
-      "language" : "fi"
-    }, {
-      "value" : "Children and families with children",
-      "language" : "en"
-    }, {
-      "value" : "Barn och barnfamiljer",
-      "language" : "sv"
-    } ],
-    "code" : "KR1.2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
-    "parentId" : "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
-  }, {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
-      "name" : "Keskustan päiväkoti"
+  "id": "4b9f3ded-173b-4018-b43b-d3bbd1ef0ba8",
+  "sourceId": null,
+  "generalDescriptionId": "ffb71e57-eb50-479b-9142-3cee2b440b11",
+  "subType": "subType",
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "fi",
+      "value": "Tilapäinen päivähoito",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": null,
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen.",
+      "type": "Summary"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "41ebe689-dbed-4bb2-a6f2-184e29d625ed",
-      "name" : "Rymättylän päiväkoti"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
-      "name" : "Varhaiskasvatuksen johtaja"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-      "name" : "Naantalin kaupunki"
+    {
+      "language": "fi",
+      "value": "Lapselle on mahdollista saada tilapäinen hoitopaikka väliaikaiseen tarpeeseen. Kotihoidon tuen tai yksityisen hoidon tuen saaminen tai hoitopaikka toisessa kunnassa eivät ole este tilapäisen paikan käytölle.",
+      "type": "Description"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "fi",
+      "value": "Tilapäistä päivähoitoa voi tiedustella oman alueen päiväkodin johtajalta tai Naantalin varhaiskasvatusjohtajalta.",
+      "type": "UserInstruction"
+    },
+    {
+      "language": "fi",
+      "value": "Tilapäisen päivähoidon hinnat Naantalissa: kokopäivähoito 18 €/päivä, sisältää ateriat. Osapäivähoito 12 €/päivä.",
+      "type": "ChargeTypeAdditionalInfo"
+    }
+  ],
+  "languages": [
+    "fi"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Lasten päivähoito",
+          "language": "fi"
+        },
+        {
+          "value": "Barndagvård",
+          "language": "sv"
+        },
+        {
+          "value": "Day-care for children",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "Till denna serviceundergrupp hör barnets rättigheter i anslutning till dagvård för små barn, förutsättningar för dagvård, ärendehanteringstjänster och ansökningsförfaranden, olika genomföringsformer och servicekanaler för dagvård, vårdavgifter och bidrag i anslutning till dem.",
+          "language": "sv"
+        },
+        {
+          "value": "Tähän alapalveluluokkaan kuuluvat pienten lasten päivähoitoon liittyvät lapsen oikeudet, päivähoidon saamisen edellytykset, asiointipalvelut ja hakumenettelyt, erilaiset päivähoidon toteuttamismuodot ja palvelukanavat, hoidon maksut ja niihin liittyvät taloudelliset tuet.",
+          "language": "fi"
+        },
+        {
+          "value": "This service subclass contains a child’s rights related to day-care for young children, eligibility criteria, e-services and application procedures associated with day-care, different forms and service channels of day-care provision, fees charged for day-care and financial support related to the fees.",
+          "language": "en"
+        }
+      ],
+      "code": "P3.4",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1017",
+      "parentId": "77af99fa-93eb-4de6-ac83-1b161a961263",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1013"
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "barndagvård",
+          "language": "sv"
+        },
+        {
+          "value": "lasten päivähoito",
+          "language": "fi"
+        },
+        {
+          "value": "child day care",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUHO",
+      "uri": "http://www.yso.fi/onto/koko/p58117",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p3474"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Lapset ja lapsiperheet",
+          "language": "fi"
+        },
+        {
+          "value": "Children and families with children",
+          "language": "en"
+        },
+        {
+          "value": "Barn och barnfamiljer",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1.2",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2003",
+      "parentId": "daff1fb9-9394-49b5-b033-d1d1c7005ab6",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001"
+    },
+    {
+      "name": [
+        {
+          "value": "Kansalaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Citizens",
+          "language": "en"
+        },
+        {
+          "value": "Medborgare",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [],
+  "requirements": [
+    {
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
+        "name": "Keskustan päiväkoti"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    },
+    {
+      "serviceChannel": {
+        "id": "41ebe689-dbed-4bb2-a6f2-184e29d625ed",
+        "name": "Rymättylän päiväkoti"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    },
+    {
+      "serviceChannel": {
+        "id": "ad29e11d-9c97-4e02-a7da-5f5cefe442e9",
+        "name": "Varhaiskasvatuksen johtaja"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "organization": {
+        "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+        "name": "Naantalin kaupunki"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": []
+    },
+    {
+      "organization": {
+        "id": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+        "name": "Naantalin kaupunki"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProducedServices",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }
