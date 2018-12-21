@@ -1,7 +1,7 @@
 {
   "id": "1bd39cda-3006-482e-acff-93ab8ddc9f1b",
   "sourceId": null,
-  "oid": null,
+  "oid": "oid",
   "serviceChannelType": "ServiceLocation",
   "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
   "serviceChannelNames": [
