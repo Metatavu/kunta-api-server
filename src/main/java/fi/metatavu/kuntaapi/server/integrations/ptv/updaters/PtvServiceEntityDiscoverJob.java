@@ -177,7 +177,7 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
   }
 
   private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V9VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
-    List<V9VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
+    List<V9VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels() == null ? Collections.emptyList() : ptvService.getServiceChannels();
     
     List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(); 
     List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds = new ArrayList<>();
