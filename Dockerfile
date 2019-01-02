@@ -1,4 +1,5 @@
 FROM jboss/wildfly:14.0.1.Final
+
 ADD --chown=jboss . /tmp/kunta-api
 ADD --chown=jboss ./docker /opt/docker
 ADD --chown=jboss ./src/main/resources/fi/metatavu/kuntaapi/server/liquibase /opt/docker/liquibase/fi/metatavu/kuntaapi/server/liquibase
@@ -19,6 +20,8 @@ RUN tar -xvf /tmp/liquibase/liquibase.tar -C /tmp/liquibase
 
 USER root
 RUN mv /tmp/liquibase /opt/liquibase
+RUN yum install -y epel-release
+RUN yum install -y python34 python34-requests
 USER jboss
 
 WORKDIR /tmp/kunta-api
