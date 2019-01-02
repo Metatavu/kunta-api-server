@@ -1,5 +1,21 @@
 embed-server --server-config=standalone-full.xml
-/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["dev.kunta-api.fi"],default-web-module="kunta-api.war")
+/subsystem=undertow/server=default-server/host=kunta-api:add(alias=["${env.KUNTA_API_HOST}"],default-web-module="kunta-api.war")
+/subsystem=logging/logger=org.jboss.as.ejb3.deployment:add(level=WARNING)
+/subsystem=logging/logger=org.jboss.as.config:remove()
+/subsystem=logging/logger=org.jboss.as.config:add(level=INFO)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.AbstractKuntaApiTaskQueue:add(level=WARNING)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.TaskQueueDistributor:add(level=WARNING)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.controllers.TaskController:add(level=SEVERE)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.security.SecurityFilter:add(level=INFO)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)
+/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceEntityDiscoverJob:add(level=WARN)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityDiscoverJob:add(level=WARN)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.metaflow.TaskQueueDistributor:add(level=WARN)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.rest.SlowRequestFilter:add(level=FATAL)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdDiscoverJob:add(level=SEVERE)
+/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityDiscoverJob:add(level=WARN)
 /subsystem=infinispan/cache-container=kunta-api:add()
 /subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)
 /subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()
@@ -26,4 +42,4 @@ embed-server --server-config=standalone-full.xml
 /subsystem=messaging-activemq/server=default/jms-queue=management-pages:add(entries=[java:/jms/queue/management-pages])
 /subsystem=messaging-activemq/server=default/jms-queue=management-banners:add(entries=[java:/jms/queue/management-banners])
 /subsystem=datasources/jdbc-driver=mariadb-xa:add(driver-name=mariadb-xa, driver-module-name=com.mariadb.jdbc, xa-datasource-class=org.mariadb.jdbc.MySQLDataSource)
-data-source add --name=kuntaapi --jndi-name=java:jboss/datasources/kuntaapi --enabled=true --jta=true --use-ccm=true --connection-url=jdbc:mysql://db:3306/kuntaapi --driver-name=mariadb-xa --user-name=kuntaapi --password=random --check-valid-connection-sql="SELECT 1" --validate-on-match=false --share-prepared-statements=false --max-pool-size=1000
+data-source add --name=kuntaapi --jndi-name=java:jboss/datasources/kuntaapi --enabled=true --jta=true --use-ccm=true --connection-url=jdbc:mysql://${env.KUNTA_API_DB_HOST}:3306/${env.KUNTA_API_DB_NAME} --driver-name=mariadb-xa --user-name=${env.KUNTA_API_DB_USER} --password=${env.KUNTA_API_DB_PASSWORD} --check-valid-connection-sql="SELECT 1" --validate-on-match=false --share-prepared-statements=false --max-pool-size=1000
