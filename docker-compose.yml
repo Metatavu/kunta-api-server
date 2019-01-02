@@ -14,7 +14,7 @@ services:
       - kanet
 
   elastic:
-    image: kunta-api-elasticsearch
+    image: metatavu/kunta-api-elasticsearch
     environment:
       cluster.name: elasticsearch
       bootstrap.memory_lock: "true"
