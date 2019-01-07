@@ -1,6 +1,6 @@
 version: '3'
 services:
-  db:
+  kadb:
     image: mariadb:latest
     volumes:
       - db_data:/var/lib/mysql
@@ -37,15 +37,16 @@ services:
     build: .
     restart: always
     depends_on:
-      - db
+      - kadb
       - elastic
     ports:
       - "8080:8080"
     networks:
       - kanet
     environment:
+      - JAVA_OPTS=-server -Xms2g -Xmx4g -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true
       - KUNTA_API_HOST=dev.kunta-api.fi
-      - KUNTA_API_DB_HOST=db
+      - KUNTA_API_DB_HOST=kadb
       - KUNTA_API_DB_USER=kuntaapi
       - KUNTA_API_DB_PASSWORD=secret
       - KUNTA_API_DB_NAME=kuntaapi
@@ -58,3 +59,5 @@ volumes:
 
 networks:
   kanet:
+    external:
+      name: kanet
