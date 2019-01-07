@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Wait for Elastic Search..." &&
-sleep 10
+sleep 30
 curl http://elastic:9300
 cd /opt/docker/liquibase &&
 echo "Applying database migrations..." &&
