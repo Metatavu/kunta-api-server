@@ -13,7 +13,7 @@ Docker image contains kautil.py Python script. Script contains various utility m
     
 You can resolve organization's Kunta API id by running following command against running container (requires readonly client):
     
-    docker exec $(docker ps -q --filter=name=kunta-api-server_kuntaapi_ | head -n 1) /opt/docker/kautil.py --command=get-organization-id --client-id=[CLIENT_ID] --client-secret=[CLIENT_SECRET] --business-name=[BUSINESS_NAME] --business-code=[BUSINESS_CODE]poses. 
+    docker exec $(docker ps -q --filter=name=kunta-api-server_kuntaapi_ | head -n 1) /opt/docker/kautil.py --command=get-organization-id --client-id=[CLIENT_ID] --client-secret=[CLIENT_SECRET] --business-name=[BUSINESS_NAME] --business-code=[BUSINESS_CODE]. 
 
 #### Retrieve and update organization settings
     

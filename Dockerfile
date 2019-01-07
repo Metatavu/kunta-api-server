@@ -19,12 +19,15 @@ RUN tar -xvf /tmp/maven/apache-maven-${MAVEN_VERSION}-bin.tar.gz -C /tmp/maven
 RUN tar -xvf /tmp/liquibase/liquibase.tar -C /tmp/liquibase
 
 USER root
+ENV LANG=fi_FI.UTF-8
+RUN localedef -v -c -i fi_FI -f UTF-8 fi_FI.UTF-8|| true
 RUN mv /tmp/liquibase /opt/liquibase
 RUN yum install -y epel-release
 RUN yum install -y python34 python34-requests
 USER jboss
 
 WORKDIR /tmp/kunta-api
+ENV MAVEN_OPTS=-Dfile.encoding=UTF-8 
 RUN /tmp/maven/apache-maven-${MAVEN_VERSION}/bin/mvn package -DskipTests
 RUN mv target/*.war /opt/jboss/wildfly/standalone/deployments/
 RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/docker/kunta-api.cli
