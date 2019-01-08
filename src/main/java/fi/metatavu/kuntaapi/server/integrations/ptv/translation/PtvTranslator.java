@@ -502,6 +502,8 @@ public class PtvTranslator extends AbstractTranslator {
         return translateStreetAddressWithCoordinates(ptvAddress.getStreetAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
       case POST_OFFICE_BOX:
         return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
+      case FOREIGN:
+        return translateForeignAddress(ptvAddress.getForeignAddress(), ptvAddress.getType(), ptvAddress.getSubType());
       default:
         logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.toString()));
     }
@@ -509,6 +511,30 @@ public class PtvTranslator extends AbstractTranslator {
     return translateNoAddress(ptvAddress.getForeignAddress(), ptvAddress.getType(), ptvAddress.getSubType());
   }
 
+  private Address translateForeignAddress(List<VmOpenApiLanguageItem> foreignAddress, String type, String subtype) {
+    if (foreignAddress == null || foreignAddress.isEmpty()) {
+      return null;
+    }
+    
+    Address result = new Address();
+    result.setAdditionalInformations(translateLocalizedItems(foreignAddress));
+    result.setCoordinateState(null);
+    result.setCountry(null);
+    result.setLatitude(null);
+    result.setLongitude(null);
+    result.setCoordinates(null);
+    result.setMunicipality(null);
+    result.setPostalCode(null);
+    result.setPostOffice(null);
+    result.setPostOfficeBox(null);
+    result.setStreetAddress(null);
+    result.setStreetNumber(null);
+    result.setType(type);
+    result.setSubtype(subtype);
+    
+    return result;
+  }
+  
   private Address translateAddressDelivery(V8VmOpenApiAddressDelivery ptvAddress) {
     if (ptvAddress == null) {
       return null;

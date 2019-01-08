@@ -1,0 +1,63 @@
+version: '3'
+services:
+  kadb:
+    image: mariadb:latest
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: kuntaapi
+      MYSQL_USER: kuntaapi
+      MYSQL_PASSWORD: secret
+    networks:
+      - kanet
+
+  elastic:
+    image: metatavu/kunta-api-elasticsearch
+    environment:
+      cluster.name: elasticsearch
+      bootstrap.memory_lock: "true"
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - kanet
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  kuntaapi:
+    build: .
+    restart: always
+    depends_on:
+      - kadb
+      - elastic
+    ports:
+      - "8080:8080"
+    networks:
+      - kanet
+    environment:
+      - JAVA_OPTS=-server -Xms2g -Xmx4g -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true
+      - KUNTA_API_HOST=dev.kunta-api.fi
+      - KUNTA_API_DB_HOST=kadb
+      - KUNTA_API_DB_USER=kuntaapi
+      - KUNTA_API_DB_PASSWORD=secret
+      - KUNTA_API_DB_NAME=kuntaapi
+
+volumes:
+    db_data:
+      driver: local
+    es_data:
+      driver: local
+
+networks:
+  kanet:
+    external:
+      name: kanet
