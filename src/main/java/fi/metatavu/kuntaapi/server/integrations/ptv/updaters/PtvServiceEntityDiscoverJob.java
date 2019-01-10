@@ -52,7 +52,7 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
-import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractRespondingJmsJob;
 import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 import fi.metatavu.kuntaapi.server.utils.LocalizationUtils;
 import fi.metatavu.ptv.client.ApiResponse;
@@ -70,7 +70,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiItem;
   }
 )
 @Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
-public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId>> {
+public class PtvServiceEntityDiscoverJob extends AbstractRespondingJmsJob<IdTask<ServiceId>, Service> {
 
   @Inject
   private Logger logger;
@@ -118,18 +118,20 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
   private ManagementIdFactory managementIdFactory;
    
   @Override
-  public void execute(IdTask<ServiceId> task) {
+  public Service executeWithResponse(IdTask<ServiceId> task) {
     if (task.getOperation() == Operation.UPDATE) {
-      updatePtvService(task.getId(), task.getOrderIndex()); 
+      return updatePtvService(task.getId(), task.getOrderIndex()); 
     } else if (task.getOperation() == Operation.REMOVE) {
       deletePtvService(task.getId());
     }
+    
+    return null;
   }
 
-  private void updatePtvService(ServiceId ptvServiceId, Long orderIndex) {
+  private Service updatePtvService(ServiceId ptvServiceId, Long orderIndex) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
-      return;
+      return null;
     }
     
     ApiResponse<V9VmOpenApiService> response = ptvApi.getServiceApi(null).apiV9ServiceByIdGet(ptvServiceId.getId());
@@ -160,9 +162,12 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
       
       List<PageId> parentPageIds = identifierRelationController.listPageIdsByChildId(ptvServiceId);
       updateParentPageIds(parentPageIds);
+
+      return service;
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", ptvServiceId.getId(), response.getStatus(), response.getMessage()));
-    }
+      return null;
+    }    
   }
 
   private void updateParentPageIds(List<PageId> parentPageIds) {

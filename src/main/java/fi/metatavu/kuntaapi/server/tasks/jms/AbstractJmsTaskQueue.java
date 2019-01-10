@@ -1,5 +1,6 @@
 package fi.metatavu.kuntaapi.server.tasks.jms;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.StreamMessage;
@@ -29,7 +31,7 @@ import fi.metatavu.metaflow.tasks.Task;
  *
  * @param <T> task
  */
-public abstract class AbstractJmsTaskQueue<T extends Task> {
+public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializable> {
   
   protected final static String JMS_QUEUE_PREFIX = "java:/jms/queue/";
   
@@ -80,8 +82,8 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
    * 
    * @param task task
    */
-  public void enqueueTaskSync(T task) {
-    enqueueTask(task, 0, true);
+  public R enqueueTaskSync(T task) {
+    return enqueueTask(task, 0, true);
   }
   
   /**
@@ -91,9 +93,10 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
    * @param deliveryDelay defines minimum length of time in milliseconds before the task is delivered into the queue. Zero means that task is queued immediately
    * @param blocking Whether to block until a reply message arrives
    */
-  private void enqueueTask(T task, int deliveryDelay, boolean blocking) {
+  @SuppressWarnings("unchecked")
+  private R enqueueTask(T task, int deliveryDelay, boolean blocking) {
     if (!systemSettingController.isNotTestingOrTestRunning()) {
-      return;
+      return null;
     }
     
     try (Connection connection = connectionFactory.createConnection()) {
@@ -124,11 +127,11 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
               
               if (blocking) {
                 long waitTimeout = System.currentTimeMillis() + MAX_REPLY_TIMEOUT;
-                Message replyMessage = null;
+                ObjectMessage replyMessage = null;
                 while (true) {
-                  replyMessage = consumer.receive(REPLY_TIMEOUT); 
+                  replyMessage = (ObjectMessage) consumer.receive(REPLY_TIMEOUT); 
                   if (replyMessage != null) {
-                    break;  
+                    return (R) replyMessage.getObject();
                   }
                   
                   if (System.currentTimeMillis() > waitTimeout) {
@@ -152,6 +155,8 @@ public abstract class AbstractJmsTaskQueue<T extends Task> {
     } catch (NamingException | JMSException e) {
       logger.log(Level.SEVERE, "Failed to enqueue task", e);
     }
+    
+    return null;
   }
   
   /**
