@@ -170,11 +170,8 @@ public class PtvTranslator extends AbstractTranslator {
         .filter(Objects::nonNull)
         .filter(address -> {
           List<VmOpenApiLanguageItem> receiver = address.getReceiver();
-          if (receiver == null) {
-            return false;
-          }
-          
-          long receiverCount = receiver.stream()
+
+          long receiverCount = receiver == null ? 0 : receiver.stream()
             .map(VmOpenApiLanguageItem::getValue)
             .filter(StringUtils::isNotBlank)
             .count();
