@@ -1,5 +1,6 @@
 package fi.metatavu.kuntaapi.server.integrations.ptv.updaters;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -66,7 +67,7 @@ import fi.metatavu.kuntaapi.server.rest.model.WebPageServiceChannel;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
-import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractRespondingJmsJob;
 import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 import fi.metatavu.kuntaapi.server.utils.LocalizationUtils;
 import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannel;
@@ -84,7 +85,7 @@ import fi.metatavu.ptv.client.model.V9VmOpenApiWebPageChannel;
   }
 )
 @Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
-public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractServiceChannelTask> {
+public class PtvServiceChannelEntityDiscoverJob extends AbstractRespondingJmsJob<AbstractServiceChannelTask, Serializable> {
 
   private static final String COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID = "Could not translate organization %s into kunta api id";
 
@@ -146,18 +147,20 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
   private ManagementIdFactory managementIdFactory;
   
   @Override
-  public void execute(AbstractServiceChannelTask task) {
+  public Serializable executeWithResponse(AbstractServiceChannelTask task) {
     if (task.getOperation() == Operation.UPDATE) {
-      updateServiceChannelChannel((ServiceChannelUpdateTask) task);
+      return updateServiceChannelChannel((ServiceChannelUpdateTask) task);
     } else if (task.getOperation() == Operation.REMOVE) {
       removeServiceChannelChannel(task);
     }
+    
+    return null;
   }
   
-  private void updateServiceChannelChannel(ServiceChannelUpdateTask task) {
+  private Serializable updateServiceChannelChannel(ServiceChannelUpdateTask task) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
-      return;
+      return null;
     }
     
     Map<String, Object> serviceChannelData = serviceChannelResolver.loadServiceChannelData(task.getId());
@@ -165,46 +168,44 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     
     if (type == null) {
       logger.log(Level.WARNING, () -> String.format("ServiceChannel %s does not have a type", task.getId()));
+      return null;
     } else {
-      updateServiceChannelChannel(task.getOrderIndex(), type, serviceChannelData);
+      return updateServiceChannelChannel(task.getOrderIndex(), type, serviceChannelData);
     }
   }
   
-  private void updateServiceChannelChannel(Long orderIndex, ServiceChannelType type, Map<String, Object> serviceChannelData) {
+  private Serializable updateServiceChannelChannel(Long orderIndex, ServiceChannelType type, Map<String, Object> serviceChannelData) {
     byte[] channelData = serviceChannelResolver.serializeChannelData(serviceChannelData);
     
     switch (type) {
       case ELECTRONIC_CHANNEL:
-        updateElectronicServiceChannel(orderIndex, serviceChannelResolver.unserializeElectronicChannel(channelData));
-      break;
+        return updateElectronicServiceChannel(orderIndex, serviceChannelResolver.unserializeElectronicChannel(channelData));
       case SERVICE_LOCATION:
-        updateServiceLocationServiceChannel(orderIndex, serviceChannelResolver.unserializeServiceLocationChannel(channelData));
-      break;
+        return updateServiceLocationServiceChannel(orderIndex, serviceChannelResolver.unserializeServiceLocationChannel(channelData));
       case PRINTABLE_FORM:
-        updatePrintableFormServiceChannel(orderIndex, serviceChannelResolver.unserializePrintableFormChannel(channelData));
-      break;
+        return updatePrintableFormServiceChannel(orderIndex, serviceChannelResolver.unserializePrintableFormChannel(channelData));
       case PHONE:
-        updatePhoneServiceChannel(orderIndex, serviceChannelResolver.unserializePhoneChannel(channelData));
-      break;
+        return updatePhoneServiceChannel(orderIndex, serviceChannelResolver.unserializePhoneChannel(channelData));
       case WEB_PAGE:
-        updateWebPageServiceChannel(orderIndex, serviceChannelResolver.unserializeWebPageChannel(channelData));
-      break;
+        return updateWebPageServiceChannel(orderIndex, serviceChannelResolver.unserializeWebPageChannel(channelData));
       default:
         logger.log(Level.SEVERE, () -> String.format("Unknown service channel type %s", type));
       break;
     }
+    
+    return null;
   }
   
-  private void updateElectronicServiceChannel(Long orderIndex, V9VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
+  private ElectronicServiceChannel updateElectronicServiceChannel(Long orderIndex, V9VmOpenApiElectronicChannel ptvElectronicServiceChannel) {
     if (ptvElectronicServiceChannel == null) {
-      return;
+      return null;
     }
     
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvElectronicServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.log(Level.INFO, () -> String.format(COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID, ptvOrganizationId));
-      return;
+      return null;
     }
     
     ElectronicServiceChannelId ptvElectronicServiceChannelId = ptvIdFactory.createElectronicServiceChannelId(ptvElectronicServiceChannel.getId());
@@ -214,25 +215,27 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     ElectronicServiceChannel electronicServiceChannel = ptvTranslator.translateElectronicServiceChannel(kuntaApiElectronicServiceChannelId, kuntaApiOrganizationId, ptvElectronicServiceChannel);
     if (electronicServiceChannel == null) {
       logger.log(Level.INFO, () -> String.format("Could not translate electronicServiceChannel %s", ptvElectronicServiceChannelId));
-      return;
+      return null;
     }
     
     ptvElectronicServiceChannelResourceContainer.put(kuntaApiElectronicServiceChannelId, electronicServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(electronicServiceChannel));
     
     indexElectronicServiceChannel(orderIndex, electronicServiceChannel);
+    
+    return electronicServiceChannel;
   }
 
-  private void updateServiceLocationServiceChannel(Long orderIndex, V9VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
+  private ServiceLocationServiceChannel updateServiceLocationServiceChannel(Long orderIndex, V9VmOpenApiServiceLocationChannel ptvServiceLocationServiceChannel) {
     if (ptvServiceLocationServiceChannel == null) {
-      return;
+      return null;
     }
     
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvServiceLocationServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.log(Level.INFO, () -> String.format(COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID, ptvOrganizationId));
-      return;
+      return null;
     }
     
     ServiceLocationServiceChannelId ptvServiceLocationServiceChannelId = ptvIdFactory.createServiceLocationServiceChannelId(ptvServiceLocationServiceChannel.getId());
@@ -242,7 +245,7 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     ServiceLocationServiceChannel serviceLocationServiceChannel = ptvTranslator.translateServiceLocationServiceChannel(kuntaApiServiceLocationServiceChannelId, kuntaApiOrganizationId, ptvServiceLocationServiceChannel);
     if (serviceLocationServiceChannel == null) {
       logger.log(Level.INFO, () -> String.format("Could not translate serviceLocationServiceChannel %s", ptvServiceLocationServiceChannelId));
-      return;
+      return null;
     }
     
     ptvServiceLocationServiceChannelResourceContainer.put(kuntaApiServiceLocationServiceChannelId, serviceLocationServiceChannel);
@@ -251,18 +254,20 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     
     List<PageId> parentPageIds = identifierRelationController.listPageIdsByChildId(kuntaApiServiceLocationServiceChannelId);
     updateParentPageIds(parentPageIds);
+    
+    return serviceLocationServiceChannel;
   }
 
-  private void updatePrintableFormServiceChannel(Long orderIndex, V9VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
+  private PrintableFormServiceChannel updatePrintableFormServiceChannel(Long orderIndex, V9VmOpenApiPrintableFormChannel ptvPrintableFormServiceChannel) {
     if (ptvPrintableFormServiceChannel == null) {
-      return;
+      return null;
     }
     
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPrintableFormServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.log(Level.INFO, () -> String.format(COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID, ptvOrganizationId));
-      return;
+      return null;
     }
     
     PrintableFormServiceChannelId ptvPrintableFormServiceChannelId = ptvIdFactory.createPrintableFormServiceChannelId(ptvPrintableFormServiceChannel.getId());
@@ -272,24 +277,26 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     PrintableFormServiceChannel printableFormServiceChannel = ptvTranslator.translatePrintableFormServiceChannel(kuntaApiPrintableFormServiceChannelId, kuntaApiOrganizationId, ptvPrintableFormServiceChannel);
     if (printableFormServiceChannel == null) {
       logger.log(Level.INFO, () -> String.format("Could not translate printableFormServiceChannel %s", ptvPrintableFormServiceChannelId));
-      return;
+      return null;
     }
     
     ptvPrintableFormServiceChannelResourceContainer.put(kuntaApiPrintableFormServiceChannelId, printableFormServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(printableFormServiceChannel));
     indexPrintableFormServiceChannel(orderIndex, printableFormServiceChannel);
+    
+    return printableFormServiceChannel;
   }
   
-  private void updatePhoneServiceChannel(Long orderIndex, V9VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
+  private PhoneServiceChannel updatePhoneServiceChannel(Long orderIndex, V9VmOpenApiPhoneChannel ptvPhoneServiceChannel) {
     if (ptvPhoneServiceChannel == null) {
-      return;
+      return null;
     }
     
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvPhoneServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.log(Level.INFO, () -> String.format(COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID, ptvOrganizationId));
-      return;
+      return null;
     }
     
     PhoneServiceChannelId ptvPhoneServiceChannelId = ptvIdFactory.createPhoneServiceChannelId(ptvPhoneServiceChannel.getId());
@@ -299,24 +306,26 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     PhoneServiceChannel phoneServiceChannel = ptvTranslator.translatePhoneServiceChannel(kuntaApiPhoneServiceChannelId, kuntaApiOrganizationId, ptvPhoneServiceChannel);
     if (phoneServiceChannel == null) {
       logger.log(Level.INFO, () -> String.format("Could not translate phoneServiceChannel %s", ptvPhoneServiceChannelId));
-      return;
+      return null;
     }
     
     ptvPhoneServiceChannelResourceContainer.put(kuntaApiPhoneServiceChannelId, phoneServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(phoneServiceChannel));
     indexPhoneServiceChannel(orderIndex, phoneServiceChannel);
+    
+    return phoneServiceChannel;
   }
   
-  private void updateWebPageServiceChannel(Long orderIndex, V9VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
+  private WebPageServiceChannel updateWebPageServiceChannel(Long orderIndex, V9VmOpenApiWebPageChannel ptvWebPageServiceChannel) {
     if (ptvWebPageServiceChannel == null) {
-      return;
+      return null;
     }
     
     OrganizationId ptvOrganizationId = ptvIdFactory.createOrganizationId(ptvWebPageServiceChannel.getOrganizationId());
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(ptvOrganizationId, KuntaApiConsts.IDENTIFIER_NAME);
     if (kuntaApiOrganizationId == null) {
       logger.log(Level.INFO, () -> String.format(COULD_NOT_TRANSLATE_ORGANIZATION_INTO_KUNTA_API_ID, ptvOrganizationId));
-      return;
+      return null;
     }
     
     WebPageServiceChannelId ptvWebPageServiceChannelId = ptvIdFactory.createWebPageServiceChannelId(ptvWebPageServiceChannel.getId());
@@ -326,12 +335,14 @@ public class PtvServiceChannelEntityDiscoverJob extends AbstractJmsJob<AbstractS
     WebPageServiceChannel webPageServiceChannel = ptvTranslator.translateWebPageServiceChannel(kuntaApiWebPageServiceChannelId, kuntaApiOrganizationId, ptvWebPageServiceChannel);
     if (webPageServiceChannel == null) {
       logger.log(Level.INFO, () -> String.format("Could not translate webPageServiceChannel %s", ptvWebPageServiceChannelId));
-      return;
+      return null;
     }
     
     ptvWebPageServiceChannelResourceContainer.put(kuntaApiWebPageServiceChannelId, webPageServiceChannel);
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(webPageServiceChannel));
     indexWebPageServiceChannel(orderIndex, webPageServiceChannel);
+    
+    return webPageServiceChannel;
   }
 
   private void removeServiceChannelChannel(AbstractServiceChannelTask task) {

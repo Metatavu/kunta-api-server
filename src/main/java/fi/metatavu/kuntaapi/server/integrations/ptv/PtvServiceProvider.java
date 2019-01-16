@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.integrations.ptv;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -10,9 +11,6 @@ import java.util.stream.Stream;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
 import fi.metatavu.kuntaapi.server.controllers.ServiceController;
@@ -166,9 +164,7 @@ public class PtvServiceProvider implements ServiceProvider {
           return IntegrationResponse.statusMessage(updateServiceChannelsResponse.getStatus(), updateServiceChannelsResponse.getMessage());
         }
         
-        serviceIdTaskQueue.enqueueTaskSync(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId));
-        
-        return findServiceAfterUpdate(serviceId);
+        return IntegrationResponse.ok(serviceIdTaskQueue.enqueueTaskSync(new IdTask<ServiceId>(true, Operation.UPDATE, ptvServiceId)));
       } else {        
         logger.severe(() -> String.format("Failed to update service [%d] %s", updateResponse.getStatus(), updateResponse.getMessage()));
         return IntegrationResponse.statusMessage(updateResponse.getStatus(), updateResponse.getMessage());
@@ -177,17 +173,6 @@ public class PtvServiceProvider implements ServiceProvider {
     }
     
     return null;
-  }
-
-  /**
-   * Returns service in new transaction. Used after the service has been updated.
-   * 
-   * @param serviceId serviceId
-   * @return updated service 
-   */
-  @Transactional (TxType.REQUIRES_NEW)
-  public IntegrationResponse<Service> findServiceAfterUpdate(ServiceId serviceId) {
-    return IntegrationResponse.ok(findService(serviceId));
   }
   
   private List<ServiceId> listOrganizationServiceIds(OrganizationId organizationId) {
@@ -210,7 +195,7 @@ public class PtvServiceProvider implements ServiceProvider {
     
     List<String> ptvServiceChannelIds = getPtvServiceChannelIds(service);
     
-    List<V9VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels().stream()
+    List<V9VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels() == null ? Collections.emptyList() : ptvService.getServiceChannels().stream()
       .filter(channel -> channel.getServiceChannel() != null && channel.getServiceChannel().getId() != null)
       .collect(Collectors.toList());
     

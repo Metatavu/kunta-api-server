@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.tasks.jms;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -8,13 +9,15 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.StreamMessage;
-import javax.jms.TextMessage;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -85,38 +88,50 @@ public abstract class AbstractJmsJob <T extends Task> implements MessageListener
         
         T task = taskSerializer.unserialize(messageStream.toByteArray());
         if (task != null) {
-          execute(task);
+          Serializable response = executeInternal(task);
+          if (streamMessage.getJMSReplyTo() != null) {
+            sendReplyMessage(streamMessage.getJMSReplyTo(), response);
+          } 
         } else {
           logger.severe("Failed to unserialize task");          
         }        
-        
-        if (streamMessage.getJMSReplyTo() != null) {
-          sendReplyMessage(streamMessage);
-        }        
+              
       } catch (JMSException e) {
         logger.severe("Failed to receive task from JMS queue");   
       }
     }
   }
-  
+
   /**
    * Executes scheduled job 
    */
   public abstract void execute(T task);
   
   /**
+   * Actually executes scheduled job. 
+   * 
+   * @param task task
+   * @return response object
+   */
+  protected Serializable executeInternal(T task) {
+    execute(task);
+    return Boolean.TRUE;
+  }
+  
+  /**
    * Sends reply to message
    * 
-   * @param message incoming message
+   * @param replyTo reply destination
+   * @param reply reply object 
    * @throws JMSException thrown when message sending fails
    */
-  private void sendReplyMessage(Message message) throws JMSException {
+  protected <R extends Serializable> void sendReplyMessage(Destination replyTo, R reply) throws JMSException {
     try (Connection connection = connectionFactory.createConnection()) {
       try (Session session = createSession(connection)) {
-        try (MessageProducer producer = session.createProducer(message.getJMSReplyTo())) {
-          TextMessage replyMessage = session.createTextMessage("OK");
+        try (MessageProducer producer = session.createProducer(replyTo)) {
+          ObjectMessage replyMessage = session.createObjectMessage(reply);
           replyMessage.setStringProperty(JmsQueueProperties.MESSAGE_TYPE, JmsQueueProperties.MESSAGE_TYPE_REPLY);
-          producer.send(replyMessage);
+          producer.send(replyMessage, DeliveryMode.PERSISTENT, 9, Message.DEFAULT_TIME_TO_LIVE);
         }
       }
     }

@@ -8,8 +8,6 @@ import java.util.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
 import javax.ws.rs.core.Response;
 
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
@@ -184,9 +182,9 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V9VmOpenApiElectronicChannel> response = serviceChannelApi.apiV9ServiceChannelEChannelByIdPut(ptvElectronicServiceChannelId.getId(), ptvElectronicServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        updateServiceChannel(updatedPtvChannelId);
-        return findElectronicChannelAfterUpdate(electronicChannelId);
-      } else {        
+        ElectronicServiceChannel updatedServiceChannel = updateServiceChannel(updatedPtvChannelId);        
+        return IntegrationResponse.ok(updatedServiceChannel);
+      } else {
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
       }
@@ -237,8 +235,8 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V9VmOpenApiPhoneChannel> response = serviceChannelApi.apiV9ServiceChannelPhoneByIdPut(ptvPhoneServiceChannelId.getId(), ptvPhoneServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        updateServiceChannel(updatedPtvChannelId);
-        return findPhoneChannelAfterUpdate(phoneChannelId);
+        PhoneServiceChannel updatedServiceChannel = updateServiceChannel(updatedPtvChannelId);     
+        return IntegrationResponse.ok(updatedServiceChannel);
       } else {        
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
@@ -289,8 +287,8 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V9VmOpenApiPrintableFormChannel> response = serviceChannelApi.apiV9ServiceChannelPrintableFormByIdPut(ptvPrintableFormServiceChannelId.getId(), ptvPrintableFormServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        updateServiceChannel(updatedPtvChannelId);
-        return findPrintableFormChannelAfterUpdate(printableFormChannelId);
+        PrintableFormServiceChannel updatedServiceChannel = updateServiceChannel(updatedPtvChannelId);     
+        return IntegrationResponse.ok(updatedServiceChannel);
       } else {        
         logger.severe(() -> String.format("Failed to update service printable form service channel [%d] %s", response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
@@ -341,8 +339,8 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V9VmOpenApiServiceLocationChannel> response = serviceChannelApi.apiV9ServiceChannelServiceLocationByIdPut(ptvServiceLocationServiceChannelId.getId(), ptvServiceLocationServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        updateServiceChannel(updatedPtvChannelId);
-        return findServiceLocationChannelAfterUpdate(serviceLocationChannelId);
+        ServiceLocationServiceChannel updatedServiceChannel = updateServiceChannel(updatedPtvChannelId);     
+        return IntegrationResponse.ok(updatedServiceChannel);
       } else {        
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
@@ -389,8 +387,8 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
       ApiResponse<V9VmOpenApiWebPageChannel> response = serviceChannelApi.apiV9ServiceChannelWebPageByIdPut(ptvWebPageServiceChannelId.getId(), ptvWebPageServiceChannelIn);
       if (response.isOk()) {
         String updatedPtvChannelId = response.getResponse().getId().toString();
-        updateServiceChannel(updatedPtvChannelId);
-        return findWebPageChannelAfterUpdate(webPageChannelId);
+        WebPageServiceChannel updatedServiceChannel = updateServiceChannel(updatedPtvChannelId);
+        return IntegrationResponse.ok(updatedServiceChannel);
       } else {
         logger.severe(() -> String.format(FAILED_TO_UPDATE_SERVICE_CHANNEL, response.getStatus(), response.getMessage()));
         return IntegrationResponse.statusMessage(response.getStatus(), response.getMessage());
@@ -475,64 +473,10 @@ public class PtvServiceChannelProvider implements ServiceChannelProvider {
     
     return result;
   }
-
-  /**
-   * Returns service channel in new transaction. Used after the service channel has been updated.
-   * 
-   * @param serviceChannelId serviceId
-   * @return updated service 
-   */
-  @Transactional (TxType.REQUIRES_NEW)
-  public IntegrationResponse<ServiceLocationServiceChannel> findServiceLocationChannelAfterUpdate(ServiceLocationServiceChannelId serviceChannelId) {
-    return IntegrationResponse.ok(findServiceLocationServiceChannel(serviceChannelId));
-  }
-
-  /**
-   * Returns service channel in new transaction. Used after the service channel has been updated.
-   * 
-   * @param serviceChannelId serviceId
-   * @return updated service 
-   */
-  @Transactional (TxType.REQUIRES_NEW)
-  public IntegrationResponse<ElectronicServiceChannel> findElectronicChannelAfterUpdate(ElectronicServiceChannelId serviceChannelId) {
-    return IntegrationResponse.ok(findElectronicServiceChannel(serviceChannelId));
-  }
-
-  /**
-   * Returns service channel in new transaction. Used after the service channel has been updated.
-   * 
-   * @param serviceChannelId serviceId
-   * @return updated service 
-   */
-  @Transactional (TxType.REQUIRES_NEW)
-  public IntegrationResponse<PhoneServiceChannel> findPhoneChannelAfterUpdate(PhoneServiceChannelId serviceChannelId) {
-    return IntegrationResponse.ok(findPhoneServiceChannel(serviceChannelId));
-  }
-
-  /**
-   * Returns service channel in new transaction. Used after the service channel has been updated.
-   * 
-   * @param serviceChannelId serviceId
-   * @return updated service 
-   */
-  @Transactional (TxType.REQUIRES_NEW)
-  public IntegrationResponse<PrintableFormServiceChannel> findPrintableFormChannelAfterUpdate(PrintableFormServiceChannelId serviceChannelId) {
-    return IntegrationResponse.ok(findPrintableFormServiceChannel(serviceChannelId));
-  }
-
-  /**
-   * Returns service channel in new transaction. Used after the service channel has been updated.
-   * 
-   * @param serviceChannelId serviceId
-   * @return updated service 
-   */
-  @Transactional (TxType.REQUIRES_NEW)
-  public IntegrationResponse<WebPageServiceChannel> findWebPageChannelAfterUpdate(WebPageServiceChannelId serviceChannelId) {
-    return IntegrationResponse.ok(findWebPageServiceChannel(serviceChannelId));
-  }
   
-  private void updateServiceChannel(String updatedPtvChannelId) {
-    serviceChannelTasksQueue.enqueueTaskSync(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
+  @SuppressWarnings("unchecked")
+  private <T> T updateServiceChannel(String updatedPtvChannelId) {
+    return (T) serviceChannelTasksQueue.enqueueTaskSync(new ServiceChannelUpdateTask(true, updatedPtvChannelId, null));
   }
   
   @SuppressWarnings("unchecked")
