@@ -31,9 +31,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fi.metatavu.kuntaapi.server.integrations.ptv.servicechannels.ServiceChannelType;
 import fi.metatavu.ptv.client.model.V5VmOpenApiOrganizationService;
-import fi.metatavu.ptv.client.model.V8VmOpenApiOrganization;
-import fi.metatavu.ptv.client.model.V8VmOpenApiService;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiOrganization;
+import fi.metatavu.ptv.client.model.V9VmOpenApiService;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiCodeListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
 
@@ -106,7 +106,7 @@ public class PtvDownload {
   
   private void removeServiceChannel(File serviceFile, String channelId) throws IOException {
     ObjectMapper objectMapper = getObjectMapper();
-    V8VmOpenApiService service = objectMapper.readValue(serviceFile, V8VmOpenApiService.class);
+    V9VmOpenApiService service = objectMapper.readValue(serviceFile, V9VmOpenApiService.class);
     
     service.setServiceChannels(service.getServiceChannels().stream().filter(serviceChannel -> 
       !StringUtils.equals(channelId, serviceChannel.getServiceChannel().getId().toString())
@@ -114,7 +114,7 @@ public class PtvDownload {
     
     try (FileOutputStream fileStream = new FileOutputStream(serviceFile)) {
       try (InputStream inputStream = new ByteArrayInputStream(objectMapper.writeValueAsBytes(service))) {
-        prettyPrintJson(inputStream, fileStream, V8VmOpenApiService.class);
+        prettyPrintJson(inputStream, fileStream, V9VmOpenApiService.class);
       }
     }
   }
@@ -224,9 +224,9 @@ public class PtvDownload {
       File serviceFile = serviceFiles[i];
       EnumMap<ServiceChannelType, List<String>> channels = new EnumMap<>(ServiceChannelType.class);
       
-      V8VmOpenApiService service = new ObjectMapper().readValue(serviceFile, V8VmOpenApiService.class);
-      List<V8VmOpenApiServiceServiceChannel> serviceChannels = service.getServiceChannels();
-      for (V8VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
+      V9VmOpenApiService service = new ObjectMapper().readValue(serviceFile, V9VmOpenApiService.class);
+      List<V9VmOpenApiServiceServiceChannel> serviceChannels = service.getServiceChannels();
+      for (V9VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
         File serviceChannelFile = new File(getServiceChannelsFolder(), String.format(S_JSON, serviceChannel.getServiceChannel().getId()));
         ServiceChannelType channelType = resolveChannelType(serviceChannelFile);
         if (!channels.containsKey(channelType)) {
@@ -266,7 +266,7 @@ public class PtvDownload {
   
   private String printOrganizationServicesList(File organizationFile) throws IOException {
     ObjectMapper objectMapper = getObjectMapper();
-    V8VmOpenApiOrganization organization = objectMapper.readValue(organizationFile, V8VmOpenApiOrganization.class);
+    V9VmOpenApiOrganization organization = objectMapper.readValue(organizationFile, V9VmOpenApiOrganization.class);
 
     StringBuilder result = new StringBuilder();
 
@@ -335,7 +335,7 @@ public class PtvDownload {
     Files.deleteIfExists(target.toPath());
     
     try {
-      download(url, target, V8VmOpenApiOrganization.class);         
+      download(url, target, V9VmOpenApiOrganization.class);         
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -369,14 +369,14 @@ public class PtvDownload {
   
   private void limitOrganizationServices(File organizationFile) throws IOException {
     ObjectMapper objectMapper = getObjectMapper();
-    V8VmOpenApiOrganization organization = objectMapper.readValue(organizationFile, V8VmOpenApiOrganization.class);
+    V9VmOpenApiOrganization organization = objectMapper.readValue(organizationFile, V9VmOpenApiOrganization.class);
     List<V5VmOpenApiOrganizationService> services = organization.getServices().stream().limit(ORGANIZATION_SERVICE_LIMIT).collect(Collectors.toList());
     organization.setServices(services);
     objectMapper.writerWithDefaultPrettyPrinter().writeValue(organizationFile, organization);
   }
   
   private void downloadOrganizationServices(File organizationFile) throws IOException {
-    V8VmOpenApiOrganization organization = getObjectMapper().readValue(organizationFile, V8VmOpenApiOrganization.class);
+    V9VmOpenApiOrganization organization = getObjectMapper().readValue(organizationFile, V9VmOpenApiOrganization.class);
     
     List<V5VmOpenApiOrganizationService> services = organization.getServices();
     for (V5VmOpenApiOrganizationService service : services) {
@@ -403,7 +403,7 @@ public class PtvDownload {
     File target = new File(servicesFolder, String.format(S_JSON, serviceId));
     if (!target.exists()) {
       try {
-        download(url, target, V8VmOpenApiService.class);          
+        download(url, target, V9VmOpenApiService.class);          
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -413,15 +413,15 @@ public class PtvDownload {
   }
   
   private void downloadServiceChannels(File serviceFile) throws IOException {
-    V8VmOpenApiService service = new ObjectMapper().readValue(serviceFile, V8VmOpenApiService.class);
+    V9VmOpenApiService service = new ObjectMapper().readValue(serviceFile, V9VmOpenApiService.class);
     
-    List<V8VmOpenApiServiceServiceChannel> serviceChannels = service.getServiceChannels();
-    for (V8VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
+    List<V9VmOpenApiServiceServiceChannel> serviceChannels = service.getServiceChannels();
+    for (V9VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
       downloadServiceChannel(serviceChannel);
     }
   }
 
-  private void downloadServiceChannel(V8VmOpenApiServiceServiceChannel serviceChannel) {
+  private void downloadServiceChannel(V9VmOpenApiServiceServiceChannel serviceChannel) {
     String serviceChannelId = serviceChannel.getServiceChannel().getId().toString();
     File serviceChannelsFolder = getServiceChannelsFolder();
     

@@ -52,7 +52,7 @@ public class PtvServicePriorityIdUpdater extends AbstractPtvServiceIdDiscoverJob
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {
     currentUpdateStart = OffsetDateTime.now();
-    return ptvApi.getServiceApi(null).apiV8ServiceGet(null, lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, PtvConsts.PUBLISHED_STATUS);
+    return ptvApi.getServiceApi(null).apiV9ServiceGet(lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, null, PtvConsts.PUBLISHED_STATUS);
   }
 
   @Override

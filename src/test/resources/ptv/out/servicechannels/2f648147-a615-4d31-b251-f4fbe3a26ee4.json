@@ -1,120 +1,155 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "https://wilma.vaasa.fi/",
-    "value" : null,
-    "language" : "fi"
-  }, {
-    "orderNumber" : "0",
-    "url" : "https://wilma.vaasa.fi/?langid=3",
-    "value" : null,
-    "language" : "en"
-  }, {
-    "orderNumber" : "0",
-    "url" : "https://wilma.vaasa.fi/?langid=2",
-    "value" : null,
-    "language" : "sv"
-  } ],
-  "requiresSignature" : false,
-  "attachments" : [ ],
-  "languages" : [ ],
-  "supportPhones" : [ ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "905",
-      "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
-        "value" : "Vasa",
-        "language" : "sv"
-      }, {
-        "value" : "Vaasa",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "17c633dd-5408-495a-86c1-d8f57598e899",
-      "name" : "Perusopetus"
+  "id": "2f648147-a615-4d31-b251-f4fbe3a26ee4",
+  "sourceId": null,
+  "serviceChannelType": "EChannel",
+  "organizationId": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+  "serviceChannelNames": [
+    {
+      "language": "sv",
+      "value": "Wilma",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ {
-      "language" : "fi",
-      "value" : null,
-      "type" : "Description"
-    }, {
-      "language" : "fi",
-      "value" : null,
-      "type" : "ChargeTypeAdditionalInfo"
-    } ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "dbd66199-6da4-437d-bb7b-99c6eacf3ef0",
-      "name" : "Perusopetuksen aamu- ja iltapäivätoiminta"
+    {
+      "language": "fi",
+      "value": "Wilma",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizationId" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-  "serviceChannelNames" : [ {
-    "language" : "sv",
-    "value" : "Wilma",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Wilma",
-    "type" : "Name"
-  }, {
-    "language" : "en",
-    "value" : "Wilma",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "EChannel",
-  "serviceChannelDescriptions" : [ {
-    "language" : "sv",
-    "value" : "Wilma är läroanstaltens www-anslutning. \n\nI Wilma kan studerande göra kursval, uppfölja sina prestationer, läsa notiser och kommunicera med lärare.\n\nI Wilma kan lärare mata in vitsord och frånvaro, uppdatera personuppgifter och kommunicera med studerande och vårdnadshavare.\n\nVia Wilma kan vårdnadshavare följa upp och reda ut studerandens frånvaron, kommunicera med lärare via intern post och läsa skolans notiser.\n\nWilma används också av läroanstaltens personal, ledning och arbetsplatshandledare.",
-    "type" : "Description"
-  }, {
-    "language" : "sv",
-    "value" : "Wilma är läroanstaltens www-anslutning.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Wilman kautta opettajat, oppilaat ja oppilaiden huoltajat pitävät yhteyttä.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Wilma on oppilaitoksen hallinto-ohjelman www-liittymä.\n\nOpiskelijat valitsevat Wilmassa kursseja, seuraavat suorituksiaan, lukevat tiedotteita ja viestivät opettajien kanssa.\n\nOpettajat syöttävät Wilman kautta arvioinnit ja poissaolot, päivittävät henkilötietojaan ja viestivät opiskelijoiden ja huoltajien kanssa.\n\nHuoltajat seuraavat ja selvittävät Wilman kautta opiskelijan poissaoloja, viestivät opettajien kanssa ja lukevat koulun tiedotteita.\n\nWilmaa käyttävät myös oppilaitoksen henkilökunta, johto sekä työpaikkaohjaajat.",
-    "type" : "Description"
-  }, {
-    "language" : "en",
-    "value" : "Wilma is the web interface for the student administration program Primus and for the schedule program Kurre 7.",
-    "type" : "Summary"
-  }, {
-    "language" : "en",
-    "value" : "Wilma is the web interface for the student administration program Primus and for the schedule program Kurre 7. This Wilma license is owned by Vaasan opetusvirasto.\n\nIn Wilma a student can register for courses, check grades, read announcements and communicate with teachers.\n\nIn Wilma a teacher can grade students, register absences and update personal information. Teacher can also communicate with students and guardians.\n\nGuardians can see and clear absences, communicate with teachers, and read announcements.\n\nWilma is also used by school personnel, administration and workplace instructors.",
-    "type" : "Description"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "2f648147-a615-4d31-b251-f4fbe3a26ee4",
-  "signatureQuantity" : 0,
-  "requiresAuthentication" : true
+    {
+      "language": "en",
+      "value": "Wilma",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "sv",
+      "value": "Wilma är läroanstaltens www-anslutning. \n\nI Wilma kan studerande göra kursval, uppfölja sina prestationer, läsa notiser och kommunicera med lärare.\n\nI Wilma kan lärare mata in vitsord och frånvaro, uppdatera personuppgifter och kommunicera med studerande och vårdnadshavare.\n\nVia Wilma kan vårdnadshavare följa upp och reda ut studerandens frånvaron, kommunicera med lärare via intern post och läsa skolans notiser.\n\nWilma används också av läroanstaltens personal, ledning och arbetsplatshandledare.",
+      "type": "Description"
+    },
+    {
+      "language": "sv",
+      "value": "Wilma är läroanstaltens www-anslutning.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Wilman kautta opettajat, oppilaat ja oppilaiden huoltajat pitävät yhteyttä.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Wilma on oppilaitoksen hallinto-ohjelman www-liittymä.\n\nOpiskelijat valitsevat Wilmassa kursseja, seuraavat suorituksiaan, lukevat tiedotteita ja viestivät opettajien kanssa.\n\nOpettajat syöttävät Wilman kautta arvioinnit ja poissaolot, päivittävät henkilötietojaan ja viestivät opiskelijoiden ja huoltajien kanssa.\n\nHuoltajat seuraavat ja selvittävät Wilman kautta opiskelijan poissaoloja, viestivät opettajien kanssa ja lukevat koulun tiedotteita.\n\nWilmaa käyttävät myös oppilaitoksen henkilökunta, johto sekä työpaikkaohjaajat.",
+      "type": "Description"
+    },
+    {
+      "language": "en",
+      "value": "Wilma is the web interface for the student administration program Primus and for the schedule program Kurre 7.",
+      "type": "Summary"
+    },
+    {
+      "language": "en",
+      "value": "Wilma is the web interface for the student administration program Primus and for the schedule program Kurre 7. This Wilma license is owned by Vaasan opetusvirasto.\n\nIn Wilma a student can register for courses, check grades, read announcements and communicate with teachers.\n\nIn Wilma a teacher can grade students, register absences and update personal information. Teacher can also communicate with students and guardians.\n\nGuardians can see and clear absences, communicate with teachers, and read announcements.\n\nWilma is also used by school personnel, administration and workplace instructors.",
+      "type": "Description"
+    }
+  ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "signatureQuantity": 0,
+  "requiresSignature": false,
+  "requiresAuthentication": true,
+  "attachments": [],
+  "supportPhones": [],
+  "supportEmails": [],
+  "languages": [],
+  "webPages": [
+    {
+      "url": "https://wilma.vaasa.fi/",
+      "value": null,
+      "language": "fi"
+    },
+    {
+      "url": "https://wilma.vaasa.fi/?langid=3",
+      "value": null,
+      "language": "en"
+    },
+    {
+      "url": "https://wilma.vaasa.fi/?langid=2",
+      "value": null,
+      "language": "sv"
+    }
+  ],
+  "serviceHours": [],
+  "accessibilityClassificationLevel": null,
+  "wcagLevel": null,
+  "accessibilityStatementWebPage": [
+    {
+      "url": "https://www.example.com",
+      "value": "value",
+      "language": "en"
+    }
+  ],
+  "services": [
+    {
+      "service": {
+        "id": "17c633dd-5408-495a-86c1-d8f57598e899",
+        "name": "Perusopetus"
+      },
+      "serviceChargeType": null,
+      "description": [
+        {
+          "language": "fi",
+          "value": null,
+          "type": "Description"
+        },
+        {
+          "language": "fi",
+          "value": null,
+          "type": "ChargeTypeAdditionalInfo"
+        }
+      ],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    },
+    {
+      "service": {
+        "id": "dbd66199-6da4-437d-bb7b-99c6eacf3ef0",
+        "name": "Perusopetuksen aamu- ja iltapäivätoiminta"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627"
 }

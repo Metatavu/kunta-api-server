@@ -4,10 +4,10 @@ import javax.enterprise.context.ApplicationScoped;
 
 import fi.metatavu.kuntaapi.server.id.NewsArticleId;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
-import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsTaskQueue;
+import fi.metatavu.kuntaapi.server.tasks.jms.DefaultJmsTaskQueue;
 
 @ApplicationScoped
-public class NewsArticleIdTaskQueue extends AbstractJmsTaskQueue<IdTask<NewsArticleId>> {
+public class NewsArticleIdTaskQueue extends DefaultJmsTaskQueue<IdTask<NewsArticleId>> {
   
   public static final String NAME = "management-news";
   public static final String JMS_QUEUE = JMS_QUEUE_PREFIX + NAME;

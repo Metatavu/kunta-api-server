@@ -52,13 +52,13 @@ import fi.metatavu.kuntaapi.server.rest.model.ServiceOrganization;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
-import fi.metatavu.kuntaapi.server.tasks.jms.AbstractJmsJob;
+import fi.metatavu.kuntaapi.server.tasks.jms.AbstractRespondingJmsJob;
 import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
 import fi.metatavu.kuntaapi.server.utils.LocalizationUtils;
 import fi.metatavu.ptv.client.ApiResponse;
 import fi.metatavu.ptv.client.model.V6VmOpenApiServiceOrganization;
-import fi.metatavu.ptv.client.model.V8VmOpenApiService;
-import fi.metatavu.ptv.client.model.V8VmOpenApiServiceServiceChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiService;
+import fi.metatavu.ptv.client.model.V9VmOpenApiServiceServiceChannel;
 import fi.metatavu.ptv.client.model.VmOpenApiItem;
 
 @ApplicationScoped
@@ -70,7 +70,7 @@ import fi.metatavu.ptv.client.model.VmOpenApiItem;
   }
 )
 @Pool(JmsQueueProperties.NO_CONCURRENCY_POOL)
-public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId>> {
+public class PtvServiceEntityDiscoverJob extends AbstractRespondingJmsJob<IdTask<ServiceId>, Service> {
 
   @Inject
   private Logger logger;
@@ -118,25 +118,27 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
   private ManagementIdFactory managementIdFactory;
    
   @Override
-  public void execute(IdTask<ServiceId> task) {
+  public Service executeWithResponse(IdTask<ServiceId> task) {
     if (task.getOperation() == Operation.UPDATE) {
-      updatePtvService(task.getId(), task.getOrderIndex()); 
+      return updatePtvService(task.getId(), task.getOrderIndex()); 
     } else if (task.getOperation() == Operation.REMOVE) {
       deletePtvService(task.getId());
     }
+    
+    return null;
   }
 
-  private void updatePtvService(ServiceId ptvServiceId, Long orderIndex) {
+  private Service updatePtvService(ServiceId ptvServiceId, Long orderIndex) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Ptv system setting not defined, skipping update."); 
-      return;
+      return null;
     }
     
-    ApiResponse<V8VmOpenApiService> response = ptvApi.getServiceApi(null).apiV8ServiceByIdGet(ptvServiceId.getId());
+    ApiResponse<V9VmOpenApiService> response = ptvApi.getServiceApi(null).apiV9ServiceByIdGet(ptvServiceId.getId());
     if (response.isOk()) {
       Identifier identifier = identifierController.acquireIdentifier(orderIndex, ptvServiceId);
       
-      V8VmOpenApiService ptvService = response.getResponse();
+      V9VmOpenApiService ptvService = response.getResponse();
       ServiceId kuntaApiServiceId = kuntaApiIdFactory.createFromIdentifier(ServiceId.class, identifier);
       
       fi.metatavu.kuntaapi.server.rest.model.Service service = translateService(ptvService, kuntaApiServiceId);
@@ -160,9 +162,12 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
       
       List<PageId> parentPageIds = identifierRelationController.listPageIdsByChildId(ptvServiceId);
       updateParentPageIds(parentPageIds);
+
+      return service;
     } else {
       logger.warning(String.format("Service %s processing failed on [%d] %s", ptvServiceId.getId(), response.getStatus(), response.getMessage()));
-    }
+      return null;
+    }    
   }
 
   private void updateParentPageIds(List<PageId> parentPageIds) {
@@ -176,8 +181,8 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
     }
   }
 
-  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V8VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
-    List<V8VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels();
+  private fi.metatavu.kuntaapi.server.rest.model.Service translateService(V9VmOpenApiService ptvService, ServiceId kuntaApiServiceId) {
+    List<V9VmOpenApiServiceServiceChannel> serviceChannels = ptvService.getServiceChannels() == null ? Collections.emptyList() : ptvService.getServiceChannels();
     
     List<ElectronicServiceChannelId> kuntaApiElectronicServiceChannelIds = new ArrayList<>(); 
     List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds = new ArrayList<>();
@@ -185,7 +190,7 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
     List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds = new ArrayList<>();
     List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds = new ArrayList<>();
     
-    for (V8VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
+    for (V9VmOpenApiServiceServiceChannel serviceChannel : serviceChannels) {
       sortServiceChannel(kuntaApiElectronicServiceChannelIds, kuntaApiPhoneServiceChannelIds,
           kuntaApiPrintableFormServiceChannelIds, kuntaApiServiceLocationServiceChannelIds,
           kuntaApiWebPageServiceChannelIds, serviceChannel);
@@ -207,7 +212,7 @@ public class PtvServiceEntityDiscoverJob extends AbstractJmsJob<IdTask<ServiceId
       List<PhoneServiceChannelId> kuntaApiPhoneServiceChannelIds,
       List<PrintableFormServiceChannelId> kuntaApiPrintableFormServiceChannelIds,
       List<ServiceLocationServiceChannelId> kuntaApiServiceLocationServiceChannelIds,
-      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V8VmOpenApiServiceServiceChannel serviceServiceChannel) {
+      List<WebPageServiceChannelId> kuntaApiWebPageServiceChannelIds, V9VmOpenApiServiceServiceChannel serviceServiceChannel) {
     
     VmOpenApiItem serviceChannel = serviceServiceChannel.getServiceChannel();
     if (serviceChannel == null || serviceChannel.getId() == null) {

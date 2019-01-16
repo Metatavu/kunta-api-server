@@ -1,243 +1,592 @@
 {
-  "id" : "8062afa8-41c4-44c0-b1f7-d86c0891e9e3",
-  "sourceId" : null,
-  "generalDescriptionId" : "18728fd6-b435-4858-a9b7-6d18e2c5ec1d",
-  "type" : "Service",
-  "fundingType" : "PubliclyFunded",
-  "serviceNames" : [ {
-    "language" : "sv",
-    "value" : "Visning av tomtens höjdläge, utmärkning av byggnadsplats och syn av byggnaden",
-    "type" : "Name"
-  }, {
-    "language" : "fi",
-    "value" : "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen",
-    "type" : "Name"
-  } ],
-  "serviceChargeType" : "Chargeable",
-  "areaType" : "LimitedType",
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "905",
-      "name" : [ {
-        "value" : "Vaasa",
-        "language" : "fi"
-      }, {
-        "value" : "Vasa",
-        "language" : "sv"
-      }, {
-        "value" : "Vaasa",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "serviceDescriptions" : [ {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ProcessingTime"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : "Mätningsservicen beställs från fastighetssektorns mätningsservice. I ärenden som ansluter sig till visning av tomthöjder och utmärkande av byggnads plats och lägessyn kan du ta kontakt med mätningsteknikern.",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "sv",
-    "value" : "Avgiften fastställs enligt ikraftvarande taksa. Priset består av en utmärknings- och kontrollavgift.",
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "sv",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : "Maksu määräytyy voimassa olevien taksojen mukaisesti. Hinta koostuu merkitsemis- ja tarkistusmaksusta.",
-    "type" : "ChargeTypeAdditionalInfo"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "DeadLine"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin mittauspalvelut-yksikkö vastaa tonttien ja rakennusten maastoonmerkitsemismittauksista.",
-    "type" : "Summary"
-  }, {
-    "language" : "fi",
-    "value" : "Vaasan kaupungin mittauspalvelut-yksikkö vastaa tonttien ja rakennusten maastoonmerkitsemismittauksista. Osoitamme maastossa tonttien ja rakennusten sijainnit ja korkeusaseman. ",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Mittauspalvelut tilataan kiinteistötoimen mittauspalveluilta. Tontin korkeuden näyttöön ja rakennuksen sijainnin merkitsemiseen ja katselmoimiseen liittyvissä asioissa voit olla yhteydessä mittausteknikkoon. \n",
-    "type" : "UserInstruction"
-  }, {
-    "language" : "fi",
-    "value" : null,
-    "type" : "ValidityTime"
-  }, {
-    "language" : "sv",
-    "value" : "Vasa stads mätningsservice-enhet ansvarar för terrängmätningar av tomter och byggnaders placeringar samt höjdmarkeringar.",
-    "type" : "Summary"
-  }, {
-    "language" : "sv",
-    "value" : "Vasa stads mätningsservice-enhet ansvarar för terrängmätningar av tomter och byggnaders placeringar samt höjdmarkeringar.",
-    "type" : "Description"
-  } ],
-  "languages" : [ "fi", "sv" ],
-  "serviceClasses" : [ {
-    "name" : [ {
-      "value" : "Maankäyttö, kaavoitus ja tontit",
-      "language" : "fi"
-    }, {
-      "value" : "Markanvändning, planering och tomter",
-      "language" : "sv"
-    }, {
-      "value" : "Land use, land use planning and sites",
-      "language" : "en"
-    } ],
-    "description" : [ {
-      "value" : "I denna underservicegrupp behandlas landskapsplanering, detaljplaner och stadsplaner, påverkningsmöjligheter för dessa samt affärer med och hyrning av planerad mark och tomter, inklusive företagstomter.",
-      "language" : "sv"
-    }, {
-      "value" : "This service subclass contains regional land use plans, local master plans and local detailed plans, possibilities of influencing these plans, and the sales and leasing of zoned land and sites, including commercial sites.",
-      "language" : "en"
-    }, {
-      "value" : "Tässä alapalveluluokassa käsitellään maakuntakaavoja, yleiskaavoja ja asemakaavoja, niihin liittyviä vaikuttamismahdollisuuksia sekä kaavoitetun maan ja tonttien kauppaa ja vuokraamista, mukaan lukien yritystontit.",
-      "language" : "fi"
-    } ],
-    "code" : "P2.3",
-    "ontologyType" : "PTVL",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1010",
-    "parentId" : "dd30002b-be2b-4689-878a-60e93492cc87",
-    "parentUri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
-  } ],
-  "ontologyTerms" : [ {
-    "name" : [ {
-      "value" : "tontit",
-      "language" : "fi"
-    }, {
-      "value" : "tomter",
-      "language" : "sv"
-    }, {
-      "value" : "plots of land",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p4911",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p18755"
-  }, {
-    "name" : [ {
-      "value" : "lägessyn",
-      "language" : "sv"
-    }, {
-      "value" : "sijaintikatselmukset",
-      "language" : "fi"
-    }, {
-      "value" : "location inspections",
-      "language" : "en"
-    } ],
-    "code" : null,
-    "ontologyType" : "JUPO",
-    "uri" : "http://www.yso.fi/onto/koko/p68402",
-    "parentId" : null,
-    "parentUri" : "http://www.yso.fi/onto/koko/p18821"
-  } ],
-  "targetGroups" : [ {
-    "name" : [ {
-      "value" : "Yritykset ja yhteisöt",
-      "language" : "fi"
-    }, {
-      "value" : "Businesses and non-government organizations",
-      "language" : "en"
-    }, {
-      "value" : "Företag och samfund",
-      "language" : "sv"
-    } ],
-    "code" : "KR2",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
-    "parentId" : null,
-    "parentUri" : null
-  }, {
-    "name" : [ {
-      "value" : "Kansalaiset",
-      "language" : "fi"
-    }, {
-      "value" : "Citizens",
-      "language" : "en"
-    }, {
-      "value" : "Medborgare",
-      "language" : "sv"
-    } ],
-    "code" : "KR1",
-    "ontologyType" : "TARGETGROUP",
-    "uri" : "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
-    "parentId" : null,
-    "parentUri" : null
-  } ],
-  "lifeEvents" : [ ],
-  "industrialClasses" : [ ],
-  "legislation" : [ ],
-  "keywords" : [ ],
-  "requirements" : [ {
-    "value" : null,
-    "language" : "sv"
-  }, {
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "serviceChannels" : [ {
-    "serviceChannel" : {
-      "id" : "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
-      "name" : "Vaasan Palautepalvelu"
+  "id": "8062afa8-41c4-44c0-b1f7-d86c0891e9e3",
+  "sourceId": null,
+  "generalDescriptionId": "18728fd6-b435-4858-a9b7-6d18e2c5ec1d",
+  "subType": "subType",
+  "type": "Service",
+  "fundingType": "PubliclyFunded",
+  "serviceNames": [
+    {
+      "language": "sv",
+      "value": "Visning av tomtens höjdläge, utmärkning av byggnadsplats och syn av byggnaden",
+      "type": "Name"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "serviceChannel" : {
-      "id" : "4faaad5e-5cba-4166-a76b-a2f0a0ba64eb",
-      "name" : "Mittausteknikko"
+    {
+      "language": "fi",
+      "value": "Tontin korkeuden näyttö ja rakennuksen sijainnin merkitseminen ja katselmoiminen",
+      "type": "Name"
+    }
+  ],
+  "serviceChargeType": "Chargeable",
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "905",
+          "name": [
+            {
+              "value": "Vaasa",
+              "language": "fi"
+            },
+            {
+              "value": "Vasa",
+              "language": "sv"
+            },
+            {
+              "value": "Vaasa",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceDescriptions": [
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ProcessingTime"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "organizations" : [ {
-    "provisionType" : null,
-    "organization" : {
-      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ProcessingTime"
     },
-    "roleType" : "Responsible",
-    "additionalInformation" : [ ]
-  }, {
-    "provisionType" : "SelfProducedServices",
-    "organization" : {
-      "id" : "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
-      "name" : "Vaasan kaupunki"
+    {
+      "language": "sv",
+      "value": null,
+      "type": "ValidityTime"
     },
-    "roleType" : "Producer",
-    "additionalInformation" : [ ]
-  } ],
-  "serviceVouchersInUse" : false,
-  "serviceVouchers" : [ ],
-  "serviceCollections" : [ ],
-  "publishingStatus" : "Published",
-  "modified" : "2018-05-03T11:53:58.162746Z"
+    {
+      "language": "sv",
+      "value": "Mätningsservicen beställs från fastighetssektorns mätningsservice. I ärenden som ansluter sig till visning av tomthöjder och utmärkande av byggnads plats och lägessyn kan du ta kontakt med mätningsteknikern.",
+      "type": "UserInstruction"
+    },
+    {
+      "language": "sv",
+      "value": "Avgiften fastställs enligt ikraftvarande taksa. Priset består av en utmärknings- och kontrollavgift.",
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "sv",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "fi",
+      "value": "Maksu määräytyy voimassa olevien taksojen mukaisesti. Hinta koostuu merkitsemis- ja tarkistusmaksusta.",
+      "type": "ChargeTypeAdditionalInfo"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "DeadLine"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin mittauspalvelut-yksikkö vastaa tonttien ja rakennusten maastoonmerkitsemismittauksista.",
+      "type": "Summary"
+    },
+    {
+      "language": "fi",
+      "value": "Vaasan kaupungin mittauspalvelut-yksikkö vastaa tonttien ja rakennusten maastoonmerkitsemismittauksista. Osoitamme maastossa tonttien ja rakennusten sijainnit ja korkeusaseman. ",
+      "type": "Description"
+    },
+    {
+      "language": "fi",
+      "value": "Mittauspalvelut tilataan kiinteistötoimen mittauspalveluilta. Tontin korkeuden näyttöön ja rakennuksen sijainnin merkitsemiseen ja katselmoimiseen liittyvissä asioissa voit olla yhteydessä mittausteknikkoon. \n",
+      "type": "UserInstruction"
+    },
+    {
+      "language": "fi",
+      "value": null,
+      "type": "ValidityTime"
+    },
+    {
+      "language": "sv",
+      "value": "Vasa stads mätningsservice-enhet ansvarar för terrängmätningar av tomter och byggnaders placeringar samt höjdmarkeringar.",
+      "type": "Summary"
+    },
+    {
+      "language": "sv",
+      "value": "Vasa stads mätningsservice-enhet ansvarar för terrängmätningar av tomter och byggnaders placeringar samt höjdmarkeringar.",
+      "type": "Description"
+    }
+  ],
+  "languages": [
+    "fi",
+    "sv"
+  ],
+  "serviceClasses": [
+    {
+      "name": [
+        {
+          "value": "Maankäyttö, kaavoitus ja tontit",
+          "language": "fi"
+        },
+        {
+          "value": "Markanvändning, planering och tomter",
+          "language": "sv"
+        },
+        {
+          "value": "Land use, land use planning and sites",
+          "language": "en"
+        }
+      ],
+      "description": [
+        {
+          "value": "I denna underservicegrupp behandlas landskapsplanering, detaljplaner och stadsplaner, påverkningsmöjligheter för dessa samt affärer med och hyrning av planerad mark och tomter, inklusive företagstomter.",
+          "language": "sv"
+        },
+        {
+          "value": "This service subclass contains regional land use plans, local master plans and local detailed plans, possibilities of influencing these plans, and the sales and leasing of zoned land and sites, including commercial sites.",
+          "language": "en"
+        },
+        {
+          "value": "Tässä alapalveluluokassa käsitellään maakuntakaavoja, yleiskaavoja ja asemakaavoja, niihin liittyviä vaikuttamismahdollisuuksia sekä kaavoitetun maan ja tonttien kauppaa ja vuokraamista, mukaan lukien yritystontit.",
+          "language": "fi"
+        }
+      ],
+      "code": "P2.3",
+      "ontologyType": "PTVL",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1010",
+      "parentId": "dd30002b-be2b-4689-878a-60e93492cc87",
+      "parentUri": "http://urn.fi/URN:NBN:fi:au:ptvl:v1007"
+    }
+  ],
+  "ontologyTerms": [
+    {
+      "name": [
+        {
+          "value": "tontit",
+          "language": "fi"
+        },
+        {
+          "value": "tomter",
+          "language": "sv"
+        },
+        {
+          "value": "plots of land",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p4911",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p18755"
+    },
+    {
+      "name": [
+        {
+          "value": "lägessyn",
+          "language": "sv"
+        },
+        {
+          "value": "sijaintikatselmukset",
+          "language": "fi"
+        },
+        {
+          "value": "location inspections",
+          "language": "en"
+        }
+      ],
+      "code": null,
+      "ontologyType": "JUPO",
+      "uri": "http://www.yso.fi/onto/koko/p68402",
+      "parentId": null,
+      "parentUri": "http://www.yso.fi/onto/koko/p18821"
+    }
+  ],
+  "targetGroups": [
+    {
+      "name": [
+        {
+          "value": "Yritykset ja yhteisöt",
+          "language": "fi"
+        },
+        {
+          "value": "Businesses and non-government organizations",
+          "language": "en"
+        },
+        {
+          "value": "Företag och samfund",
+          "language": "sv"
+        }
+      ],
+      "code": "KR2",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2008",
+      "parentId": null,
+      "parentUri": null
+    },
+    {
+      "name": [
+        {
+          "value": "Kansalaiset",
+          "language": "fi"
+        },
+        {
+          "value": "Citizens",
+          "language": "en"
+        },
+        {
+          "value": "Medborgare",
+          "language": "sv"
+        }
+      ],
+      "code": "KR1",
+      "ontologyType": "TARGETGROUP",
+      "uri": "http://urn.fi/URN:NBN:fi:au:ptvl:v2001",
+      "parentId": null,
+      "parentUri": null
+    }
+  ],
+  "lifeEvents": [],
+  "industrialClasses": [],
+  "legislation": [],
+  "keywords": [],
+  "requirements": [
+    {
+      "value": null,
+      "language": "sv"
+    },
+    {
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceChannels": [
+    {
+      "serviceChannel": {
+        "id": "3e0951ab-890f-441b-bcf5-5c27b56b1fde",
+        "name": "Vaasan Palautepalvelu"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    },
+    {
+      "serviceChannel": {
+        "id": "4faaad5e-5cba-4166-a76b-a2f0a0ba64eb",
+        "name": "Mittausteknikko"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [
+        {
+          "type": "type",
+          "code": "code",
+          "name": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "description": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ]
+        }
+      ],
+      "serviceHours": [
+        {
+          "serviceHourType": "serviceHourType",
+          "validFrom": "2018-07-06T00:00:00.000Z",
+          "validTo": "2018-07-06T00:00:00.000Z",
+          "additionalInformation": [
+            {
+              "value": "value",
+              "language": "en"
+            }
+          ],
+          "openingHour": [
+            {
+              "dayFrom": "Monday",
+              "dayTo": "Friday",
+              "from": "08:00",
+              "to": "16:00"
+            }
+          ]
+        }
+      ],
+      "contactDetails": {
+        "emails": [
+          {
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "type": "type",
+            "additionalInformation": "additionalInformation",
+            "serviceChargeType": "serviceChargeType",
+            "chargeDescription": "chargeDescription",
+            "prefixNumber": "+358",
+            "number": "012 345 6789",
+            "language": "en"
+          }
+        ],
+        "webPages": [
+          {
+            "url": "https://www.example.com",
+            "value": "value",
+            "language": "en"
+          }
+        ],
+        "addresses": [
+          {
+            "type": "type",
+            "subType": "subType",
+            "postOfficeBoxAddress": {
+              "postOfficeBox": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ]
+            },
+            "streetAddress": {
+              "street": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "streetNumber": "55",
+              "postalCode": "12345",
+              "postOffice": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "municipality": {
+                "code": "code",
+                "name": [
+                  {
+                    "value": "value",
+                    "language": "en"
+                  }
+                ]
+              },
+              "additionalInformation": [
+                {
+                  "value": "value",
+                  "language": "en"
+                }
+              ],
+              "latitude": "61.6887",
+              "longitude": "27.2721",
+              "coordinateState": "OK"
+            },
+            "locationAbroad": [
+              {
+                "value": "value",
+                "language": "en"
+              }
+            ],
+            "country": "en"
+          }
+        ]
+      },
+      "digitalAuthorizations": []
+    }
+  ],
+  "organizations": [
+    {
+      "organization": {
+        "id": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+        "name": "Vaasan kaupunki"
+      },
+      "roleType": "Responsible",
+      "provisionType": null,
+      "additionalInformation": []
+    },
+    {
+      "organization": {
+        "id": "7fdd7f84-e52a-4c17-a59a-d7c2a3095ed5",
+        "name": "Vaasan kaupunki"
+      },
+      "roleType": "Producer",
+      "provisionType": "SelfProducedServices",
+      "additionalInformation": []
+    }
+  ],
+  "serviceVouchersInUse": false,
+  "serviceVouchers": [],
+  "serviceCollections": [],
+  "publishingStatus": "Published",
+  "modified": "2018-05-03T11:53:58.162746Z"
 }

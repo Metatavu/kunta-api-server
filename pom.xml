@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fi.metatavu.kunta-api</groupId>
   <artifactId>kunta-api-server</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.6-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Kunta API</name>
   <description>Kunta API server</description>
@@ -62,7 +62,7 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.126</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.128</kunta-api-spec.version>
     
     <!-- Integrations -->
     
@@ -72,7 +72,7 @@
 
     <!-- PTV -->
     
-    <ptv-rest-client.version>0.8.0</ptv-rest-client.version>
+    <ptv-rest-client.version>0.9.0</ptv-rest-client.version>
     
     <!-- Jackson -->
     
@@ -1034,10 +1034,21 @@
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-news:add(entries=[java:/jms/queue/management-news])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-pages:add(entries=[java:/jms/queue/management-pages])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-banners:add(entries=[java:/jms/queue/management-banners])</command>
-                    <command>/:reload</command>
                   </commands>
                 </configuration>
               </execution>
+              
+              <execution>
+                <id>wildfly-reload</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>shutdown</goal>
+                </goals>
+                <configuration>
+                  <reload>true</reload>
+                </configuration>
+              </execution>
+              
               <execution>
                 <id>deploy</id>
                 <phase>pre-integration-test</phase>

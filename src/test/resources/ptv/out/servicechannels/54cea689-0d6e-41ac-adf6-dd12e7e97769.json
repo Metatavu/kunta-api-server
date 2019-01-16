@@ -1,94 +1,116 @@
 {
-  "sourceId" : null,
-  "webPages" : [ {
-    "orderNumber" : "0",
-    "url" : "",
-    "value" : null,
-    "language" : "fi"
-  } ],
-  "languages" : [ "fi" ],
-  "areas" : [ {
-    "type" : "Municipality",
-    "code" : null,
-    "name" : null,
-    "municipalities" : [ {
-      "code" : "529",
-      "name" : [ {
-        "value" : "Naantali",
-        "language" : "fi"
-      }, {
-        "value" : "Nådendal",
-        "language" : "sv"
-      }, {
-        "value" : "Naantali",
-        "language" : "en"
-      } ]
-    } ]
-  } ],
-  "supportEmails" : [ ],
-  "services" : [ {
-    "service" : {
-      "id" : "228738ee-754a-49b7-8240-2b84c5ca2970",
-      "name" : "Etsivä nuorisotyö"
+  "id": "54cea689-0d6e-41ac-adf6-dd12e7e97769",
+  "sourceId": null,
+  "serviceChannelType": "Phone",
+  "organizationId": "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
+  "serviceChannelNames": [
+    {
+      "language": "fi",
+      "value": "Etsivä nuorisotyöntekijä",
+      "type": "Name"
+    }
+  ],
+  "serviceChannelDescriptions": [
+    {
+      "language": "fi",
+      "value": "Etsivä nuorisotyöntekijä auttaa 15 - 29 -vuotiaita nuoria, jotka ovat jäämässä opiskelujen tai työelämän ulkopuolelle, tai jotka muuten kaipaavat tsemppiä, apua, neuvontaa ja ohjausta arjessaan.",
+      "type": "Description"
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "23abb1bf-8672-42b2-8a21-ddb38e2c397f",
-      "name" : "Nuorten tieto- ja neuvontapalvelut"
+    {
+      "language": "fi",
+      "value": "Etsivä nuorisotyöntekijä auttaa nuoria, jotka ovat jäämässä opiskelujen tai työelämän ulkopuolelle, tai jotka muuten kaipaavat aikuisen tukea arjessa.",
+      "type": "Summary"
+    }
+  ],
+  "areaType": "LimitedType",
+  "areas": [
+    {
+      "type": "Municipality",
+      "code": null,
+      "name": null,
+      "municipalities": [
+        {
+          "code": "529",
+          "name": [
+            {
+              "value": "Naantali",
+              "language": "fi"
+            },
+            {
+              "value": "Nådendal",
+              "language": "sv"
+            },
+            {
+              "value": "Naantali",
+              "language": "en"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "type": "Phone",
+      "additionalInformation": null,
+      "serviceChargeType": "Chargeable",
+      "chargeDescription": null,
+      "prefixNumber": "+358",
+      "isFinnishServiceNumber": false,
+      "number": "447334611",
+      "language": "fi"
+    }
+  ],
+  "supportEmails": [],
+  "languages": [
+    "fi"
+  ],
+  "webPages": [
+    {
+      "url": "",
+      "value": null,
+      "language": "fi"
+    }
+  ],
+  "serviceHours": [],
+  "services": [
+    {
+      "service": {
+        "id": "228738ee-754a-49b7-8240-2b84c5ca2970",
+        "name": "Etsivä nuorisotyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  }, {
-    "service" : {
-      "id" : "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
-      "name" : "Nuorisotyö"
+    {
+      "service": {
+        "id": "23abb1bf-8672-42b2-8a21-ddb38e2c397f",
+        "name": "Nuorten tieto- ja neuvontapalvelut"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
     },
-    "serviceChargeType" : null,
-    "description" : [ ],
-    "extraTypes" : [ ],
-    "serviceHours" : [ ],
-    "contactDetails" : null,
-    "digitalAuthorizations" : [ ]
-  } ],
-  "phoneNumbers" : [ {
-    "type" : "Phone",
-    "additionalInformation" : null,
-    "serviceChargeType" : "Chargeable",
-    "chargeDescription" : null,
-    "prefixNumber" : "+358",
-    "isFinnishServiceNumber" : false,
-    "number" : "447334611",
-    "language" : "fi"
-  } ],
-  "organizationId" : "3d1759a2-e47a-4947-9a31-cab1c1e2512b",
-  "serviceChannelNames" : [ {
-    "language" : "fi",
-    "value" : "Etsivä nuorisotyöntekijä",
-    "type" : "Name"
-  } ],
-  "serviceHours" : [ ],
-  "serviceChannelType" : "Phone",
-  "serviceChannelDescriptions" : [ {
-    "language" : "fi",
-    "value" : "Etsivä nuorisotyöntekijä auttaa 15 - 29 -vuotiaita nuoria, jotka ovat jäämässä opiskelujen tai työelämän ulkopuolelle, tai jotka muuten kaipaavat tsemppiä, apua, neuvontaa ja ohjausta arjessaan.",
-    "type" : "Description"
-  }, {
-    "language" : "fi",
-    "value" : "Etsivä nuorisotyöntekijä auttaa nuoria, jotka ovat jäämässä opiskelujen tai työelämän ulkopuolelle, tai jotka muuten kaipaavat aikuisen tukea arjessa.",
-    "type" : "Summary"
-  } ],
-  "areaType" : "LimitedType",
-  "publishingStatus" : "Published",
-  "modified" : "2017-10-31T08:15:43.515627",
-  "id" : "54cea689-0d6e-41ac-adf6-dd12e7e97769"
+    {
+      "service": {
+        "id": "25b6bae1-fa45-4fe4-8ea1-36260c46b2ce",
+        "name": "Nuorisotyö"
+      },
+      "serviceChargeType": null,
+      "description": [],
+      "extraTypes": [],
+      "serviceHours": [],
+      "contactDetails": null,
+      "digitalAuthorizations": []
+    }
+  ],
+  "publishingStatus": "Published",
+  "modified": "2017-10-31T08:15:43.515627"
 }

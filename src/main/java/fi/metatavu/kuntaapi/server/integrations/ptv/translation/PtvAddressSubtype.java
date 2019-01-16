@@ -8,6 +8,7 @@ public enum PtvAddressSubtype {
   POST_OFFICE_BOX  ("PostOfficeBox"),
   SINGLE ("Single"),
   ABROAD ("Abroad"),
+  FOREIGN ("Foreign"),
   MULTIPOINT ("Multipoint");
   
   private String ptvValue;
