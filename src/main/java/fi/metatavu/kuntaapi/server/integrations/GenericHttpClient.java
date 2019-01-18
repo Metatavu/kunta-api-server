@@ -457,7 +457,7 @@ public class GenericHttpClient {
     try {
       String httpResponseContent = IOUtils.toString(entity.getContent(), encoding);
       String contentType = getContentType(httpResponse);
-      if ("text/xml".equals(contentType)) {
+      if (contentType != null && contentType.startsWith("text/xml")) {
         XmlMapper xmlMapper = getXmlObjectMapper();
         return new Response<>(statusCode, message, (T) xmlMapper.readValue(httpResponseContent, typeReference));
       } else {
