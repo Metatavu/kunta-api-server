@@ -35,6 +35,11 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdDiscoverJ
   public boolean getIsPriority() {
     return false;
   }
+  
+  @Override
+  public long getTestModeTimerInterval() {
+    return 1000l;
+  }
 
   @Override
   public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage(Integer page) {

@@ -1,6 +1,7 @@
 package fi.metatavu.kuntaapi.server.rest;
 
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -20,6 +21,7 @@ import fi.metatavu.kuntaapi.server.controllers.BannerController;
 import fi.metatavu.kuntaapi.server.controllers.ClientContainer;
 import fi.metatavu.kuntaapi.server.controllers.ContactController;
 import fi.metatavu.kuntaapi.server.controllers.EmergencyController;
+import fi.metatavu.kuntaapi.server.controllers.EnvironmentalWarningController;
 import fi.metatavu.kuntaapi.server.controllers.EventController;
 import fi.metatavu.kuntaapi.server.controllers.FileController;
 import fi.metatavu.kuntaapi.server.controllers.FragmentController;
@@ -39,6 +41,7 @@ import fi.metatavu.kuntaapi.server.id.AttachmentId;
 import fi.metatavu.kuntaapi.server.id.BannerId;
 import fi.metatavu.kuntaapi.server.id.ContactId;
 import fi.metatavu.kuntaapi.server.id.EmergencyId;
+import fi.metatavu.kuntaapi.server.id.EnvironmentalWarningId;
 import fi.metatavu.kuntaapi.server.id.EventId;
 import fi.metatavu.kuntaapi.server.id.FileId;
 import fi.metatavu.kuntaapi.server.id.FragmentId;
@@ -63,6 +66,7 @@ import fi.metatavu.kuntaapi.server.integrations.AnnouncementProvider.Announcemen
 import fi.metatavu.kuntaapi.server.integrations.AttachmentData;
 import fi.metatavu.kuntaapi.server.integrations.ContactSortBy;
 import fi.metatavu.kuntaapi.server.integrations.EmergencySortBy;
+import fi.metatavu.kuntaapi.server.integrations.EnvironmentalWarningSortBy;
 import fi.metatavu.kuntaapi.server.integrations.EventProvider;
 import fi.metatavu.kuntaapi.server.integrations.IncidentSortBy;
 import fi.metatavu.kuntaapi.server.integrations.JobProvider;
@@ -81,6 +85,7 @@ import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.rest.model.Banner;
 import fi.metatavu.kuntaapi.server.rest.model.Contact;
 import fi.metatavu.kuntaapi.server.rest.model.Emergency;
+import fi.metatavu.kuntaapi.server.rest.model.EnvironmentalWarning;
 import fi.metatavu.kuntaapi.server.rest.model.Event;
 import fi.metatavu.kuntaapi.server.rest.model.FileDef;
 import fi.metatavu.kuntaapi.server.rest.model.Fragment;
@@ -184,6 +189,9 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Inject
   private PublicTransportController publicTransportController;
+
+  @Inject
+  private EnvironmentalWarningController environmentalWarningController;
   
   @Inject
   private RestResponseBuilder restResponseBuilder;
@@ -1806,9 +1814,60 @@ public class OrganizationsApiImpl extends OrganizationsApi {
       return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
     }
 
-    
     return restResponseBuilder.buildResponse(emergencyController.searchEmergencies(organizationId, location, getDateTime(before), getDateTime(after), 
       sortBy, sortDir, firstResult, maxResults), request);
+  }
+
+  @Override
+  public Response findOrganizationEnvironmentalWarning(String organizationIdParam, String environmentalWarningIdParam, Request request) {
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+    
+    EnvironmentalWarningId environmentalWarningId = kuntaApiIdFactory.createEnvironmentalWarningId(organizationId, environmentalWarningIdParam);
+    if (environmentalWarningId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    Response notModified = restResponseBuilder.getNotModified(request, environmentalWarningId);
+    if (notModified != null) {
+      return notModified;
+    }
+    
+    EnvironmentalWarning environmentalWarning = environmentalWarningController.findEnvironmentalWarning(organizationId, environmentalWarningId);
+    if (environmentalWarning != null) {
+      return restResponseBuilder.sendModified(environmentalWarning, environmentalWarning.getId());
+    }
+    
+    return createNotFound(NOT_FOUND);
+  }
+
+  @Override
+  public Response listOrganizationEnvironmentalWarnings(String organizationIdParam, Integer firstResult, String contextsParam, String before, String after, Integer maxResults, String sortByParam, String sortDirParam, Request request) {
+    Response validateResponse = validateListLimitParams(firstResult, maxResults);
+    if (validateResponse != null) {
+      return validateResponse;
+    }
+    
+    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
+    if (organizationId == null) {
+      return createNotFound(NOT_FOUND);
+    }
+
+    EnvironmentalWarningSortBy sortBy = resolveEnvironmentalWarningSortBy(sortByParam);
+    if (sortBy == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
+    }
+    
+    SortDir sortDir = resolveSortDir(sortDirParam);
+    if (sortDir == null) {
+      return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
+    }
+    
+    List<String> contexts = StringUtils.isBlank(contextsParam) ? null : Arrays.asList(StringUtils.split(contextsParam, ','));
+
+    return restResponseBuilder.buildResponse(environmentalWarningController.searchEnvironmentalWarnings(organizationId, contexts, sortBy, sortDir, firstResult, maxResults), request);
   }
 
   private SortDir resolveSortDir(String sortDirParam) {
@@ -1840,6 +1899,20 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     EmergencySortBy sortBy = EmergencySortBy.NATURAL;
     if (sortByParam != null) {
       return  EnumUtils.getEnum(EmergencySortBy.class, sortByParam);
+    }
+    return sortBy;
+  }
+  
+  /**
+   * Resolves sort by value for environmental warnings list
+   * 
+   * @param sortByParam parameter value
+   * @return sort by value
+   */
+  private EnvironmentalWarningSortBy resolveEnvironmentalWarningSortBy(String sortByParam) {
+    EnvironmentalWarningSortBy sortBy = EnvironmentalWarningSortBy.NATURAL;
+    if (sortByParam != null) {
+      return  EnumUtils.getEnum(EnvironmentalWarningSortBy.class, sortByParam);
     }
     return sortBy;
   }
@@ -2069,5 +2142,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     return null;
   }
+
   
 }
