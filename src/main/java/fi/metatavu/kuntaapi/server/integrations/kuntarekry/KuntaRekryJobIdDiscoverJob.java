@@ -96,7 +96,7 @@ public class KuntaRekryJobIdDiscoverJob extends IdDiscoverJob {
         KuntaRekryJob kuntaRekryJob = kuntaRekryJobs.get(i);
         Long orderIndex = (long) i;
         kuntaRekryJobTaskQueue.enqueueTask(new KuntaRekryJobEntityTask(false, organizationId, kuntaRekryJob, orderIndex));
-        JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId()));
+        JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getUrl()));
         existingKuntaRekryJobIds.remove(kuntaRekryId);
       }
       
