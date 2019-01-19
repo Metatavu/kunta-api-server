@@ -63,7 +63,7 @@ public class KuntaRekryJobEntityDiscoverJob extends AbstractJmsJob<AbstractKunta
     OrganizationId organizationId = task.getOrganizationId();
     Long orderIndex = task.getOrderIndex();
     
-    JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, String.valueOf(kuntaRekryJob.getJobId())); 
+    JobId kuntaRekryId = new JobId(organizationId, KuntaRekryConsts.IDENTIFIER_NAME, kuntaRekryJob.getUrl()); 
 
     Identifier identifier = identifierController.acquireIdentifier(orderIndex, kuntaRekryId);
     identifierRelationController.setParentId(identifier, organizationId);

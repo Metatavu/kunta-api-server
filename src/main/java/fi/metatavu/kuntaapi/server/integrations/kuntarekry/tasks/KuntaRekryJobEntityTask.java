@@ -16,7 +16,7 @@ public class KuntaRekryJobEntityTask extends AbstractKuntaRekryJobTask {
   }
   
   public KuntaRekryJobEntityTask(boolean priority, OrganizationId organizationId, KuntaRekryJob entity, Long orderIndex) {
-	super(String.format("kuntarekry-job-entity-task-%s-%s", organizationId.toString(), entity.getJobId()), priority);
+	super(String.format("kuntarekry-job-entity-task-%s-%s", organizationId.toString(), entity.getUrl()), priority);
     this.organizationId = organizationId;
     this.entity = entity;
     this.orderIndex = orderIndex;
