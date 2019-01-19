@@ -70,10 +70,12 @@ public class KuntaRekryJob implements Serializable {
     this.jobDescription = jobDescription;
   }
 
+  @Deprecated
   public Long getJobId() {
     return jobId;
   }
 
+  @Deprecated
   public void setJobId(Long jobId) {
     this.jobId = jobId;
   }
