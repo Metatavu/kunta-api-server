@@ -1,5 +1,6 @@
 package fi.metatavu.kuntaapi.server.controllers;
 
+import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -53,15 +54,19 @@ public class EnvironmentalWarningController {
    * 
    * @param organizationId organization id. Id source must be Kunta API
    * @param contexts filter by context. Optional
+   * @param startBefore include only warnings starting before specified time. Optional
+   * @param startAfter include only warnings starting after specified time. Optional
    * @param sortBy sort by
    * @param sortDir sort direction
    * @param firstResult first result
    * @param maxResults max results
    * @return search result
    */
-  public SearchResult<EnvironmentalWarning> searchEnvironmentalWarnings(OrganizationId organizationId, Collection<String> contexts, EnvironmentalWarningSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) { 
+  public SearchResult<EnvironmentalWarning> searchEnvironmentalWarnings(OrganizationId organizationId, Collection<String> contexts, OffsetDateTime startBefore, OffsetDateTime startAfter, EnvironmentalWarningSortBy sortBy, SortDir sortDir, Integer firstResult, Integer maxResults) { 
     SearchResult<EnvironmentalWarningId> searchResult = environmentalWarningSearcher.searchEnvironmentalWarning(organizationId.getId(), 
         contexts, 
+        startBefore,
+        startAfter,
         sortBy,
         sortDir, 
         firstResult, 

@@ -2,7 +2,10 @@ package fi.metatavu.kuntaapi.server.index.search;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
+import static org.elasticsearch.index.query.QueryBuilders.rangeQuery;
 
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.logging.Logger;
 
@@ -12,6 +15,7 @@ import javax.inject.Inject;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
@@ -42,20 +46,42 @@ public class EnvironmentalWarningSearcher {
    * 
    * @param organizationId organization id. Id source must be Kunta API
    * @param contexts filter by context. Optional
+   * @param startBefore include only warnings starting before specified time. Optional
+   * @param startAfter include only warnings starting after specified time. Optional
    * @param sortBy sort by
    * @param sortDir sort direction
    * @param firstResult first result
    * @param maxResults max results
    * @return search result
    */
-  public SearchResult<EnvironmentalWarningId> searchEnvironmentalWarning(String organizationId, Collection<String> contexts, EnvironmentalWarningSortBy sortBy, SortDir sortDir, 
+  public SearchResult<EnvironmentalWarningId> searchEnvironmentalWarning(String organizationId, Collection<String> contexts, OffsetDateTime startBefore, OffsetDateTime startAfter, EnvironmentalWarningSortBy sortBy, SortDir sortDir, 
       Integer firstResult, Integer maxResults) {
     
     BoolQueryBuilder query = boolQuery()
       .must(matchQuery(IndexableEnvironmentalWarning.ORGANIZATION_ID_FIELD, organizationId));
 
     if (contexts != null) {
-      query.must(matchQuery(IndexableEnvironmentalWarning.CONTEXT_FIELD, contexts));
+      BoolQueryBuilder contextQueries = boolQuery();
+      
+      contexts.stream().forEach((context) -> {
+        contextQueries.should(matchQuery(IndexableEnvironmentalWarning.CONTEXT_FIELD, context));
+      });
+      
+      query.must(contextQueries);
+    }
+    
+    if (startBefore != null || startAfter != null) {
+      RangeQueryBuilder rangeQuery = rangeQuery(IndexableEnvironmentalWarning.START_FIELD);
+      
+      if (startAfter != null) {
+        rangeQuery.gte(startAfter.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+      }
+      
+      if (startBefore != null) {
+        rangeQuery.lte(startBefore.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+      }    
+      
+      query.must(rangeQuery);
     }
     
     return searchEnvironmentalWarnings(query, sortBy, sortDir, firstResult, maxResults);

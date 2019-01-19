@@ -122,6 +122,54 @@ public class FmiWeatherAlertsTestsIT extends AbstractIntegrationTest {
   }
   
   @Test
+  public void listEnvironmentalWarningByStart() {
+    String organizationId = getOrganizationId(0);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/environmentalWarnings?startBefore=2019-01-19T00:00:00Z", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("description[0][0].value", is("Example with ä and ö characters"));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/environmentalWarnings?startBefore=2019-01-19T00:00:00Z&startAfter=2019-01-17T12:00:00Z", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("description[0][0].value", is("Example with ä and ö characters"));
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/environmentalWarnings?startAfter=2019-01-19T12:00:00Z", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("description[0][0].value", is("Example wind"))
+      .body("description[1][0].value", is("Example snow"));
+  }
+
+  @Test
+  public void listEnvironmentalWarningByContext() {
+    String organizationId = getOrganizationId(0);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/environmentalWarnings?contexts=traffic-weather", organizationId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(2))
+      .body("description[0][0].value", is("Example snow"))
+      .body("description[1][0].value", is("Example with ä and ö characters"));
+  }
+  
+  @Test
   public void listEnvironmentalWarningSort() {
     String organizationId = getOrganizationId(0);
     
@@ -132,9 +180,9 @@ public class FmiWeatherAlertsTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(3))
-      .body("description[0][0].value", is("Example wind")) // 2019-02-12T03:00:00.000Z
-      .body("description[1][0].value", is("Example snow")) // 2019-01-19T15:00:00Z
-      .body("description[2][0].value", is("Example with ä and ö characters")); // 2019-01-18T12:00:00Z
+      .body("description[0][0].value", is("Example wind"))
+      .body("description[1][0].value", is("Example snow"))
+      .body("description[2][0].value", is("Example with ä and ö characters"));
     
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -143,9 +191,9 @@ public class FmiWeatherAlertsTestsIT extends AbstractIntegrationTest {
       .assertThat()
       .statusCode(200)
       .body("id.size()", is(3))
-      .body("description[2][0].value", is("Example wind")) // 2019-02-12T03:00:00.000Z
-      .body("description[1][0].value", is("Example snow")) // 2019-01-19T15:00:00Z
-      .body("description[0][0].value", is("Example with ä and ö characters")); // 2019-01-18T12:00:00Z
+      .body("description[2][0].value", is("Example wind"))
+      .body("description[1][0].value", is("Example snow"))
+      .body("description[0][0].value", is("Example with ä and ö characters"));
   } 
   
   @Test

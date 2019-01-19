@@ -45,7 +45,7 @@ import fi.metatavu.kuntaapi.server.tasks.jms.JmsQueueProperties;
     @ActivationConfigProperty(propertyName = JmsQueueProperties.MESSAGE_SELECTOR, propertyValue = JmsQueueProperties.TASK_MESSAGE_SELECTOR)
   }
 )
-@Pool(JmsQueueProperties.LOW_CONCURRENCY_POOL)
+@Pool(JmsQueueProperties.HIGH_CONCURRENCY_POOL)
 public class FmiWeatherAlertsEntityDiscoverJob extends AbstractJmsJob<FmiWeatherAlertEntityTask> {
 
   @Inject

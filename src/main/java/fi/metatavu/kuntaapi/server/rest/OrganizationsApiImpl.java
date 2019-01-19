@@ -1844,7 +1844,7 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   }
 
   @Override
-  public Response listOrganizationEnvironmentalWarnings(String organizationIdParam, Integer firstResult, String contextsParam, String before, String after, Integer maxResults, String sortByParam, String sortDirParam, Request request) {
+  public Response listOrganizationEnvironmentalWarnings(String organizationIdParam, Integer firstResult, String contextsParam, String startBefore, String startAfter, Integer maxResults, String sortByParam, String sortDirParam, Request request) {
     Response validateResponse = validateListLimitParams(firstResult, maxResults);
     if (validateResponse != null) {
       return validateResponse;
@@ -1867,7 +1867,15 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     
     List<String> contexts = StringUtils.isBlank(contextsParam) ? null : Arrays.asList(StringUtils.split(contextsParam, ','));
 
-    return restResponseBuilder.buildResponse(environmentalWarningController.searchEnvironmentalWarnings(organizationId, contexts, sortBy, sortDir, firstResult, maxResults), request);
+    return restResponseBuilder.buildResponse(environmentalWarningController.searchEnvironmentalWarnings(organizationId, 
+        contexts,
+        getDateTime(startBefore), 
+        getDateTime(startAfter),
+        sortBy, 
+        sortDir, 
+        firstResult, 
+        maxResults), 
+        request);
   }
 
   private SortDir resolveSortDir(String sortDirParam) {
