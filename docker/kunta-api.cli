@@ -19,6 +19,7 @@ embed-server --server-config=standalone-full.xml
 /subsystem=infinispan/cache-container=kunta-api:add()
 /subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)
 /subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()
+/subsystem=infinispan/cache-container=kunta-api/local-cache=clusterlock:add()
 /subsystem=messaging-activemq/server=default/connection-factory=InVmConnectionFactory:write-attribute(name=confirmation-window-size,value="10240")
 /subsystem=ejb3/strict-max-bean-instance-pool=mdb-no-concurrency-pool:add(max-pool-size="1")
 /subsystem=ejb3/strict-max-bean-instance-pool=mdb-low-concurrency-pool:add(max-pool-size="5")

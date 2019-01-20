@@ -20,6 +20,7 @@ import javax.jms.StreamMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import fi.metatavu.kuntaapi.server.locking.ClusterLockController;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.TaskSerializer;
 import fi.metatavu.metaflow.tasks.Task;
@@ -48,6 +49,9 @@ public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializabl
 
   @Inject
   private SystemSettingController systemSettingController;
+
+  @Inject
+  private ClusterLockController clusterLockController;
   
   @Resource (lookup = JmsQueueProperties.CONNECTION_FACTORY)
   private ConnectionFactory connectionFactory;
@@ -95,6 +99,12 @@ public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializabl
    */
   @SuppressWarnings("unchecked")
   private R enqueueTask(T task, int deliveryDelay, boolean blocking) {
+    String lockKey = String.format("task-%s", task.getUniqueId());
+    
+    if (!clusterLockController.lockUntilTransactionCompletion(lockKey)) {
+      logger.severe(String.format("Could not lock task %s. Proceeding without lock", lockKey));
+    }
+    
     if (!systemSettingController.isNotTestingOrTestRunning()) {
       return null;
     }
