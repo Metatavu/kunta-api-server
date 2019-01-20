@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fi.metatavu.kunta-api</groupId>
   <artifactId>kunta-api-server</artifactId>
-  <version>0.1.6-SNAPSHOT</version>
+  <version>0.1.7-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>Kunta API</name>
   <description>Kunta API server</description>
@@ -62,7 +62,7 @@
 
     <!-- Kunta API Spec -->
 
-    <kunta-api-spec.version>0.1.128</kunta-api-spec.version>
+    <kunta-api-spec.version>0.1.132</kunta-api-spec.version>
     
     <!-- Integrations -->
     
@@ -1035,6 +1035,7 @@
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-news:add(entries=[java:/jms/queue/management-news])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-pages:add(entries=[java:/jms/queue/management-pages])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-banners:add(entries=[java:/jms/queue/management-banners])</command>
+                    <command>/subsystem=messaging-activemq/server=default/jms-queue=fmiweatheralerts:add(entries=[java:/jms/queue/fmiweatheralerts])</command>
                   </commands>
                 </configuration>
               </execution>

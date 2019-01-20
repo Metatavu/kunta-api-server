@@ -277,5 +277,14 @@ public interface IdProvider {
    * @return translated id
    */
   public EmergencyId translate(EmergencyId emergencyId, String target);
+  
+  /**
+   * Translate environmental warning id
+   * 
+   * @param environmentalWarningId original id
+   * @param target target type
+   * @return translated id
+   */
+  public EnvironmentalWarningId translate(EnvironmentalWarningId environmentalWarningId, String target);
 
 }
