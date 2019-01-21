@@ -464,6 +464,8 @@ public class GenericHttpClient {
         ObjectMapper objectMapper = getJsonObjectMapper();
         return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
       }
+    } catch (Exception e) {
+      return new Response<>(500, e.getMessage(), null);
     } finally {
       EntityUtils.consume(entity);
     }
