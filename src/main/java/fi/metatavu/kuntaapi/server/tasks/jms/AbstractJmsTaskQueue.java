@@ -119,6 +119,8 @@ public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializabl
       }
       
       return enqueueTask(task, deliveryDelay, blocking);
+    } else if (logger.isLoggable(Level.FINEST)) {
+      logger.log(Level.FINEST, String.format("Locked task %s", lockKey));
     }
     
     if (!systemSettingController.isNotTestingOrTestRunning()) {
