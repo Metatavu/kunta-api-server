@@ -18,6 +18,12 @@ public class PtvConsts {
   public static final String SYSTEM_SETTING_BASEURL = "ptv.baseUrl";
   public static final String SYSTEM_SETTING_STS_BASEURL = "ptv.stsBaseUrl";
   public static final String SYSTEM_SETTING_AUTH_STRATEGY = "ptv.authStrategy";
+  public static final String SYSTEM_SETTING_FAILSAFE_ORGANIZATION_UPDATER_ENABLED = "ptv.failsafeOrganizationUpdaterEnabled";
+  public static final String SYSTEM_SETTING_PRIORITY_ORGANIZATION_UPDATER_ENABLED = "ptv.priorityOrganizationUpdaterEnabled";
+  public static final String SYSTEM_SETTING_FAILSAFE_SERVICE_CHANNEL_UPDATER_ENABLED = "ptv.failsafeServiceChannelUpdaterEnabled";
+  public static final String SYSTEM_SETTING_PRIORITY_SERVICE_CHANNEL_UPDATER_ENABLED = "ptv.priorityServiceChannelUpdaterEnabled";
+  public static final String SYSTEM_SETTING_FAILSAFE_SERVICE_UPDATER_ENABLED = "ptv.failsafeServiceUpdaterEnabled";
+  public static final String SYSTEM_SETTING_PRIORITY_SERVICE_UPDATER_ENABLED = "ptv.priorityServiceUpdaterEnabled";
   public static final String DEFAULT_LANGUAGE = "fi";
   public static final String TIMEZONE = "Europe/Helsinki";
   public static final List<String> PTV_SUPPORTED_LANGUAGES = Collections.unmodifiableList(Arrays.asList("fi", "en", "sv"));
@@ -28,5 +34,5 @@ public class PtvConsts {
   
   private PtvConsts() {
   }
-
+  
 }

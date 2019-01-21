@@ -30,6 +30,11 @@ public class PtvServiceIdUpdater extends AbstractPtvServiceIdDiscoverJob {
   public String getName() {
     return "ptv-service-ids";
   }
+
+  @Override
+  public String getEnabledSettingKey() {
+    return PtvConsts.SYSTEM_SETTING_FAILSAFE_SERVICE_UPDATER_ENABLED;
+  }
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {

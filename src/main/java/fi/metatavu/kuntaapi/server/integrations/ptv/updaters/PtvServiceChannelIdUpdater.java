@@ -30,6 +30,11 @@ public class PtvServiceChannelIdUpdater extends AbstractPtvServiceChannelIdDisco
   public String getName() {
     return "ptv-service-channel-ids";
   }
+
+  @Override
+  public String getEnabledSettingKey() {
+    return PtvConsts.SYSTEM_SETTING_FAILSAFE_SERVICE_CHANNEL_UPDATER_ENABLED;
+  }
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {

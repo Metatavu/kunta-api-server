@@ -30,6 +30,11 @@ public class PtvOrganizationIdUpdater extends AbstractPtvOrganizationIdDiscoverJ
   public String getName() {
     return "ptv-organization-ids";
   }
+
+  @Override
+  public String getEnabledSettingKey() {
+    return PtvConsts.SYSTEM_SETTING_FAILSAFE_ORGANIZATION_UPDATER_ENABLED;
+  }
   
   @Override
   public boolean getIsPriority() {
