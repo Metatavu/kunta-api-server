@@ -82,14 +82,14 @@ public class FmiWeatherAlertsEntityDiscoverJob extends AbstractJmsJob<FmiWeather
   public void execute(FmiWeatherAlertEntityTask task) {
     Feature feature = task.getFeature();
     Long orderIndex = task.getOrderIndex();
-    String featureId = feature.getId();
+    String alertId = feature.getAlertId();
     String featureReference = feature.getProperties().getReference();
     
     List<OrganizationId> organizationIds = organizationSettingController.listOrganizationIdsWithSetting(FmiWeatherAlertsConsts.ORGANIZATION_SETTING_REFERENCE);
     for (OrganizationId organizationId : organizationIds) {
       String organizationReference = organizationSettingController.getSettingValue(organizationId, FmiWeatherAlertsConsts.ORGANIZATION_SETTING_REFERENCE);
       if (StringUtils.equals(featureReference, organizationReference)) {
-        EnvironmentalWarningId fmiId = fmiWeatherAlertsIdFactory.createEnvironmentalWarningId(organizationId, featureId);
+        EnvironmentalWarningId fmiId = fmiWeatherAlertsIdFactory.createEnvironmentalWarningId(organizationId, alertId);
         Identifier identifier = identifierController.acquireIdentifier(orderIndex, fmiId);
         identifierRelationController.setParentId(identifier, organizationId);
         EnvironmentalWarningId kuntaApiId = kuntaApiIdFactory.createFromIdentifier(EnvironmentalWarningId.class, identifier);
@@ -100,7 +100,7 @@ public class FmiWeatherAlertsEntityDiscoverJob extends AbstractJmsJob<FmiWeather
           indexEnvironmentalWarning(organizationId, environmentalWarning, orderIndex);
         } else {
           if (logger.isLoggable(Level.INFO)) {
-            logger.info(String.format("Failed to translate FMI Weather Alert %s", featureId));
+            logger.info(String.format("Failed to translate FMI Weather Alert %s", alertId));
           }
         }
       }

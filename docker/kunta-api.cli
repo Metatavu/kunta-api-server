@@ -42,5 +42,6 @@ embed-server --server-config=standalone-full.xml
 /subsystem=messaging-activemq/server=default/jms-queue=management-news:add(entries=[java:/jms/queue/management-news])
 /subsystem=messaging-activemq/server=default/jms-queue=management-pages:add(entries=[java:/jms/queue/management-pages])
 /subsystem=messaging-activemq/server=default/jms-queue=management-banners:add(entries=[java:/jms/queue/management-banners])
+/subsystem=messaging-activemq/server=default/jms-queue=fmiweatheralerts:add(entries=[java:/jms/queue/fmiweatheralerts])
 /subsystem=datasources/jdbc-driver=mariadb-xa:add(driver-name=mariadb-xa, driver-module-name=com.mariadb.jdbc, xa-datasource-class=org.mariadb.jdbc.MySQLDataSource)
 data-source add --name=kuntaapi --jndi-name=java:jboss/datasources/kuntaapi --enabled=true --jta=true --use-ccm=true --connection-url=jdbc:mysql://${env.KUNTA_API_DB_HOST}:3306/${env.KUNTA_API_DB_NAME}?useUnicode=true&characterEncoding=UTF-8 --driver-name=mariadb-xa --user-name=${env.KUNTA_API_DB_USER} --password=${env.KUNTA_API_DB_PASSWORD} --check-valid-connection-sql="SELECT 1" --validate-on-match=false --share-prepared-statements=false --max-pool-size=1000

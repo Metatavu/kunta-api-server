@@ -53,7 +53,7 @@ public class FmiWeatherAlertsIdDiscoverJob extends IdDiscoverJob {
   
   @Override
   public String getName() {
-    return "organization-fmiweatheralerts";
+    return "fmiweatheralerts";
   }
 
   @Override

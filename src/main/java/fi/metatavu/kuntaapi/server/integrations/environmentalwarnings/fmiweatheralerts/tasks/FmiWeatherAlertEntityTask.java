@@ -30,7 +30,7 @@ public class FmiWeatherAlertEntityTask extends DefaultTaskImpl {
    * @param orderIndex order index
    */
   public FmiWeatherAlertEntityTask(boolean priority, Feature feature, Long orderIndex) {
-    super(String.format("fmiweatheralert-entity-task-%s", feature.getId()), priority);
+    super(String.format("fmiweatheralert-entity-task-%s", feature.getAlertId()), priority);
     this.feature = feature;
     this.orderIndex = orderIndex;
   }

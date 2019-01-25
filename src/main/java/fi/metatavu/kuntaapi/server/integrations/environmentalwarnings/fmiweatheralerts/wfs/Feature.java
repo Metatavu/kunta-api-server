@@ -3,6 +3,7 @@ package fi.metatavu.kuntaapi.server.integrations.environmentalwarnings.fmiweathe
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -70,6 +71,11 @@ public class Feature implements Serializable {
   @JsonProperty("properties")
   public void setProperties(Properties properties) {
     this.properties = properties;
+  }  
+  
+  @JsonIgnore
+  public String getAlertId() {
+    return String.format("%s-%s", getProperties().getIdentifier(), getProperties().getReference());
   }
 
 }
