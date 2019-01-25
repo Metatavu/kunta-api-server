@@ -25,6 +25,8 @@ public enum IdType {
   
   EVENT,
   
+  ENVIRONMENTAL_WARNING,
+  
   ATTACHMENT,
   
   NEWS_ARTICLE,

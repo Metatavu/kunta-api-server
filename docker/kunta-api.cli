@@ -19,6 +19,7 @@ embed-server --server-config=standalone-full.xml
 /subsystem=infinispan/cache-container=kunta-api:add()
 /subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)
 /subsystem=infinispan/cache-container=kunta-api/local-cache=modificationhash:add()
+/subsystem=infinispan/cache-container=kunta-api/local-cache=clusterlock:add()
 /subsystem=messaging-activemq/server=default/connection-factory=InVmConnectionFactory:write-attribute(name=confirmation-window-size,value="10240")
 /subsystem=ejb3/strict-max-bean-instance-pool=mdb-no-concurrency-pool:add(max-pool-size="1")
 /subsystem=ejb3/strict-max-bean-instance-pool=mdb-low-concurrency-pool:add(max-pool-size="5")
@@ -41,5 +42,6 @@ embed-server --server-config=standalone-full.xml
 /subsystem=messaging-activemq/server=default/jms-queue=management-news:add(entries=[java:/jms/queue/management-news])
 /subsystem=messaging-activemq/server=default/jms-queue=management-pages:add(entries=[java:/jms/queue/management-pages])
 /subsystem=messaging-activemq/server=default/jms-queue=management-banners:add(entries=[java:/jms/queue/management-banners])
+/subsystem=messaging-activemq/server=default/jms-queue=fmiweatheralerts:add(entries=[java:/jms/queue/fmiweatheralerts])
 /subsystem=datasources/jdbc-driver=mariadb-xa:add(driver-name=mariadb-xa, driver-module-name=com.mariadb.jdbc, xa-datasource-class=org.mariadb.jdbc.MySQLDataSource)
 data-source add --name=kuntaapi --jndi-name=java:jboss/datasources/kuntaapi --enabled=true --jta=true --use-ccm=true --connection-url=jdbc:mysql://${env.KUNTA_API_DB_HOST}:3306/${env.KUNTA_API_DB_NAME}?useUnicode=true&characterEncoding=UTF-8 --driver-name=mariadb-xa --user-name=${env.KUNTA_API_DB_USER} --password=${env.KUNTA_API_DB_PASSWORD} --check-valid-connection-sql="SELECT 1" --validate-on-match=false --share-prepared-statements=false --max-pool-size=1000

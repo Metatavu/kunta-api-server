@@ -17,9 +17,13 @@ import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.StreamMessage;
+import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
+import fi.metatavu.kuntaapi.server.locking.ClusterLockController;
 import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
 import fi.metatavu.kuntaapi.server.tasks.TaskSerializer;
 import fi.metatavu.metaflow.tasks.Task;
@@ -48,6 +52,9 @@ public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializabl
 
   @Inject
   private SystemSettingController systemSettingController;
+
+  @Inject
+  private ClusterLockController clusterLockController;
   
   @Resource (lookup = JmsQueueProperties.CONNECTION_FACTORY)
   private ConnectionFactory connectionFactory;
@@ -94,7 +101,28 @@ public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializabl
    * @param blocking Whether to block until a reply message arrives
    */
   @SuppressWarnings("unchecked")
-  private R enqueueTask(T task, int deliveryDelay, boolean blocking) {
+  @Transactional (value = TxType.REQUIRES_NEW)
+  public R enqueueTask(T task, int deliveryDelay, boolean blocking) {
+    String lockKey = String.format("task-%s", task.getUniqueId());
+    
+    if (!clusterLockController.lockUntilTransactionCompletion(lockKey)) {
+      if (logger.isLoggable(Level.FINEST)) {
+        logger.log(Level.FINEST, String.format("Reroll task %s", lockKey));
+      }
+      
+      try {
+        Thread.sleep(200);
+      } catch (InterruptedException e) {
+        if (logger.isLoggable(Level.WARNING)) {
+          logger.log(Level.WARNING, "Lock reroll cooldown interrupted", e);
+        }
+      }
+      
+      return enqueueTask(task, deliveryDelay, blocking);
+    } else if (logger.isLoggable(Level.FINEST)) {
+      logger.log(Level.FINEST, String.format("Locked task %s", lockKey));
+    }
+    
     if (!systemSettingController.isNotTestingOrTestRunning()) {
       return null;
     }
@@ -127,11 +155,18 @@ public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializabl
               
               if (blocking) {
                 long waitTimeout = System.currentTimeMillis() + MAX_REPLY_TIMEOUT;
-                ObjectMessage replyMessage = null;
                 while (true) {
-                  replyMessage = (ObjectMessage) consumer.receive(REPLY_TIMEOUT); 
+                  Message replyMessage = consumer.receive(REPLY_TIMEOUT);
                   if (replyMessage != null) {
-                    return (R) replyMessage.getObject();
+                    if (replyMessage instanceof ObjectMessage) {
+                      return (R) ((ObjectMessage) replyMessage).getObject();
+                    } else if (replyMessage instanceof TextMessage) {
+                      logger.severe(String.format("Received text message with message %s instead of object message", ((TextMessage) replyMessage).getText()));
+                      break;
+                    } else {
+                      logger.severe(String.format("Received %s message instead of object message", message.toString()));
+                      break;                      
+                    }
                   }
                   
                   if (System.currentTimeMillis() > waitTimeout) {
@@ -158,7 +193,7 @@ public abstract class AbstractJmsTaskQueue<T extends Task, R extends Serializabl
     
     return null;
   }
-  
+
   /**
    * Creates JMS message producer
    * 

@@ -15,6 +15,7 @@ import fi.metatavu.kuntaapi.server.id.BaseId;
 import fi.metatavu.kuntaapi.server.id.ContactId;
 import fi.metatavu.kuntaapi.server.id.ElectronicServiceChannelId;
 import fi.metatavu.kuntaapi.server.id.EmergencyId;
+import fi.metatavu.kuntaapi.server.id.EnvironmentalWarningId;
 import fi.metatavu.kuntaapi.server.id.EventId;
 import fi.metatavu.kuntaapi.server.id.FileId;
 import fi.metatavu.kuntaapi.server.id.FragmentId;
@@ -207,6 +208,11 @@ public abstract class AbstractIdProvider implements IdProvider {
   @Override
   public EmergencyId translate(EmergencyId emergencyId, String target) {
     return translateId(emergencyId, IdType.EMERGENCY, EmergencyId.class, target);
+  }
+  
+  @Override
+  public EnvironmentalWarningId translate(EnvironmentalWarningId environmentalWarningId, String target) {
+    return translateId(environmentalWarningId, IdType.ENVIRONMENTAL_WARNING, EnvironmentalWarningId.class, target);
   }
   
   private <T extends BaseId> T translateId(T id, IdType type, Class<T> idClass, String target) {

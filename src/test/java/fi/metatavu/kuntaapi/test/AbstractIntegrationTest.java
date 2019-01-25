@@ -88,7 +88,8 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private PtvOrganizationMocker ptvOrganizationMocker = new PtvOrganizationMocker();
   private PtvCodesMocker ptvCodesMocker = new PtvCodesMocker();
   private ManagementPostMenuOrderMocker managementPostMenuOrderMocker = new ManagementPostMenuOrderMocker();
-  
+  private FmiWeatherAlertsWfsMocker fmiWeatherAlertsWfsMocker = new FmiWeatherAlertsWfsMocker();
+
   @After
   public void afterEveryTest() throws IOException {
     setLog4jLevel(Level.OFF);
@@ -119,6 +120,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementPostMenuOrderMocker.endMock();
     kuntarekryMocker.endMock();
     tptMocker.endMock();
+    fmiWeatherAlertsWfsMocker.endMock();
 
     deleteOrganizationPermissions();
     
@@ -181,6 +183,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     managementMenuMocker.startMock();
     ptvCodesMocker.startMock();
     managementPostMenuOrderMocker.startMock();
+    fmiWeatherAlertsWfsMocker.startMock();
     
     insertSystemSetting(KuntaApiConsts.SYSTEM_SETTING_TESTS_RUNNING, "true");
     
@@ -272,6 +275,10 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return managementPostMenuOrderMocker;
   }
 
+  public FmiWeatherAlertsWfsMocker getFmiWeatherAlertsWfsMocker() {
+    return fmiWeatherAlertsWfsMocker;
+  }
+  
   /**
    * Returns test client id for given access type
    * 
@@ -592,6 +599,22 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return givenReadonly()
         .contentType(ContentType.JSON)
         .get(String.format("/organizations/%s/jobs", organizationId))
+        .body()
+        .jsonPath()
+        .getString(String.format("id[%d]", index));
+  }
+  
+  /**
+   * Returns environmental warning id from API by index
+   * 
+   * @param organizationId organization id
+   * @param index index
+   * @return environmental warning id
+   */
+  protected String getEnvironmentalWarningId(String organizationId, int index) {
+    return givenReadonly()
+        .contentType(ContentType.JSON)
+        .get(String.format("/organizations/%s/environmentalWarnings", organizationId))
         .body()
         .jsonPath()
         .getString(String.format("id[%d]", index));
