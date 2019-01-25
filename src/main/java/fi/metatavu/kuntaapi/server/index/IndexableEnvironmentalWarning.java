@@ -14,7 +14,7 @@ public class IndexableEnvironmentalWarning implements Indexable {
   public static final String ENVIRONMENTAL_WARNING_ID_FIELD = "environmentalWarningId";
   public static final String ORGANIZATION_ID_FIELD = "organizationId";
   public static final String ORDER_INDEX_FIELD = "orderIndex";
-  public static final String TYPE_FIELD = "type";
+  public static final String WARNING_TYPE_FIELD = "warningType";
   public static final String CONTEXT_FIELD = "context";
   public static final String SEVERITY_FIELD = "severity";
   public static final String START_FIELD = "start";
@@ -30,7 +30,7 @@ public class IndexableEnvironmentalWarning implements Indexable {
   private Long orderIndex;
 
   @Field(index = "not_analyzed", store = true)
-  private String type;
+  private String warningType;
 
   @Field(index = "not_analyzed", store = true)
   private String context;
@@ -67,6 +67,14 @@ public class IndexableEnvironmentalWarning implements Indexable {
   @Override
   public String getType() {
     return TYPE;
+  }
+  
+  public String getWarningType() {
+    return warningType;
+  }
+  
+  public void setWarningType(String warningType) {
+    this.warningType = warningType;
   }
   
   public String getEnvironmentalWarningId() {
@@ -156,10 +164,6 @@ public class IndexableEnvironmentalWarning implements Indexable {
 
   public void setOrderIndex(Long orderIndex) {
     this.orderIndex = orderIndex;
-  }
-
-  public void setType(String type) {
-    this.type = type;
   }
   
   public String getOrganizationId() {

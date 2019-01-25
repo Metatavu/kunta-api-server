@@ -145,7 +145,7 @@ public class FmiWeatherAlertsEntityDiscoverJob extends AbstractJmsJob<FmiWeather
     result.setOrderIndex(orderIndex);
     result.setSeverity(environmentalWarning.getSeverity());
     result.setStart(environmentalWarning.getStart());
-    result.setType(environmentalWarning.getType());
+    result.setWarningType(environmentalWarning.getType());
     result.setOrganizationId(organizationId.getId());
     
     indexRequest.fire(new IndexRequest(result));
