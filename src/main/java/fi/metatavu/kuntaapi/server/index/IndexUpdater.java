@@ -45,6 +45,7 @@ public class IndexUpdater extends AbstractIndexHander {
     registerIndexable(IndexablePrintableFormServiceChannel.class);
     registerIndexable(IndexableWebPageServiceChannel.class);
     registerIndexable(IndexableEmergency.class);
+    registerIndexable(IndexableEnvironmentalWarning.class);
   }
 
   @Lock (LockType.READ)

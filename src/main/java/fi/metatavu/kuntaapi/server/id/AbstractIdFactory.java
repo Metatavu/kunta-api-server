@@ -99,6 +99,28 @@ public abstract class AbstractIdFactory {
     return createId(EmergencyId.class, kuntaApiOrganizationId, id);
   }
   
+  /**
+   * Creates EnvironmentalWarningId
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param id id
+   * @return created id
+   */
+  public EnvironmentalWarningId createEnvironmentalWarningId(OrganizationId kuntaApiOrganizationId, UUID id) {
+    return createId(EnvironmentalWarningId.class, kuntaApiOrganizationId, id);
+  }
+
+  /**
+   * Creates EnvironmentalWarningId
+   * 
+   * @param kuntaApiOrganizationId organization id
+   * @param id id
+   * @return created id
+   */
+  public EnvironmentalWarningId createEnvironmentalWarningId(OrganizationId kuntaApiOrganizationId, String id) {
+    return createId(EnvironmentalWarningId.class, kuntaApiOrganizationId, id);
+  }
+  
   public JobId createJobId(OrganizationId kuntaApiOrganizationId, UUID id) {
     return createId(JobId.class, kuntaApiOrganizationId, id);
   }

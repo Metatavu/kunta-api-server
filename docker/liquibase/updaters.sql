@@ -2,7 +2,7 @@ INSERT INTO
   `SystemSetting` (settingKey, value) 
 VALUES 
   ('id-updater.ptv-electronic-service-channel-removed-ids.warmup','120000'),
-  ('id-updater.ptv-electronic-service-channel-removed-ids.interval','120000'),
+  ('id-updater.ptv-electronic-service-channel-removed-ids.','120000'),
   ('id-updater.management-menu-ids.warmup','60000'),
   ('id-updater.management-menu-ids.interval','1800000'),
   ('id-updater.management-page-ids.warmup','60000'),
@@ -55,6 +55,8 @@ VALUES
   ('id-updater.ptv-service-channel-priority-ids.interval','30000'),
   ('id-updater.ptv-printable-form-service-channel-removed-ids.warmup','140000'),
   ('id-updater.ptv-printable-form-service-channel-removed-ids.interval','120000'),
+  ('id-updater.fmiweatheralerts.warmup','3600000'),
+  ('id-updater.fmiweatheralerts.interval','interval'),
   ('entity-updater.management-incidents.warmup','60000'),
   ('entity-updater.management-incidents.interval','100'),
   ('entity-updater.management-menus.warmup','2000'),

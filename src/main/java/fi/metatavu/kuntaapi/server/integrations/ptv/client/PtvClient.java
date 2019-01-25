@@ -48,31 +48,35 @@ public class PtvClient extends fi.metatavu.ptv.client.ApiClient {
   
   @Override
   public <T> ApiResponse<T> doGETRequest(String accessToken, String path, ResultType<T> resultType, Map<String, Object> queryParams, Map<String, Object> postParams) {
-    URIBuilder uriBuilder;
     try {
-      uriBuilder = new URIBuilder(String.format("%s%s", getBaseUrl(), path));
-    } catch (URISyntaxException e) {
-      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
-      return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
-    }
-    
-    if (queryParams != null) {
-      for (Entry<String, Object> entry : queryParams.entrySet()) {
-        addQueryParam(uriBuilder, entry);
+      URIBuilder uriBuilder;
+      try {
+        uriBuilder = new URIBuilder(String.format("%s%s", getBaseUrl(), path));
+      } catch (URISyntaxException e) {
+        logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+        return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
       }
+      
+      if (queryParams != null) {
+        for (Entry<String, Object> entry : queryParams.entrySet()) {
+          addQueryParam(uriBuilder, entry);
+        }
+      }
+      
+      URI uri;
+      try {
+        uri = uriBuilder.build();
+      } catch (URISyntaxException e) {
+        logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
+        return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
+      }
+      
+      Response<T> response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()));
+      
+      return new ApiResponse<>(response.getStatus(), response.getMessage(), response.getResponseEntity());
+    } catch (Exception e) {
+      return new ApiResponse<>(500, e.getMessage(), null);
     }
-    
-    URI uri;
-    try {
-      uri = uriBuilder.build();
-    } catch (URISyntaxException e) {
-      logger.log(Level.SEVERE, INVALID_URI_SYNTAX, e);
-      return new ApiResponse<>(500, INVALID_URI_SYNTAX, null);
-    }
-    
-    Response<T> response = httpClient.doGETRequest(uri, new GenericHttpClient.ResultTypeWrapper<>(resultType.getType()));
-    
-    return new ApiResponse<>(response.getStatus(), response.getMessage(), response.getResponseEntity());
   }
   
   @Override

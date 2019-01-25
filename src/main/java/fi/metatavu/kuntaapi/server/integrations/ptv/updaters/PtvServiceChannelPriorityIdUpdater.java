@@ -43,6 +43,11 @@ public class PtvServiceChannelPriorityIdUpdater extends AbstractPtvServiceChanne
   public String getName() {
     return "ptv-service-channel-priority-ids";
   }
+
+  @Override
+  public String getEnabledSettingKey() {
+    return PtvConsts.SYSTEM_SETTING_PRIORITY_SERVICE_CHANNEL_UPDATER_ENABLED;
+  }
   
   @Override
   public ApiResponse<V3VmOpenApiGuidPage> getPage(Integer page) {

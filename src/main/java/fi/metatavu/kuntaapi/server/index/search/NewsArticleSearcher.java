@@ -46,7 +46,7 @@ public class NewsArticleSearcher {
   /**
    * Search news articles. 
    * 
-   * @param organizationId organixation id. Id source must be Kunta API
+   * @param organizationId organization id. Id source must be Kunta API
    * @param search free text search. Optional
    * @param tag filter by tag. Optional
    * @param slug filter by slug. Optional

@@ -50,6 +50,11 @@ public class PtvOrganizationPriorityIdUpdater extends AbstractPtvOrganizationIdD
   }
 
   @Override
+  public String getEnabledSettingKey() {
+    return PtvConsts.SYSTEM_SETTING_PRIORITY_ORGANIZATION_UPDATER_ENABLED;
+  }
+
+  @Override
   public ApiResponse<V8VmOpenApiOrganizationGuidPage> getPage(Integer page) {
     currentUpdateStart = OffsetDateTime.now();
     return ptvApi.getOrganizationApi().apiV9OrganizationGet(lastUpdate.minusMinutes(UPDATE_SLACK_MINUTE), null, null, PtvConsts.PUBLISHED_STATUS);

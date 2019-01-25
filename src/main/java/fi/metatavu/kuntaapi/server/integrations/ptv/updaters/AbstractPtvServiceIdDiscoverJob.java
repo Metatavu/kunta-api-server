@@ -34,7 +34,14 @@ public abstract class AbstractPtvServiceIdDiscoverJob extends IdDiscoverJob {
   
   @Inject
   private ServiceIdTaskQueue serviceIdTaskQueue;
-
+  
+  /**
+   * Returns system setting for enabling / disabling discover job
+   * 
+   * @return system setting for enabling / disabling discover job
+   */
+  public abstract String getEnabledSettingKey();
+  
   /**
    * Requests a guid page from PTV
    * 
@@ -64,6 +71,10 @@ public abstract class AbstractPtvServiceIdDiscoverJob extends IdDiscoverJob {
   protected void discoverIds(Integer page) {
     if (!systemSettingController.hasSettingValue(PtvConsts.SYSTEM_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
+      return;
+    }
+
+    if ("false".equals(systemSettingController.getSettingValue(getEnabledSettingKey(), "true"))) {
       return;
     }
     
