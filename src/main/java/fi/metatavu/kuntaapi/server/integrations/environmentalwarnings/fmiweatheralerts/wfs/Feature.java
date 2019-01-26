@@ -75,7 +75,7 @@ public class Feature implements Serializable {
   
   @JsonIgnore
   public String getAlertId() {
-    return String.format("%s-%s", getProperties().getIdentifier(), getProperties().getReference());
+    return String.format("%s-%s-%s", getProperties().getCreationTime(), getProperties().getWarningContext(), getProperties().getReference());
   }
 
 }
