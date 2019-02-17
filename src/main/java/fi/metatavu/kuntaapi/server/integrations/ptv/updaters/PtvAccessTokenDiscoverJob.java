@@ -42,7 +42,7 @@ import fi.metatavu.kuntaapi.server.tasks.OrganizationEntityUpdateTask;
 @SuppressWarnings ("squid:S3306")
 public class PtvAccessTokenDiscoverJob extends EntityDiscoverJob<OrganizationEntityUpdateTask> {
   
-  private static final long TOKEN_EXPIRE_MAX_TIME = 60l * 60 * 24 * 7;
+  private static final long TOKEN_EXPIRE_MAX_TIME = 60l * 60 * 24;
 
   @Inject
   private Logger logger;
@@ -172,12 +172,20 @@ public class PtvAccessTokenDiscoverJob extends EntityDiscoverJob<OrganizationEnt
       Response<PtvFormAccessToken> response = genericHttpClient.doPOSTRequest(uri, resultType, headers, formEntity);
       if (response.isOk()) {
         PtvFormAccessToken accessToken = response.getResponseEntity();
-        Long expiresIn = accessToken.getExpiresIn();
-        if (expiresIn == null) {
-          expiresIn = TOKEN_EXPIRE_MAX_TIME;
+        OffsetDateTime tokenExpires = accessToken.getExpiration();
+        OffsetDateTime maxExpire = OffsetDateTime.now().plusSeconds(TOKEN_EXPIRE_MAX_TIME);
+        
+        if (tokenExpires == null) {
+          Long expiresIn = accessToken.getExpiresIn();
+          if (expiresIn != null) {
+            tokenExpires = OffsetDateTime.now().plusSeconds(expiresIn);
+          }          
         }
         
-        OffsetDateTime tokenExpires = OffsetDateTime.now().plusSeconds(expiresIn);
+        if (tokenExpires == null || tokenExpires.isAfter(maxExpire)) {
+          tokenExpires = maxExpire;
+        }
+        
         externalAccessTokenController.setOrganizationExternalAccessToken(kuntaApiOrganizationId, PtvConsts.PTV_ACCESS_TOKEN_TYPE, accessToken.getAccessToken(), tokenExpires);
       } else {
         logger.log(Level.SEVERE, () -> String.format("Failed to refresh PTV access token for organization %s: [%d]: %s", kuntaApiOrganizationId, response.getStatus(), response.getMessage())); 
@@ -232,6 +240,9 @@ public class PtvAccessTokenDiscoverJob extends EntityDiscoverJob<OrganizationEnt
     @JsonProperty (value = "access_token")
     private String accessToken;
     
+    @JsonProperty (value = "expiration")
+    private OffsetDateTime expiration;
+    
     @JsonProperty (value = "expires_in")
     private Long expiresIn;
     
@@ -260,6 +271,14 @@ public class PtvAccessTokenDiscoverJob extends EntityDiscoverJob<OrganizationEnt
     
     public void setTokenType(String tokenType) {
       this.tokenType = tokenType;
+    }
+    
+    public OffsetDateTime getExpiration() {
+      return expiration;
+    }
+    
+    public void setExpiration(OffsetDateTime expiration) {
+      this.expiration = expiration;
     }
     
   }
