@@ -15,6 +15,7 @@ import javax.inject.Inject;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.jboss.ejb3.annotation.Pool;
 
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
@@ -32,6 +33,7 @@ import fi.metatavu.kuntaapi.server.index.IndexableNewsArticle;
 import fi.metatavu.kuntaapi.server.integrations.AttachmentData;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.integrations.management.client.ManagementApi;
+import fi.metatavu.kuntaapi.server.integrations.management.client.model.PostMenuOrder;
 import fi.metatavu.kuntaapi.server.integrations.management.resources.ManagementAttachmentDataResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.management.resources.ManagementAttachmentResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.management.tasks.NewsArticleIdTaskQueue;
@@ -96,7 +98,7 @@ public class ManagementNewsArticleEntityDiscoverJob extends AbstractJmsJob<IdTas
   
   @Inject
   private ModificationHashCache modificationHashCache;
-  
+
   @Inject
   private Event<IndexRequest> indexRequest;
 
@@ -115,24 +117,39 @@ public class ManagementNewsArticleEntityDiscoverJob extends AbstractJmsJob<IdTas
     }
   }
   
-  private void updateManagementPost(NewsArticleId newsArticleId, Long orderIndex) {
-    OrganizationId organizationId = newsArticleId.getOrganizationId();
+  private void updateManagementPost(NewsArticleId managementNewsArticleId, Long orderIndex) {
+    OrganizationId organizationId = managementNewsArticleId.getOrganizationId();
     if (!organizationSettingController.hasSettingValue(organizationId, ManagementConsts.ORGANIZATION_SETTING_BASEURL)) {
       logger.log(Level.INFO, "Organization management baseUrl not set, skipping update"); 
       return;
     }
     
+    Integer postId = NumberUtils.createInteger(managementNewsArticleId.getId());
+    ApiResponse<PostMenuOrder> postMenuOrdrResponse = managementApi.getPostMenuOrderRequest(organizationId, postId);
+    if (postMenuOrdrResponse.isOk()) {
+      logger.warning(() -> String.format("Resolve order of organization %s post %s failed on [%d] %s", organizationId.getId(), managementNewsArticleId.toString(), postMenuOrdrResponse.getStatus(), postMenuOrdrResponse.getMessage()));
+    }
+    
+    Integer postMenuOrder = postMenuOrdrResponse.getResponse().getMenuOrder();
     DefaultApi api = managementApi.getApi(organizationId);
     
-    ApiResponse<Post> response = api.wpV2PostsIdGet(newsArticleId.getId(), null, null, null);
+    ApiResponse<Post> response = api.wpV2PostsIdGet(managementNewsArticleId.getId(), null, null, null);
     if (response.isOk()) {
-      updateManagementPost(organizationId, api, response.getResponse(), orderIndex);
+      updateManagementPost(organizationId, api, response.getResponse(), postMenuOrder, orderIndex);
     } else {
-      logger.warning(() -> String.format("Find organization %s post %s failed on [%d] %s", organizationId.getId(), newsArticleId.toString(), response.getStatus(), response.getMessage()));
+      logger.warning(() -> String.format("Find organization %s post %s failed on [%d] %s", organizationId.getId(), managementNewsArticleId.toString(), response.getStatus(), response.getMessage()));
     }
   }
   
-  private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Long orderIndex) {
+  /**
+   * Updates management post
+   * 
+   * @param organizationId organization id
+   * @param api API instance
+   * @param managementPost post
+   * @param orderIndex order index
+   */
+  private void updateManagementPost(OrganizationId organizationId, DefaultApi api, Post managementPost, Integer postMenuOrder, Long orderIndex) {
     List<String> managementCategoryIds = managementPost.getCategories();
     if (managementCategoryIds == null) {
       managementCategoryIds = Collections.emptyList();
@@ -143,7 +160,6 @@ public class ManagementNewsArticleEntityDiscoverJob extends AbstractJmsJob<IdTas
       managementTagIds = Collections.emptyList();
     }
     
-    Integer postMenuOrder = managementApi.getPostMenuOrder(organizationId, managementPost.getId());
     List<String> tags = resolvePostTags(api, managementCategoryIds, managementTagIds);
     
     OrganizationId kuntaApiOrganizationId = idController.translateOrganizationId(organizationId, KuntaApiConsts.IDENTIFIER_NAME);
