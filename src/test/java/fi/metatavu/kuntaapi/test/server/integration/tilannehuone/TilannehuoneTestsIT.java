@@ -230,4 +230,9 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
     deleteOrganizationSetting(organizationId, TilannehuoneConsts.ORGANIZATION_SETTING_AREA);
   }
   
+  @Override
+  protected boolean getPurgeOrganizations() {
+    return true;
+  }
+  
 }
