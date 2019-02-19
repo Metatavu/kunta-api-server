@@ -125,7 +125,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     deleteOrganizationPermissions();
     
     if (dropIdentifiersAfter()) {
-      deleteIdentifiers();
+      deleteIdentifiers(getPurgeOrganizations());
     }
     
     deleteSystemSettings();
