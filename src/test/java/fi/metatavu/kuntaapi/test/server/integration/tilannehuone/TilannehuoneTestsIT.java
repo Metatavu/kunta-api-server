@@ -235,4 +235,14 @@ public class TilannehuoneTestsIT extends AbstractIntegrationTest {
     return true;
   }
   
+  @Override
+  protected boolean dropIdentifiersAfter() {
+    return false;
+  }
+  
+  @Override
+  protected boolean dropIdentifiersBefore() {
+    return true;
+  }
+  
 }
