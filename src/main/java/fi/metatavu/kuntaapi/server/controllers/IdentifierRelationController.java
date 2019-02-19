@@ -579,6 +579,14 @@ public class IdentifierRelationController {
     return result;
   }
   
+  /**
+   * Lists child identifier by parent, source and type
+   * 
+   * @param parentIdentifier parent id
+   * @param source source
+   * @param type type
+   * @return list identifier
+   */
   private List<Identifier> listChildIdentifiersByParentSourceAndType(BaseId parentId, String source, IdType type) {
     Identifier parentIdentifier = identifierController.findIdentifierById(parentId);
     if (parentIdentifier == null) {
@@ -586,7 +594,19 @@ public class IdentifierRelationController {
       return Collections.emptyList();
     }
     
-    return identifierRelationDAO.listChildIdentifiersByParentSourceAndType(parentIdentifier, source, type.name());    
+    return listChildIdentifiersByParentSourceAndType(parentIdentifier, source, type);    
+  }
+
+  /**
+   * Lists child identifier by parent, source and type
+   * 
+   * @param parentIdentifier parent identifier
+   * @param source source
+   * @param type type
+   * @return list identifier
+   */
+  private List<Identifier> listChildIdentifiersByParentSourceAndType(Identifier parentIdentifier, String source, IdType type) {
+    return identifierRelationDAO.listChildIdentifiersByParentSourceAndType(parentIdentifier, source, type.name());
   }
   
   private List<Identifier> listChildIdentifiersByParentAndType(BaseId parentId, IdType type) {

@@ -13,14 +13,6 @@ import javax.inject.Inject;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import fi.metatavu.kuntaapi.server.rest.model.Attachment;
-import fi.metatavu.linkedevents.client.ApiResponse;
-import fi.metatavu.linkedevents.client.EventApi;
-import fi.metatavu.linkedevents.client.FilterApi;
-import fi.metatavu.linkedevents.client.model.Event;
-import fi.metatavu.linkedevents.client.model.IdRef;
-import fi.metatavu.linkedevents.client.model.Image;
-import fi.metatavu.linkedevents.client.model.Place;
 import fi.metatavu.kuntaapi.server.cache.ModificationHashCache;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierController;
 import fi.metatavu.kuntaapi.server.controllers.IdentifierRelationController;
@@ -43,9 +35,17 @@ import fi.metatavu.kuntaapi.server.integrations.linkedevents.resources.LinkedEve
 import fi.metatavu.kuntaapi.server.integrations.linkedevents.resources.LinkedEventsEventResourceContainer;
 import fi.metatavu.kuntaapi.server.integrations.linkedevents.tasks.LinkedEventsEventIdTaskQueue;
 import fi.metatavu.kuntaapi.server.persistence.model.Identifier;
+import fi.metatavu.kuntaapi.server.rest.model.Attachment;
 import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
 import fi.metatavu.kuntaapi.server.tasks.IdTask;
 import fi.metatavu.kuntaapi.server.tasks.IdTask.Operation;
+import fi.metatavu.linkedevents.client.ApiResponse;
+import fi.metatavu.linkedevents.client.EventApi;
+import fi.metatavu.linkedevents.client.FilterApi;
+import fi.metatavu.linkedevents.client.model.Event;
+import fi.metatavu.linkedevents.client.model.IdRef;
+import fi.metatavu.linkedevents.client.model.Image;
+import fi.metatavu.linkedevents.client.model.Place;
 
 @ApplicationScoped
 @Singleton
@@ -167,19 +167,25 @@ public class LinkedEvenstEventEntityDiscoverJob extends EntityDiscoverJob<IdTask
     
     fi.metatavu.kuntaapi.server.rest.model.Event event = linkedEventsTranslator.translateEvent(kuntaApiEventId, linkedEventsEvent, place);
     
-    updateImages(kuntaApiOrganizationId, identifier, linkedEventsEvent.getImages());
+    updateImages(kuntaApiOrganizationId, kuntaApiEventId, identifier, linkedEventsEvent.getImages());
     
     modificationHashCache.put(identifier.getKuntaApiId(), createPojoHash(event));
     linkedEventsEventResourceContainer.put(kuntaApiEventId, event);
   }
 
-  private void updateImages(OrganizationId organizationId, Identifier eventIdentifier, List<Image> images) {
+  private void updateImages(OrganizationId organizationId, EventId kuntaApiEventId, Identifier eventIdentifier, List<Image> images) {
+    List<AttachmentId> existingAttachmentIds = identifierRelationController.listAttachmentIdsBySourceAndParentId(LinkedEventsConsts.IDENTIFIER_NAME, kuntaApiEventId);
+    
     for (Image image : images) {
-      updateImage(organizationId, eventIdentifier, image);
+      existingAttachmentIds.remove(updateImage(organizationId, eventIdentifier, image));
+    }
+    
+    for (AttachmentId existingAttachmentId : existingAttachmentIds) {
+      identifierRelationController.removeChild(kuntaApiEventId, existingAttachmentId);
     }
   }
 
-  private void updateImage(OrganizationId kuntaApiOrganizationId, Identifier eventIdentifier, Image linkedEventsImage) {
+  private AttachmentId updateImage(OrganizationId kuntaApiOrganizationId, Identifier eventIdentifier, Image linkedEventsImage) {
     AttachmentId linkedEventsAttachmentId = linkedEventsIdFactory.createAttachmentId(kuntaApiOrganizationId, String.valueOf(linkedEventsImage.getId()));
     Long orderIndex = 0l;
     
@@ -189,7 +195,7 @@ public class LinkedEvenstEventEntityDiscoverJob extends EntityDiscoverJob<IdTask
     DownloadMeta downloadMeta = binaryHttpClient.getDownloadMeta(linkedEventsImage.getUrl());
     if (downloadMeta == null) {
       logger.log(Level.INFO, () -> String.format("Failed to download meta for LinkedEvents image %s (%s)", linkedEventsImage.getId(), linkedEventsImage.getUrl())); 
-      return;
+      return kuntaApiAttachmentId;
     }
     
     Attachment attachment = linkedEventsTranslator.translateAttachment(kuntaApiAttachmentId, downloadMeta);
@@ -205,6 +211,8 @@ public class LinkedEvenstEventEntityDiscoverJob extends EntityDiscoverJob<IdTask
         scaledImageStore.purgeStoredImages(kuntaApiAttachmentId);
       }
     }
+    
+    return kuntaApiAttachmentId;
   }
 
   private void deleteLinkedEventsEvent(EventId linkedEventsEventId) {
