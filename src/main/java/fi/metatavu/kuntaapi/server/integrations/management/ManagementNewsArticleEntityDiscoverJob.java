@@ -126,8 +126,9 @@ public class ManagementNewsArticleEntityDiscoverJob extends AbstractJmsJob<IdTas
     
     Integer postId = NumberUtils.createInteger(managementNewsArticleId.getId());
     ApiResponse<PostMenuOrder> postMenuOrdrResponse = managementApi.getPostMenuOrderRequest(organizationId, postId);
-    if (postMenuOrdrResponse.isOk()) {
+    if (!postMenuOrdrResponse.isOk()) {
       logger.warning(() -> String.format("Resolve order of organization %s post %s failed on [%d] %s", organizationId.getId(), managementNewsArticleId.toString(), postMenuOrdrResponse.getStatus(), postMenuOrdrResponse.getMessage()));
+      return;
     }
     
     Integer postMenuOrder = postMenuOrdrResponse.getResponse().getMenuOrder();
