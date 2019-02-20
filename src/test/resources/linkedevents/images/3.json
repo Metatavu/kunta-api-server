@@ -1,0 +1,15 @@
+{
+    "id": 3,
+    "license": "cc_by",
+    "created_time": "2019-02-19T05:26:50.831649Z",
+    "last_modified_time": "2019-02-19T05:26:50.831700Z",
+    "name": "test-image-667-1000.jpg",
+    "url": "http://api.kunta-api.test:58081/images/test-image-667-1000.jpg",
+    "cropping": "",
+    "photographer_name": null,
+    "data_source": "mantyharju",
+    "publisher": "mantyharju:87fefd9e-0d06-46d5-ab14-a4a35fa03b17",
+    "@id": "http://linkedevents.kunta-api.fi/v1/image/3/",
+    "@context": "http://schema.org",
+    "@type": "ImageObject"
+}

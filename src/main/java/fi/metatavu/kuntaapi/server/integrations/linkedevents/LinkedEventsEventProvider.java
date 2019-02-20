@@ -32,7 +32,6 @@ import fi.metatavu.kuntaapi.server.resources.StoredBinaryData;
  * 
  * @author Antti Leppä
  */
-
 @ApplicationScoped
 public class LinkedEventsEventProvider extends AbstractAttachmentImageProvider implements EventProvider {
   

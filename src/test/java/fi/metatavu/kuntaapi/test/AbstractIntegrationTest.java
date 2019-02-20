@@ -27,6 +27,7 @@ import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.hamcrest.Matcher;
 import org.json.JSONException;
 import org.junit.After;
+import org.junit.Before;
 import org.skyscreamer.jsonassert.Customization;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
@@ -90,6 +91,13 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   private ManagementPostMenuOrderMocker managementPostMenuOrderMocker = new ManagementPostMenuOrderMocker();
   private FmiWeatherAlertsWfsMocker fmiWeatherAlertsWfsMocker = new FmiWeatherAlertsWfsMocker();
 
+  @Before
+  public void beforeEveryTest() throws IOException {
+    if (dropIdentifiersBefore()) {
+      deleteIdentifiers(getPurgeOrganizations());
+    }
+  }
+  
   @After
   public void afterEveryTest() throws IOException {
     setLog4jLevel(Level.OFF);
@@ -125,7 +133,7 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     deleteOrganizationPermissions();
     
     if (dropIdentifiersAfter()) {
-      deleteIdentifiers();
+      deleteIdentifiers(getPurgeOrganizations());
     }
     
     deleteSystemSettings();
@@ -149,8 +157,26 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
       
     }
   }
+  
+  /**
+   * Returns whether identifiers should be dropped before every test. 
+   * 
+   * Defaults to false
+   * 
+   * @return whether identifiers should be dropped before every test
+   */
+  protected boolean dropIdentifiersBefore() {
+    return false;
+  }
 
-  protected  boolean dropIdentifiersAfter() {
+  /**
+   * Returns whether identifiers should be dropped after every test. 
+   * 
+   * Defaults to true
+   * 
+   * @return whether identifiers should be dropped after every test
+   */
+  protected boolean dropIdentifiersAfter() {
     return true;
   }
 
