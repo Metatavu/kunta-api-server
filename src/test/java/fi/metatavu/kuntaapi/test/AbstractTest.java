@@ -18,9 +18,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
@@ -42,10 +44,20 @@ public abstract class AbstractTest {
   @Rule
   public TestName testName = new TestName();
   
+  private long started;
+  
   @Before
   @SuppressWarnings ("squid:S106")
-  public void printName() {
+  public void beforeTestStart() {
+    started = System.currentTimeMillis();
     System.out.println(String.format("> %s", testName.getMethodName()));
+  }
+  
+  @After
+  @SuppressWarnings ("squid:S106")
+  public void afterTestEnd() {
+    long duration = System.currentTimeMillis() - started;
+    System.out.println(String.format("> %s done in %s", testName.getMethodName(), DurationFormatUtils.formatDurationWords(duration, true, true)));
   }
   
   protected ZonedDateTime getZonedDateTime(int year, int month, int dayOfMonth, int hour, int minute, int second, ZoneId zone) {
@@ -114,14 +126,36 @@ public abstract class AbstractTest {
       fail(e.getMessage());
     }
   }
- 
-  protected void deleteIdentifiers() {
+  
+  /**
+   * Returns whether to purge organization identifiers
+   * 
+   * @return whether to purge organization identifiers
+   */
+  protected boolean getPurgeOrganizations() {
+    return false;
+  }
+
+  /**
+   * Deletes identifiers
+   * 
+   * @param purgeOrganizations whether to purge organization identifiers
+   */
+  protected void deleteIdentifiers(boolean purgeOrganizations) {
     try {
-      executeDelete("delete from StoredBinaryResource");
-      executeDelete("delete from StoredResource");
-      executeDelete("delete from IdentifierRelation");
-      executeDelete("delete from Identifier");
-      executeDelete("delete from ArchivedIdentifier");
+      if (!purgeOrganizations) {
+        executeDelete("DELETE FROM StoredBinaryResource WHERE identifier_id NOT IN (SELECT id from Identifier WHERE type = 'ORGANIZATION')");
+        executeDelete("DELETE FROM StoredResource WHERE identifier_id NOT IN (SELECT id from Identifier WHERE type = 'ORGANIZATION')");
+        executeDelete("DELETE FROM IdentifierRelation WHERE parent_id NOT IN (SELECT id from Identifier WHERE type = 'ORGANIZATION') OR child_id NOT IN (SELECT id from Identifier WHERE type = 'ORGANIZATION')");
+        executeDelete("DELETE FROM Identifier WHERE type != 'ORGANIZATION'");
+        executeDelete("DELETE FROM ArchivedIdentifier");
+      } else {
+        executeDelete("DELETE FROM StoredBinaryResource");
+        executeDelete("DELETE FROM StoredResource");
+        executeDelete("DELETE FROM IdentifierRelation");
+        executeDelete("DELETE FROM Identifier");
+        executeDelete("DELETE FROM ArchivedIdentifier");
+      }
     } catch (SQLException e) {
       fail(e.getMessage());
     }

@@ -205,4 +205,9 @@ public class OrganizationsTestsIT extends AbstractPtvTest {
       .body("businessName[1]", is("Vaasa"));
   }
 
+  @Override
+  protected boolean getPurgeOrganizations() {
+    return true;
+  }
+  
 }

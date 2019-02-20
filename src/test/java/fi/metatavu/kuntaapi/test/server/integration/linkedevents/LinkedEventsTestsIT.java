@@ -4,9 +4,15 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.ZoneId;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.awaitility.Awaitility;
+import org.awaitility.Duration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,7 +29,7 @@ import fi.metatavu.kuntaapi.test.server.integration.ptv.TestPtvConsts;
 public class LinkedEventsTestsIT extends AbstractIntegrationTest {
 
   private static final ZoneId TIMEZONE_ID = ZoneId.of("UTC");
-  
+
   /**
    * Starts WireMock
    */
@@ -36,6 +42,7 @@ public class LinkedEventsTestsIT extends AbstractIntegrationTest {
       .mock(TestPtvConsts.ORGANIZATIONS[2]);
     
     getLinkedEventsEventMocker()
+      .mockImages("2", "3")
       .mockEvents("mantyharju:pm-maastojuoksukilpailut-la-27","mantyharju:tanssit-la-872017-klo-2000","mantyharju:venetsialaiset-la-2682017-klo-");
     
     startMocks();
@@ -75,6 +82,47 @@ public class LinkedEventsTestsIT extends AbstractIntegrationTest {
   } 
   
   @Test
+  public void testListEventImages() throws IOException {
+    String organizationId = getOrganizationId(0);
+    String eventId = getOrganizationEventId(organizationId, 0);
+    String imageId = getEventImageId(organizationId, eventId, 0);
+    
+    givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/organizations/{organizationId}/events/{eventId}/images", organizationId, eventId)
+      .then()
+      .assertThat()
+      .statusCode(200)
+      .body("id.size()", is(1))
+      .body("contentType[0]", is("image/jpeg"));
+      
+    String exprectedMd5 = getResourceMd5("test-image-1000-667.jpg");    
+    assertNotNull(exprectedMd5);
+    assertEquals(exprectedMd5, getImageMd5(organizationId, eventId, imageId));
+  } 
+
+  @Test
+  public void testListEventImageChange() throws IOException {
+    String organizationId = getOrganizationId(0);
+    String eventId = getOrganizationEventId(organizationId, 0);
+    
+    String originaldMd5 = getResourceMd5("test-image-1000-667.jpg");    
+    assertNotNull(originaldMd5);
+    assertEquals(originaldMd5, getImageMd5(organizationId, eventId, getEventImageId(organizationId, eventId, 0)));
+    
+    getLinkedEventsEventMocker()
+      .mockAlternative("mantyharju:pm-maastojuoksukilpailut-la-27", "image3");
+
+    Awaitility.await()
+      .atMost(Duration.FIVE_MINUTES)
+      .until(() -> !originaldMd5.equals(getImageMd5(organizationId, eventId, getEventImageId(organizationId, eventId, 0))));
+    
+    String changedMd5 = getResourceMd5("test-image-667-1000.jpg");    
+    assertNotNull(changedMd5);
+    assertEquals(changedMd5, getImageMd5(organizationId, eventId, getEventImageId(organizationId, eventId, 0)));
+  } 
+  
+  @Test
   public void testListEvents() {
     givenReadonly()
       .contentType(ContentType.JSON)
@@ -111,7 +159,26 @@ public class LinkedEventsTestsIT extends AbstractIntegrationTest {
     assertNotFound(String.format("/organizations/%s/events/%s", incorrectOrganizationId, organizationEventId));
     assertEquals(0, countApiList(String.format("/organizations/%s/events", incorrectOrganizationId)));
   }
+  
+  /**
+   * Calculates MD5 checksum for event image
+   * 
+   * @param organizationId organization id
+   * @param eventId event id
+   * @param imageId image id
+   * @return MD5 checksum
+   * @throws IOException thrown when image downloading fails
+   */
+  private String getImageMd5(String organizationId, String eventId, String imageId) throws IOException {
+    InputStream imageData = givenReadonly()
+      .get("/organizations/{organizationId}/events/{eventId}/images/{imageId}/data", organizationId, eventId, imageId)
+      .asInputStream();
     
+    String result = DigestUtils.md5Hex(imageData);
+    assertNotNull(result);
+    return result;
+  }
+  
   private void createLinkedEventsSettings(String organizationId) {
     insertOrganizationSetting(organizationId, LinkedEventsConsts.ORGANIZATION_SETTING_BASEURL, String.format("%s/v1", getWireMockBasePath(), BASE_URL));
     flushCache();
