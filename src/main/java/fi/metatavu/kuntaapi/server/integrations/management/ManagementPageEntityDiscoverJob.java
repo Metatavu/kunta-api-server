@@ -195,6 +195,9 @@ public class ManagementPageEntityDiscoverJob extends AbstractJmsJob<IdTask<PageI
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
     Boolean siteRootPage = tags.remove(SITE_ROOT_TAG);
     
+    System.out.println("Tags:" + StringUtils.join(tags.toArray(new String[0])));
+    System.out.println("siteRootPage:" + siteRootPage);
+    
     fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, unmappedParentId, siteRootPage, managementPage);
     String title = managementPage.getTitle().getRendered();
     String processedHtml = processPage(api, kuntaApiOrganizationId, identifier, managementPage);
