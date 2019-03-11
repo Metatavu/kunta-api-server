@@ -73,9 +73,9 @@ public class ManagementTranslator {
     return attachment;
   }
   
-  public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String unmappedParentId, Boolean siteRootPage, fi.metatavu.management.client.model.Page managementPage) {
+  public fi.metatavu.kuntaapi.server.rest.model.Page translatePage(PageId kuntaApiPageId, PageId kuntaApiParentPageId, String unmappedParentId, Boolean siteRootPage, Boolean hideMenuChildren, fi.metatavu.management.client.model.Page managementPage) {
     PageMeta meta = new PageMeta();
-    meta.setHideMenuChildren(false);
+    meta.setHideMenuChildren(hideMenuChildren);
     meta.setUnmappedParentId(unmappedParentId);
     meta.setSiteRootPage(siteRootPage);
     
