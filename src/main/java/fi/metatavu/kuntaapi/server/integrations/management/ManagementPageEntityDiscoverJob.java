@@ -451,11 +451,11 @@ public class ManagementPageEntityDiscoverJob extends AbstractJmsJob<IdTask<PageI
     
     IndexablePage indexablePage = new IndexablePage();
     indexablePage.setTitleRaw(title);
-    indexablePage.setContentFi(StringEscapeUtils.unescapeHtml4(content));
+    indexablePage.setContentFi(unescapeString(content));
     indexablePage.setOrganizationId(kuntaApiOrganizationId.getId());
     indexablePage.setPageId(kuntaApiPageId.getId());
     indexablePage.setParentId(pageParentId != null ? pageParentId.getId() : null);
-    indexablePage.setTitleFi(title);
+    indexablePage.setTitleFi(unescapeString(title));
     indexablePage.setOrderIndex(orderIndex);
     indexablePage.setOrderNumber(menuOrder);
     indexablePage.setMenuOrder(menuOrder);
@@ -463,5 +463,18 @@ public class ManagementPageEntityDiscoverJob extends AbstractJmsJob<IdTask<PageI
     
     return indexablePage;
   }
-  
+
+  /**
+   * Unescapes HTML entities from string and removes soft hyphens from string
+   * 
+   * @param string string
+   * @return unescaped string
+   */
+  private String unescapeString(String string) {
+    if (StringUtils.isEmpty(string)) {
+      return null;
+    }
+    
+    return StringEscapeUtils.unescapeHtml4(string).replaceAll("\u00AD", "");
+  }
 }
