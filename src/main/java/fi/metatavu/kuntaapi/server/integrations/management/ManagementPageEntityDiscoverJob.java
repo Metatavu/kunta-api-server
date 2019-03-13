@@ -73,6 +73,9 @@ import fi.metatavu.management.client.model.Tag;
 )
 @Pool(JmsQueueProperties.HIGH_CONCURRENCY_POOL)
 public class ManagementPageEntityDiscoverJob extends AbstractJmsJob<IdTask<PageId>> {
+  
+  private static final String SITE_ROOT_TAG = "siteroot";
+  private static final String HIDE_MENU_CHILDREN_TAG = "hidemenuchildren";
 
   @Inject
   private Logger logger;
@@ -161,7 +164,7 @@ public class ManagementPageEntityDiscoverJob extends AbstractJmsJob<IdTask<PageI
       return;
     }
     
-    List<String> tags = getPageTags(api, managementPage.getId());
+    List<String> tags = new ArrayList<>(getPageTags(api, managementPage.getId()));
     PageId managementPageId = new PageId(organizationId, ManagementConsts.IDENTIFIER_NAME, String.valueOf(managementPage.getId()));
     
     BaseId mappedParentId = idMapController.findMappedPageParentId(organizationId, managementPageId);
@@ -191,8 +194,10 @@ public class ManagementPageEntityDiscoverJob extends AbstractJmsJob<IdTask<PageI
     
     PageId pageParentId = identifierParentId instanceof PageId ? (PageId) identifierParentId : null;
     PageId kuntaApiPageId = new PageId(organizationId, KuntaApiConsts.IDENTIFIER_NAME, identifier.getKuntaApiId());
+    Boolean siteRootPage = tags.remove(SITE_ROOT_TAG);
+    Boolean hideMenuChildren = tags.remove(HIDE_MENU_CHILDREN_TAG);
     
-    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, unmappedParentId, managementPage);
+    fi.metatavu.kuntaapi.server.rest.model.Page page = managementTranslator.translatePage(kuntaApiPageId, pageParentId, unmappedParentId, siteRootPage, hideMenuChildren, managementPage);
     String title = managementPage.getTitle().getRendered();
     String processedHtml = processPage(api, kuntaApiOrganizationId, identifier, managementPage);
     
