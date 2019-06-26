@@ -14,7 +14,7 @@ public class DocsEntry implements Serializable {
   private static final long serialVersionUID = -4442994963182715417L;
 
   @JsonProperty("hakuTyosuhdetyyppikoodi")
-  private Integer hakuTyosuhdetyyppikoodi;
+  private String hakuTyosuhdetyyppikoodi;
 
   @JsonProperty("ammatti")
   private List<String> ammatti;
@@ -50,7 +50,7 @@ public class DocsEntry implements Serializable {
   private String ammattiLevel3;
 
   @JsonProperty("tyonKestoKoodi")
-  private Integer tyonKestoKoodi;
+  private String tyonKestoKoodi;
 
   @JsonProperty("kuvausteksti")
   private String kuvausteksti;
@@ -74,7 +74,7 @@ public class DocsEntry implements Serializable {
   private String id;
 
   @JsonProperty("hakuTyoaikakoodi")
-  private Integer hakuTyoaikakoodi;
+  private String hakuTyoaikakoodi;
 
   @JsonProperty("kesatyopaikka")
   private Boolean kesatyopaikka;
@@ -113,7 +113,7 @@ public class DocsEntry implements Serializable {
   private String ytunnus;
 
   @JsonProperty("mainAmmattikoodi")
-  private Integer mainAmmattikoodi;
+  private String mainAmmattikoodi;
 
   @JsonProperty("oppisopimus")
   private Boolean oppisopimus;
@@ -131,13 +131,13 @@ public class DocsEntry implements Serializable {
   private String otsikko;
 
   @JsonProperty("hakuTyonKestoKoodi")
-  private Integer hakuTyonKestoKoodi;
+  private String hakuTyonKestoKoodi;
 
-  public Integer getHakuTyosuhdetyyppikoodi() {
+  public String getHakuTyosuhdetyyppikoodi() {
     return hakuTyosuhdetyyppikoodi;
   }
 
-  public void setHakuTyosuhdetyyppikoodi(Integer hakuTyosuhdetyyppikoodi) {
+  public void setHakuTyosuhdetyyppikoodi(String hakuTyosuhdetyyppikoodi) {
     this.hakuTyosuhdetyyppikoodi = hakuTyosuhdetyyppikoodi;
   }
 
@@ -229,11 +229,11 @@ public class DocsEntry implements Serializable {
     this.ammattiLevel3 = ammattiLevel3;
   }
 
-  public Integer getTyonKestoKoodi() {
+  public String getTyonKestoKoodi() {
     return tyonKestoKoodi;
   }
 
-  public void setTyonKestoKoodi(Integer tyonKestoKoodi) {
+  public void setTyonKestoKoodi(String tyonKestoKoodi) {
     this.tyonKestoKoodi = tyonKestoKoodi;
   }
 
@@ -293,11 +293,11 @@ public class DocsEntry implements Serializable {
     this.id = id;
   }
 
-  public Integer getHakuTyoaikakoodi() {
+  public String getHakuTyoaikakoodi() {
     return hakuTyoaikakoodi;
   }
 
-  public void setHakuTyoaikakoodi(Integer hakuTyoaikakoodi) {
+  public void setHakuTyoaikakoodi(String hakuTyoaikakoodi) {
     this.hakuTyoaikakoodi = hakuTyoaikakoodi;
   }
 
@@ -397,11 +397,11 @@ public class DocsEntry implements Serializable {
     this.ytunnus = ytunnus;
   }
 
-  public Integer getMainAmmattikoodi() {
+  public String getMainAmmattikoodi() {
     return mainAmmattikoodi;
   }
 
-  public void setMainAmmattikoodi(Integer mainAmmattikoodi) {
+  public void setMainAmmattikoodi(String mainAmmattikoodi) {
     this.mainAmmattikoodi = mainAmmattikoodi;
   }
 
@@ -445,11 +445,11 @@ public class DocsEntry implements Serializable {
     this.otsikko = otsikko;
   }
 
-  public Integer getHakuTyonKestoKoodi() {
+  public String getHakuTyonKestoKoodi() {
     return hakuTyonKestoKoodi;
   }
 
-  public void setHakuTyonKestoKoodi(Integer hakuTyonKestoKoodi) {
+  public void setHakuTyonKestoKoodi(String hakuTyonKestoKoodi) {
     this.hakuTyonKestoKoodi = hakuTyonKestoKoodi;
   }
 
