@@ -872,7 +872,7 @@
                 <log>${project.basedir}/target/cargo.log</log>
                 <output>${project.basedir}/target/wildfly.log</output>
                 <zipUrlInstaller>
-                  <url>http://download.jboss.org/wildfly/${wildfly.version}/wildfly-${wildfly.version}.zip</url>
+                  <url>https://download.jboss.org/wildfly/${wildfly.version}/wildfly-${wildfly.version}.zip</url>
                   <downloadDir>${project.basedir}/.cargo/downloads</downloadDir>
                   <extractDir>${project.basedir}/.cargo/extracts</extractDir>
                 </zipUrlInstaller>   
