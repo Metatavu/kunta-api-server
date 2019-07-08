@@ -35,7 +35,11 @@ import fi.metatavu.kuntaapi.server.id.ServiceId;
 import fi.metatavu.kuntaapi.server.id.ServiceLocationServiceChannelId;
 import fi.metatavu.kuntaapi.server.id.WebPageServiceChannelId;
 import fi.metatavu.kuntaapi.server.integrations.ptv.CodeType;
+import fi.metatavu.kuntaapi.server.rest.model.AccessibilityContactInfo;
+import fi.metatavu.kuntaapi.server.rest.model.AccessibilitySentence;
+import fi.metatavu.kuntaapi.server.rest.model.AccessibilitySentenceValue;
 import fi.metatavu.kuntaapi.server.rest.model.Address;
+import fi.metatavu.kuntaapi.server.rest.model.AddressEntrance;
 import fi.metatavu.kuntaapi.server.rest.model.Area;
 import fi.metatavu.kuntaapi.server.rest.model.Code;
 import fi.metatavu.kuntaapi.server.rest.model.CodeExtra;
@@ -74,6 +78,7 @@ import fi.metatavu.ptv.client.model.V7VmOpenApiFintoItemWithDescription;
 import fi.metatavu.ptv.client.model.V8VmOpenApiAddressDelivery;
 import fi.metatavu.ptv.client.model.V8VmOpenApiDailyOpeningTime;
 import fi.metatavu.ptv.client.model.V9VmOpenApiElectronicChannel;
+import fi.metatavu.ptv.client.model.V9VmOpenApiEntrance;
 import fi.metatavu.ptv.client.model.V9VmOpenApiOrganization;
 import fi.metatavu.ptv.client.model.V9VmOpenApiPhoneChannel;
 import fi.metatavu.ptv.client.model.V9VmOpenApiPrintableFormChannel;
@@ -85,17 +90,21 @@ import fi.metatavu.ptv.client.model.V9VmOpenApiServiceLocationChannel;
 import fi.metatavu.ptv.client.model.V9VmOpenApiServiceVoucher;
 import fi.metatavu.ptv.client.model.V9VmOpenApiWebPage;
 import fi.metatavu.ptv.client.model.V9VmOpenApiWebPageChannel;
+import fi.metatavu.ptv.client.model.VmOpenApiAccessibilityContactInfo;
+import fi.metatavu.ptv.client.model.VmOpenApiAccessibilitySentence;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressPostOfficeBox;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreet;
 import fi.metatavu.ptv.client.model.VmOpenApiAddressStreetWithCoordinates;
 import fi.metatavu.ptv.client.model.VmOpenApiArea;
 import fi.metatavu.ptv.client.model.VmOpenApiAttachmentWithType;
 import fi.metatavu.ptv.client.model.VmOpenApiCodeListItem;
+import fi.metatavu.ptv.client.model.VmOpenApiCoordinates;
 import fi.metatavu.ptv.client.model.VmOpenApiDialCodeListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLanguageItem;
 import fi.metatavu.ptv.client.model.VmOpenApiLocalizedListItem;
 import fi.metatavu.ptv.client.model.VmOpenApiMunicipality;
 import fi.metatavu.ptv.client.model.VmOpenApiNameTypeByLanguage;
+import fi.metatavu.ptv.client.model.VmOpenApiSentenceValue;
 
 @ApplicationScoped
 public class PtvTranslator extends AbstractTranslator {
@@ -476,16 +485,16 @@ public class PtvTranslator extends AbstractTranslator {
     switch (getAddressSubtype(ptvAddress.getSubType())) {
       case SINGLE:
       case STREET:
-        return translateStreetAddressWithCoordinates(ptvAddress.getStreetAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
+        return translateStreetAddressWithCoordinates(ptvAddress.getStreetAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry(), ptvAddress.getEntrances());
       case ABROAD:
-        return translateAddressAbroad(ptvAddress.getLocationAbroad(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
+        return translateAddressAbroad(ptvAddress.getLocationAbroad(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry(), ptvAddress.getEntrances());
       case POST_OFFICE_BOX:
-        return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
+        return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry(), ptvAddress.getEntrances());
       default:
         logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "with moving", ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
-    return translateNoAddress(ptvAddress.getLocationAbroad(), ptvAddress.getType(), ptvAddress.getSubType());
+    return translateNoAddress(ptvAddress.getLocationAbroad(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getEntrances());
   }
 
   private Address translateAddress(V9VmOpenApiAddress ptvAddress) {
@@ -496,16 +505,16 @@ public class PtvTranslator extends AbstractTranslator {
     switch (getAddressSubtype(ptvAddress.getSubType())) {
       case SINGLE:
       case STREET:
-        return translateStreetAddressWithCoordinates(ptvAddress.getStreetAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
+        return translateStreetAddressWithCoordinates(ptvAddress.getStreetAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry(), Collections.emptyList());
       case POST_OFFICE_BOX:
-        return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry());
+        return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.getCountry(), Collections.emptyList());
       case FOREIGN:
         return translateForeignAddress(ptvAddress.getForeignAddress(), ptvAddress.getType(), ptvAddress.getSubType());
       default:
         logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, ptvAddress.getType(), ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
-    return translateNoAddress(ptvAddress.getForeignAddress(), ptvAddress.getType(), ptvAddress.getSubType());
+    return translateNoAddress(ptvAddress.getForeignAddress(), ptvAddress.getType(), ptvAddress.getSubType(), Collections.emptyList());
   }
 
   private Address translateForeignAddress(List<VmOpenApiLanguageItem> foreignAddress, String type, String subtype) {
@@ -528,6 +537,7 @@ public class PtvTranslator extends AbstractTranslator {
     result.setStreetNumber(null);
     result.setType(type);
     result.setSubtype(subtype);
+    result.setEntrances(Collections.emptyList());
     
     return result;
   }
@@ -542,17 +552,17 @@ public class PtvTranslator extends AbstractTranslator {
       case STREET:
         return translateStreetAddress(ptvAddress.getStreetAddress(), null, ptvAddress.getSubType(), null);
       case POST_OFFICE_BOX:
-        return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), null, ptvAddress.getSubType(), null);
+        return translatePostOfficeBoxAddress(ptvAddress.getPostOfficeBoxAddress(), null, ptvAddress.getSubType(), null, Collections.emptyList());
       case NO_ADDRESS:
-        return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType());
+        return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType(), Collections.emptyList());
       default:
         logger.severe(() -> String.format(UNKNOWN_ADDRESS_SUBTYPE, "delivery", ptvAddress.getSubType(), ptvAddress.toString()));
     }
     
-    return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType());
+    return translateNoAddress(ptvAddress.getDeliveryAddressInText(), null, ptvAddress.getSubType(), Collections.emptyList());
   }
   
-  private Address translateNoAddress(List<VmOpenApiLanguageItem> deliveryAddressInText, String type, String subtype) {
+  private Address translateNoAddress(List<VmOpenApiLanguageItem> deliveryAddressInText, String type, String subtype, List<V9VmOpenApiEntrance> ptvEntrances) {
     if (deliveryAddressInText == null || deliveryAddressInText.isEmpty()) {
       return null;
     }
@@ -572,11 +582,12 @@ public class PtvTranslator extends AbstractTranslator {
     result.setStreetNumber(null);
     result.setType(type);
     result.setSubtype(subtype);
+    result.setEntrances(translateEntrances(ptvEntrances));
     
     return result;
   }
 
-  private Address translatePostOfficeBoxAddress(VmOpenApiAddressPostOfficeBox ptvAddress, String type, String subtype, String country) {
+  private Address translatePostOfficeBoxAddress(VmOpenApiAddressPostOfficeBox ptvAddress, String type, String subtype, String country, List<V9VmOpenApiEntrance> ptvEntrances) {
     if (ptvAddress == null) {
       return null;
     }
@@ -596,11 +607,12 @@ public class PtvTranslator extends AbstractTranslator {
     result.setStreetNumber(null);
     result.setType(type);
     result.setSubtype(subtype);
+    result.setEntrances(translateEntrances(ptvEntrances));
     
     return result;
   }
 
-  private Address translateAddressAbroad(List<VmOpenApiLanguageItem> ptvLocationAbroad, String type, String subtype, String country) {
+  private Address translateAddressAbroad(List<VmOpenApiLanguageItem> ptvLocationAbroad, String type, String subtype, String country, List<V9VmOpenApiEntrance> ptvEntrances) {
     if (ptvLocationAbroad == null) {
       return null;
     }
@@ -621,11 +633,12 @@ public class PtvTranslator extends AbstractTranslator {
     result.setType(type);
     result.setSubtype(subtype);
     result.setLocationAbroad(translateLocalizedItems(ptvLocationAbroad));
+    result.setEntrances(translateEntrances(ptvEntrances));
 
     return result;
   }
 
-  private Address translateStreetAddressWithCoordinates(VmOpenApiAddressStreetWithCoordinates ptvAddress, String type, String subtype, String country) {
+  private Address translateStreetAddressWithCoordinates(VmOpenApiAddressStreetWithCoordinates ptvAddress, String type, String subtype, String country, List<V9VmOpenApiEntrance> ptvEntrances) {
     if (ptvAddress == null) {
       return null;
     }
@@ -645,6 +658,123 @@ public class PtvTranslator extends AbstractTranslator {
     result.setStreetNumber(ptvAddress.getStreetNumber());
     result.setType(type);
     result.setSubtype(subtype);
+    result.setEntrances(translateEntrances(ptvEntrances));
+    
+    return result;
+  }
+
+  /**
+   * Translates PTV entrances into Kunta API entrances
+   * 
+   * @param ptvEntrances PTV entrances
+   * @return Kunta API entrances
+   */
+  private List<AddressEntrance> translateEntrances(List<V9VmOpenApiEntrance> ptvEntrances) {
+    if (ptvEntrances == null || ptvEntrances.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    return ptvEntrances.stream().map(this::translateEntrance).filter(Objects::nonNull).collect(Collectors.toList());
+  }
+  
+  /**
+   * Translates PTV entrance into Kunta API entrance
+   * 
+   * @param ptvEntrance PTV entrance
+   * @return Kunta API entrance
+   */
+  private AddressEntrance translateEntrance(V9VmOpenApiEntrance ptvEntrance) {
+    if (ptvEntrance == null) {
+      return null;
+    }
+    
+    AddressEntrance result = new AddressEntrance();
+    result.setAccessibilitySentences(translateAccessibilitySentences(ptvEntrance.getAccessibilitySentences()));
+    result.setContactInfo(translateContactInfo(ptvEntrance.getContactInfo()));
+    result.setCoordinates(translateCoordinates(ptvEntrance.getCoordinates()));
+    result.setIsMainEntrance(ptvEntrance.getIsMainEntrance());
+    result.setName(translateLocalizedItems(ptvEntrance.getName()));
+    
+    return result;
+  }
+  
+  /**
+   * Translates PTV contact info into Kunta API contact info
+   * 
+   * @param contactInfo PTV contact info 
+   * @return Kunta API contact info
+   */
+  private AccessibilityContactInfo translateContactInfo(VmOpenApiAccessibilityContactInfo contactInfo) {
+    if (contactInfo == null) {
+      return null;
+    }
+    
+    AccessibilityContactInfo result = new AccessibilityContactInfo();
+    result.setEmail(contactInfo.getEmail());
+    result.setPhone(contactInfo.getPhone());
+    result.setUrl(contactInfo.getUrl());
+    
+    return result;
+  }
+  
+  /**
+   * Translates PTV accessibility sentences into Kunta API accessibility sentences
+   * 
+   * @param accessibilitySentences PTV accessibility sentences
+   * @return Kunta API accessibility sentences
+   */
+  private List<AccessibilitySentence> translateAccessibilitySentences(List<VmOpenApiAccessibilitySentence> accessibilitySentences) {
+    if (accessibilitySentences == null || accessibilitySentences.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    return accessibilitySentences.stream().map(this::translateAccessibilitySentence).filter(Objects::nonNull).collect(Collectors.toList());
+  }
+
+  /**
+   * Translates PTV accessibility sentence into Kunta API accessibility sentence
+   * 
+   * @param accessibilitySentence PTV accessibility sentence
+   * @return Kunta API accessibility sentence
+   */
+  private AccessibilitySentence translateAccessibilitySentence(VmOpenApiAccessibilitySentence accessibilitySentence) {
+    if (accessibilitySentence == null) {
+      return null;
+    }
+    
+    AccessibilitySentence result = new AccessibilitySentence();
+    result.setSentenceGroup(translateLocalizedItems(accessibilitySentence.getSentenceGroup()));
+    result.setSentences(translateSentences(accessibilitySentence.getSentences()));
+    return result;
+  }
+  
+  /**
+   * Translates PTV accessibility sentences into Kunta API accessibility sentences
+   * 
+   * @param sentence PTV accessibility sentences
+   * @return Kunta API accessibility sentences
+   */
+  private List<AccessibilitySentenceValue> translateSentences(List<VmOpenApiSentenceValue> sentences) {
+    if (sentences == null || sentences.isEmpty()) {
+      return Collections.emptyList();
+    }
+    
+    return sentences.stream().map(this::translateSentence).filter(Objects::nonNull).collect(Collectors.toList());
+  }
+  
+  /**
+   * Translates PTV accessibility sentence into Kunta API accessibility sentence 
+   * 
+   * @param sentence PTV accessibility sentence
+   * @return Kunta API accessibility sentence
+   */
+  private AccessibilitySentenceValue translateSentence(VmOpenApiSentenceValue sentence) {
+    if (sentence == null) {
+      return null;
+    }
+    
+    AccessibilitySentenceValue result = new AccessibilitySentenceValue();
+    result.setSentence(translateLocalizedItems(sentence.getSentence()));
     
     return result;
   }
@@ -669,6 +799,7 @@ public class PtvTranslator extends AbstractTranslator {
     result.setStreetNumber(ptvAddress.getStreetNumber());
     result.setType(type);
     result.setSubtype(subtype);
+    result.setEntrances(Collections.emptyList());
     
     return result;
   }
@@ -1201,7 +1332,28 @@ public class PtvTranslator extends AbstractTranslator {
     
     return result;
   }
-  
+
+  /**
+   * Translates PTV coordinates object into Kunta API coordinates
+   * 
+   * @param coordinates PTV coordinates
+   * @return Kunta API coordinates
+   */
+  private Coordinates translateCoordinates(VmOpenApiCoordinates coordinates) {
+    if (coordinates == null) {
+      return null;
+    }
+    
+    return translateCoordinates(coordinates.getLatitude(), coordinates.getLongitude());
+  }
+
+  /**
+   * Translates PTV coordinates into Kunta API coordinates
+   * 
+   * @param ptvLatitude PTV latitude
+   * @param ptvLongitude PTV longitude
+   * @return Kunta API coordinates
+   */
   private Coordinates translateCoordinates(String ptvLatitude, String ptvLongitude) {
     if (StringUtils.isBlank(ptvLatitude) || StringUtils.isBlank(ptvLongitude)) {
       return null;
