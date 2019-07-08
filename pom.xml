@@ -99,10 +99,6 @@
     
     <slf4j-api.version>1.7.22</slf4j-api.version>
     
-    <!-- onebusaway-gtfs -->
-    
-    <onebusaway-gtfs.version>1.3.4</onebusaway-gtfs.version> 
-    
     <!-- osgeo.proj4j -->
     
     <osgeo-proj4j.version>0.1.0</osgeo-proj4j.version>
@@ -272,12 +268,6 @@
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-smile</artifactId>
       <version>${jackson-dataformat-smile.version}</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.onebusaway</groupId>
-      <artifactId>onebusaway-gtfs</artifactId>
-      <version>${onebusaway-gtfs.version}</version>
     </dependency>
     
     <dependency>
@@ -1002,7 +992,6 @@
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.AbstractIndexHander:add(level=FATAL)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.security.SecurityFilter:add(level=INFO)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.index.IndexUpdater:add(level=SEVERE)</command>
-                    <command>/subsystem=logging/logger=org.onebusaway.gtfs.serialization.GtfsReader:add(level=WARN)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceEntityDiscoverJob:add(level=WARN)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityDiscoverJob:add(level=WARN)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.metaflow.TaskQueueDistributor:add(level=WARN)</command>
@@ -1022,12 +1011,6 @@
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-service-channels:add(entries=[java:/jms/queue/ptv-service-channels])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-services:add(entries=[java:/jms/queue/ptv-services])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-organizations:add(entries=[java:/jms/queue/ptv-organizations])</command>
-                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-agencies:add(entries=[java:/jms/queue/gtfs-agencies])</command>
-                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-routes:add(entries=[java:/jms/queue/gtfs-routes])</command>
-                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-schedules:add(entries=[java:/jms/queue/gtfs-schedules])</command>
-                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-stops:add(entries=[java:/jms/queue/gtfs-stops])</command>
-                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-stoptimes:add(entries=[java:/jms/queue/gtfs-stoptimes])</command>
-                    <command>/subsystem=messaging-activemq/server=default/jms-queue=gtfs-trips:add(entries=[java:/jms/queue/gtfs-trips])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=tilannehuone-emergencies:add(entries=[java:/jms/queue/tilannehuone-emergencies])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=tpt-jobs:add(entries=[java:/jms/queue/tpt-jobs])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-announcements:add(entries=[java:/jms/queue/management-announcements])</command>
