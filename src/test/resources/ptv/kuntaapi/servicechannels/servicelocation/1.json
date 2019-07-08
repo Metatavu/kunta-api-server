@@ -1,3 +1,440 @@
 {
-  
+	"id": "0cf83b6d-c7c3-4f39-878a-9de7c98c2166",
+	"organizationId": "a2f2f0c1-e156-4971-86e0-5c0e506dcb3b",
+	"names": [
+		{
+			"language": "sv",
+			"value": "Sundom skola",
+			"type": "Name"
+		},
+		{
+			"language": "fi",
+			"value": "Sundom skola",
+			"type": "Name"
+		}
+	],
+	"descriptions": [
+		{
+			"language": "fi",
+			"value": "Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa.",
+			"type": "Summary"
+		},
+		{
+			"language": "sv",
+			"value": "Sundom skola ligger avskild från stadens trafikbrus i nära anslutning till naturen.",
+			"type": "Summary"
+		},
+		{
+			"language": "sv",
+			"value": "Sundom skola ligger avskild från stadens trafikbrus i nära anslutning till naturen. Genom byggandens olika verksamheter har elever och lärare nära tillgång till det som behövs för undervisningen. Både föräldrar och övriga månar om byggnaden och dess plats i samhället.\n",
+			"type": "Description"
+		},
+		{
+			"language": "fi",
+			"value": "Sundom skola on etäällä kaupungin liikennehälystä ja lähellä luontoa. Rakennuksen eri toimintojen kautta oppilailla ja opettajilla on opetuksessa tarvittavat asiat lähellä. Sekä vanhemmat että muut huolehtivat rakennuksesta ja sen asemasta yhteiskunnassa. ",
+			"type": "Description"
+		}
+	],
+	"phoneNumbers": [
+		{
+			"additionalInformation": "Rektor",
+			"serviceChargeType": "Chargeable",
+			"chargeDescription": null,
+			"prefixNumber": "+358",
+			"isFinnishServiceNumber": false,
+			"number": "405166046",
+			"language": "fi",
+			"type": "Phone"
+		},
+		{
+			"additionalInformation": "Rektor",
+			"serviceChargeType": "Chargeable",
+			"chargeDescription": null,
+			"prefixNumber": "+358",
+			"isFinnishServiceNumber": false,
+			"number": "405166046",
+			"language": "sv",
+			"type": "Phone"
+		}
+	],
+	"emails": [],
+	"languages": [
+		"sv"
+	],
+	"phoneServiceCharge": null,
+	"webPages": [
+		{
+			"description": null,
+			"url": "https://www.vaasa.fi/sv/node/20791",
+			"language": "fi",
+			"value": "Sundom skola",
+			"type": null
+		},
+		{
+			"description": null,
+			"url": "https://www.vaasa.fi/sv/node/20791",
+			"language": "sv",
+			"value": "Sundom skola",
+			"type": null
+		}
+	],
+	"areaType": "LimitedType",
+	"areas": [
+		{
+			"type": "Municipality",
+			"code": null,
+			"name": [],
+			"municipalities": [
+				{
+					"code": "905",
+					"names": [
+						{
+							"language": "fi",
+							"value": "Vaasa",
+							"type": null
+						},
+						{
+							"language": "sv",
+							"value": "Vasa",
+							"type": null
+						},
+						{
+							"language": "en",
+							"value": "Vaasa",
+							"type": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"addresses": [
+		{
+			"latitude": "7001836.409",
+			"longitude": "224930.408",
+			"coordinates": {
+				"epsg3067": {
+					"latitude": "7001836.409",
+					"longitude": "224930.408"
+				},
+				"epsg4326": {
+					"latitude": "63.041187666515064",
+					"longitude": "21.556992055825894"
+				}
+			},
+			"coordinateState": "Ok",
+			"type": "Location",
+			"subtype": "Single",
+			"postOfficeBox": null,
+			"postalCode": "65410",
+			"postOffice": [
+				{
+					"language": "sv",
+					"value": "SUNDOM",
+					"type": null
+				},
+				{
+					"language": "fi",
+					"value": "SUNDOM",
+					"type": null
+				}
+			],
+			"streetAddress": [
+				{
+					"language": "fi",
+					"value": "Sundomvägen",
+					"type": null
+				},
+				{
+					"language": "sv",
+					"value": "Sundomvägen",
+					"type": null
+				}
+			],
+			"streetNumber": "13",
+			"municipality": {
+				"code": "905",
+				"names": [
+					{
+						"language": "fi",
+						"value": "Vaasa",
+						"type": null
+					},
+					{
+						"language": "sv",
+						"value": "Vasa",
+						"type": null
+					},
+					{
+						"language": "en",
+						"value": "Vaasa",
+						"type": null
+					}
+				]
+			},
+			"country": "FI",
+			"locationAbroad": [],
+			"multipointLocation": [],
+			"additionalInformations": [],
+			"entrances": [
+				{
+					"name": [],
+					"isMainEntrance": true,
+					"coordinates": {
+						"epsg3067": {
+							"latitude": "6836247.0",
+							"longitude": "514138.0"
+						},
+						"epsg4326": {
+							"latitude": "61.65922133194545",
+							"longitude": "27.266949833489946"
+						}
+					},
+					"contactInfo": {
+						"phone": "+358 44 1234 567",
+						"email": "example@example.com",
+						"url": null
+					},
+					"accessibilitySentences": [
+						{
+							"sentenceGroup": [
+								{
+									"language": "fi",
+									"value": "Reitti pääsisäänkäynnille",
+									"type": null
+								},
+								{
+									"language": "sv",
+									"value": "Rutten till huvudingången",
+									"type": null
+								},
+								{
+									"language": "en",
+									"value": "The route to the main entrance",
+									"type": null
+								}
+							],
+							"sentences": [
+								{
+									"sentence": [
+										{
+											"language": "fi",
+											"value": "Saattoliikenteen pysähtymispaikka sijaitsee sisäänkäynnin läheisyydessä (etäisyys enintään 5 metriä), josta sisäänkäynnille pääsee siirtymään sujuvasti.",
+											"type": null
+										},
+										{
+											"language": "sv",
+											"value": "Hållplatsen för skjutstrafik ligger i närheten av ingången, på en plats varifrån det är lätt att ta sig till trottoaren.",
+											"type": null
+										},
+										{
+											"language": "en",
+											"value": "The pick-up and drop-off area is located in the vicinity of the entrance, giving easy access to the pavement.",
+											"type": null
+										}
+									]
+								},
+								{
+									"sentence": [
+										{
+											"language": "en",
+											"value": "The route to the entrance is smooth and sufficiently wide and illuminated.",
+											"type": null
+										},
+										{
+											"language": "sv",
+											"value": "Rutten till ingången är jämn och tillräckligt bred samt belyst.",
+											"type": null
+										},
+										{
+											"language": "fi",
+											"value": "Kulkureitti sisäänkäynnille on tasainen ja riittävän leveä sekä valaistu.",
+											"type": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"sentenceGroup": [
+								{
+									"language": "fi",
+									"value": "Pääsisäänkäynti",
+									"type": null
+								},
+								{
+									"language": "sv",
+									"value": "Huvudingången",
+									"type": null
+								},
+								{
+									"language": "en",
+									"value": "The main entrance",
+									"type": null
+								}
+							],
+							"sentences": [
+								{
+									"sentence": [
+										{
+											"language": "en",
+											"value": "The entrance is located in a recess and is illuminated.",
+											"type": null
+										},
+										{
+											"language": "sv",
+											"value": "Ingången är belägen i en nisch och belyst.",
+											"type": null
+										},
+										{
+											"language": "fi",
+											"value": "Sisäänkäynti sijaitsee syvennyksessä ja on valaistu.",
+											"type": null
+										}
+									]
+								},
+								{
+									"sentence": [
+										{
+											"language": "en",
+											"value": "The doors connected to the entrance stand out clearly and the glass doors have contrast markings. Outside the door there is sufficient room for moving e.g. with a wheelchair. The door opens easily manually.",
+											"type": null
+										},
+										{
+											"language": "sv",
+											"value": "Dörrarna vid ingången är lätta att urskilja och glasdörrarna har kontrastmarkeringar. Utanför dörren finns tillräckligt med fritt utrymme för att röra sig t.ex. med rullstol. Dörren är lätt att öppna för hand.",
+											"type": null
+										},
+										{
+											"language": "fi",
+											"value": "Sisäänkäynnin ovet erottuvat selkeästi ja lasiovissa on kontrastimerkinnät. Oven ulkopuolella on riittävästi vapaata tilaa liikkumiselle esim. pyörätuolin kanssa. Ovi avautuu käsin helposti.",
+											"type": null
+										}
+									]
+								},
+								{
+									"sentence": [
+										{
+											"language": "sv",
+											"value": "Vid ingången finns trösklar som är över 2 cm höga.",
+											"type": null
+										},
+										{
+											"language": "en",
+											"value": "The entrance has thresholds over 2 cm high.",
+											"type": null
+										},
+										{
+											"language": "fi",
+											"value": "Sisäänkäynnin yhteydessä on yli 2 cm korkeita kynnyksiä.",
+											"type": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"sentenceGroup": [
+								{
+									"language": "en",
+									"value": "In the facility",
+									"type": null
+								},
+								{
+									"language": "sv",
+									"value": "I lokalen",
+									"type": null
+								},
+								{
+									"language": "fi",
+									"value": "Sisätilat",
+									"type": null
+								}
+							],
+							"sentences": [
+								{
+									"sentence": [
+										{
+											"language": "sv",
+											"value": "Verksamhetsstället ligger på samma plan som ingången.",
+											"type": null
+										},
+										{
+											"language": "en",
+											"value": "The customer service point is located on the same floor as the entrance.",
+											"type": null
+										},
+										{
+											"language": "fi",
+											"value": "Toimipiste sijaitsee samassa kerroksessa kuin sisäänkäynti.",
+											"type": null
+										}
+									]
+								},
+								{
+									"sentence": [
+										{
+											"language": "sv",
+											"value": "I lokalen finns trösklar som är över 2 cm höga.",
+											"type": null
+										},
+										{
+											"language": "en",
+											"value": "The facility has thresholds over 2 cm high.",
+											"type": null
+										},
+										{
+											"language": "fi",
+											"value": "Tilassa on yli 2 cm korkeita kynnyksiä.",
+											"type": null
+										}
+									]
+								},
+								{
+									"sentence": [
+										{
+											"language": "en",
+											"value": "The doors in the facility are hard to perceive.",
+											"type": null
+										},
+										{
+											"language": "sv",
+											"value": "Dörrarna i lokalen är svåra att överblicka.",
+											"type": null
+										},
+										{
+											"language": "fi",
+											"value": "Sisätilojen ovet eivät erotu selkeästi seinästä.",
+											"type": null
+										}
+									]
+								},
+								{
+									"sentence": [
+										{
+											"language": "fi",
+											"value": "Toimipisteessä on esteettömäksi merkitty wc, jossa ei ole tarpeeksi tilaa pyörätuolille.",
+											"type": null
+										},
+										{
+											"language": "sv",
+											"value": "Det finns en toalett som har angetts som tillgänglig i verksamhetsstället, men den är inte tillräckligt rymlig för en rullstol.",
+											"type": null
+										},
+										{
+											"language": "en",
+											"value": "The facility has a toilet marked as accessible. It does not have sufficient room for a wheelchair.",
+											"type": null
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"serviceHours": [],
+	"publishingStatus": "Published"
 }
