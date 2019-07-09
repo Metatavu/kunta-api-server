@@ -1,8 +1,0 @@
-"route_id","service_id","trip_id","trip_headsign","direction_id","block_id"
-"1 AB","Koulp Mikkeli","351b87d6-5162-40c0-b53d-9684b2b25d8a","Mikkeli matkakeskus","0",""
-"1 AC","Koulp Mikkeli","958d9edc-b0fe-4c5b-9993-9ddabe7fcc56","Rämälä","0",""
-"1 A","Koulp Mikkeli","b3387ef1-235f-4eaa-8ba2-66f363237075","Vanhamäki","1",""
-"1 AC","Koulp Mikkeli","e3c114ec-d312-4608-90d5-96fa5730bf19","Harjunmaa","1",""
-"1 A","Koulp Mikkeli","304373a7-a8ec-451d-a71e-54dbb8243279","","1",""
-"1 A","Koulp Mikkeli","cdb577f9-b109-4a59-ba02-7a9b25a5ee20","Pajulankylä","0",""
-"1 A","Koulp Mikkeli","a943fbcf-6163-435a-8141-7b489fbeaa00","Mikkeli","0",""

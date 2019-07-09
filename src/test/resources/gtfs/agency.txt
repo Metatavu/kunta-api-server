@@ -1,4 +1,0 @@
-"agency_id","agency_name","agency_url","agency_timezone"
-"6743","Testirinne Oy","http://www.testirinne.fake","Europe/Helsinki"
-"6714","Testilinnan Liikenne Ky","http://www.example.com/testilanna","Europe/Helsinki"
-"6949","Testilän Liikenne Oy","http://www.testilanliikenne.eiole","Europe/Helsinki"

@@ -2,7 +2,7 @@
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ -n "${GITHUB_TOKEN}" ] && [ -n "${SONAR_TOKEN}" ]; then
   echo "Pull request"
-  mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN
+  mvn clean verify jacoco:report coveralls:report -Pitests -DrepoToken=$COVERALLS_TOKEN|grep Downloading -v|grep Downloaded -v
   TEST_STATUS=$?
   
   if [ "$TEST_STATUS" != "0" ]; then
@@ -10,6 +10,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ 
     export PATH=$PATH:$HOME/.local/bin
     export S3_PATH=s3://$AWS_BUCKET/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER
     aws s3 cp target/cargo/configurations/wildfly14x/log $S3_PATH --recursive
+    exit 1
   else
     PROJECT_VERSION=`cat pom.xml|grep version -m 1|sed -e 's/.*<version>//'|sed -e 's/<.*//'`
     
@@ -25,9 +26,10 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ $TRAVIS_BRANCH != "master" ] && [ 
       -Dsonar.github.oauth=$GITHUB_TOKEN \
       -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
       -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST  
+    exit 0
   fi
   
-  exit $TEST_STATUS
+  exit -1
   
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ $TRAVIS_BRANCH == "develop" ]; then
 
