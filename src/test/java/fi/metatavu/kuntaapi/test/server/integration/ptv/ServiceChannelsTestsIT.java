@@ -267,8 +267,6 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
       .get("/serviceLocationServiceChannels/{channelId}", channelId)
       .body().asString();
     
-    System.out.println("testFindServiceLocationChannelEntrances: " + response);
-    
     assertJSONFileEquals(String.format("ptv/kuntaapi/servicechannels/servicelocation/%d.json", channelIndex) , response, getServiceChannelCustomizations());
   }
 
