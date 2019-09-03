@@ -212,7 +212,7 @@ public class ManagementTranslator {
     
     TimeZone result = TimeZone.getTimeZone(timeZoneString);
     if(result == null) {
-      logger.log(Level.SEVERE,  () -> String.format("Malformed organization gtfs timezone setting for organization %s", organizationId));
+      logger.log(Level.SEVERE,  () -> String.format("Malformed management timezone setting for organization %s", organizationId));
       return TimeZone.getDefault();
     }
     

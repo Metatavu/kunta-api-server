@@ -256,6 +256,19 @@ public class ServiceChannelsTestsIT extends AbstractPtvTest {
     
     assertJSONFileEquals(String.format("ptv/kuntaapi/servicechannels/servicelocation/%d.json", channelIndex) , response, getServiceChannelCustomizations());
   }
+  
+  @Test
+  public void testFindServiceLocationChannelEntrances() throws InterruptedException, JSONException, IOException {
+    int channelIndex = 1;
+    String channelId = getServiceLocationChannelId(channelIndex, TestPtvConsts.SERVICE_LOCATION_SERVICE_CHANNELS.length);
+    
+    String response = givenReadonly()
+      .contentType(ContentType.JSON)
+      .get("/serviceLocationServiceChannels/{channelId}", channelId)
+      .body().asString();
+    
+    assertJSONFileEquals(String.format("ptv/kuntaapi/servicechannels/servicelocation/%d.json", channelIndex) , response, getServiceChannelCustomizations());
+  }
 
   @Test
   public void testFindServiceLocationChannelCompability() throws InterruptedException, JSONException, IOException {
