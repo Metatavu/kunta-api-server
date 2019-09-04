@@ -204,6 +204,34 @@ public class SystemRESTService {
     
     return Response.status(Status.FORBIDDEN).build();
   }
+
+  /**
+   * Creates new service location service channel update task by service location channel id
+   * 
+   * @param serviceLocationChannelIdParam service location channel to update
+   * @return response indicating the status of task creation
+   */
+  @GET
+  @Path ("/utils/ptv/serviceLocationChannelTask")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvServiceLocationChannelTask(@QueryParam ("serviceLocationChannelId") String serviceLocationChannelIdParam) {
+    if (inTestModeOrUnrestrictedClient()) {
+      if (serviceLocationChannelIdParam == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+      
+      ServiceLocationServiceChannelId serviceLocationChannelId = kuntaApiIdFactory.createServiceLocationServiceChannelId(serviceLocationChannelIdParam);
+      if (serviceLocationChannelId == null) {
+        return Response.status(Status.BAD_REQUEST).build();
+      }
+
+      createServiceChannelUpdateTask(serviceLocationChannelId);
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
   
   @GET
   @Path ("/utils/ptv/electronicChannelTasks")
