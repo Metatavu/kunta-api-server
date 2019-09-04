@@ -205,6 +205,12 @@ public class SystemRESTService {
     return Response.status(Status.FORBIDDEN).build();
   }
 
+  /**
+   * Creates new service location service channel update task by service location channel id
+   * 
+   * @param serviceLocationChannelIdParam service location channel to update
+   * @return response indicating the status of task creation
+   */
   @GET
   @Path ("/utils/ptv/serviceLocationChannelTask")
   @Produces (MediaType.TEXT_PLAIN)
