@@ -3,9 +3,11 @@ package fi.metatavu.kuntaapi.server.integrations.kuntarekry;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @SuppressWarnings ("squid:S3437")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class KuntaRekryJob implements Serializable {
 
   private static final long serialVersionUID = -7272380834345432920L;
