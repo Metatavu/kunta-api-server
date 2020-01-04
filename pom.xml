@@ -76,7 +76,7 @@
     
     <!-- Jackson -->
     
-    <jackson-dataformat-xml.version>2.9.5</jackson-dataformat-xml.version>
+    <jackson-dataformat-xml.version>2.10.0</jackson-dataformat-xml.version>
     <jackson-dataformat-smile.version>2.9.5</jackson-dataformat-smile.version>
     
     <!-- Elastic Search -->
