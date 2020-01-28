@@ -68,7 +68,6 @@
     
     <management-rest-client.version>0.0.31</management-rest-client.version>
     <mikkelinyt.rest-model.version>0.1.1</mikkelinyt.rest-model.version>
-    <linkedevents-client.version>0.0.7</linkedevents-client.version>
 
     <!-- PTV -->
     
@@ -328,18 +327,6 @@
       <groupId>fi.metatavu.kunta-api-management</groupId>
       <artifactId>management-rest-client</artifactId>
       <version>${management-rest-client.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.fasterxml.jackson.datatype</groupId>
-          <artifactId>jackson-datatype-jsr310</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>fi.metatavu.linkedevents</groupId>
-      <artifactId>linkedevents-client</artifactId>
-      <version>${linkedevents-client.version}</version>
       <exclusions>
         <exclusion>
           <groupId>com.fasterxml.jackson.datatype</groupId>
