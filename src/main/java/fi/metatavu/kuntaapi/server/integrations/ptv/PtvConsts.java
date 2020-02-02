@@ -27,6 +27,7 @@ public class PtvConsts {
   public static final String DEFAULT_LANGUAGE = "fi";
   public static final String TIMEZONE = "Europe/Helsinki";
   public static final List<String> PTV_SUPPORTED_LANGUAGES = Collections.unmodifiableList(Arrays.asList("fi", "en", "sv"));
+  public static final String ORGANIZATION_SETTING_ENABLED = "ptv.enabled";
   public static final String ORGANIZATION_SETTING_API_USER = "ptv.apiuser";
   public static final String ORGANIZATION_SETTING_API_PASS = "ptv.apipass";
   public static final String PTV_ACCESS_TOKEN_TYPE = "ptv";
