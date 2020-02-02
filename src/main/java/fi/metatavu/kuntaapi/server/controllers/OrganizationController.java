@@ -15,8 +15,11 @@ import fi.metatavu.kuntaapi.server.index.search.OrganizationSearcher;
 import fi.metatavu.kuntaapi.server.integrations.OrganizationProvider;
 import fi.metatavu.kuntaapi.server.integrations.OrganizationSortBy;
 import fi.metatavu.kuntaapi.server.integrations.SortDir;
-import fi.metatavu.kuntaapi.server.utils.ListUtils;
+import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
+import fi.metatavu.kuntaapi.server.persistence.model.OrganizationSetting;
 import fi.metatavu.kuntaapi.server.rest.model.Organization;
+import fi.metatavu.kuntaapi.server.settings.OrganizationSettingController;
+import fi.metatavu.kuntaapi.server.utils.ListUtils;
 
 @ApplicationScoped
 @SuppressWarnings ("squid:S3306")
@@ -27,7 +30,10 @@ public class OrganizationController {
   
   @Inject
   private OrganizationSearcher organizationSearcher;
-  
+
+  @Inject
+  private OrganizationSettingController organizationSettingController;
+
   @Inject
   private Instance<OrganizationProvider> organizationProviders;
   
@@ -102,6 +108,17 @@ public class OrganizationController {
     }
     
     return null;
+  }
+  
+  /**
+   * Returns whether given organization is enabled or not
+   * 
+   * @param organizationId organization id
+   * @return whether given organization is enabled or not
+   */
+  public boolean isOrganizationEnabled(OrganizationId organizationId) {
+    OrganizationSetting organizationSetting = organizationSettingController.findOrganizationSettingByKey(organizationId, PtvConsts.ORGANIZATION_SETTING_ENABLED);
+    return organizationSetting != null && "true".equalsIgnoreCase(organizationSetting.getValue());
   }
   
   private List<OrganizationProvider> getOrganizationProviders() {
