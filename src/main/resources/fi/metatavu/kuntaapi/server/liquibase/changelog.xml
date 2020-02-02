@@ -458,5 +458,21 @@
   <changeSet id="mb4" author="antti.leppa">
     <sqlFile path="fi/metatavu/kuntaapi/server/liquibase/mb4.sql" />
   </changeSet>
+  
+  <changeSet id="removedeprecatedresources" author="antti.leppa">
+    <sql>DELETE FROM StoredBinaryResource WHERE identifier_id in (SELECT id FROM Identifier WHERE type = 'ATTACHMENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE type = 'EVENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE source = 'gtfs')</sql>
+    <sql>DELETE FROM StoredResource WHERE identifier_id in (SELECT id FROM Identifier WHERE type = 'ATTACHMENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE type = 'EVENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE source = 'gtfs')</sql>
+    <sql>DELETE FROM IdentifierRelation WHERE parent_id in (SELECT id FROM Identifier WHERE type = 'ATTACHMENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE type = 'EVENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE source = 'gtfs') or child_id in (SELECT id FROM Identifier WHERE type = 'ATTACHMENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE type = 'EVENT' and source = 'linkedevents' UNION SELECT id FROM Identifier WHERE source = 'gtfs')</sql>
+    <sql>DELETE FROM Identifier WHERE type = 'ATTACHMENT' and source = 'linkedevents'</sql>
+    <sql>DELETE FROM ArchivedIdentifier WHERE type = 'ATTACHMENT' and source = 'linkedevents'</sql>
+    <sql>DELETE FROM Identifier WHERE type = 'EVENT' and source = 'linkedevents'</sql>
+    <sql>DELETE FROM ArchivedIdentifier WHERE type = 'EVENT' and source = 'linkedevents'</sql>
+    <sql>DELETE FROM Identifier WHERE source = 'gtfs'</sql>
+    <sql>DELETE FROM ArchivedIdentifier WHERE source = 'gtfs'</sql>
+  </changeSet>
+  
+  <changeSet id="enabledorganizations" author="antti.leppa">
+    <sql>INSERT OINT OrganizationSetting (organizationKuntaApiId, settingKey, value) SELECT DISTINCT organizationKuntaApiId, 'ptv.enabled', 'true' FROM OrganizationSetting</sql>
+  </changeSet>
 
 </databaseChangeLog>
