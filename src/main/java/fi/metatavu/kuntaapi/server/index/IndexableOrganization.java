@@ -1,6 +1,6 @@
 package fi.metatavu.kuntaapi.server.index;
 
-public class IndexableOrganization implements Indexable {
+public class IndexableOrganization implements Indexable, IndexRemove {
 
   @Field (index = "not_analyzed", store = true, type = "long")
   private Long orderIndex;
