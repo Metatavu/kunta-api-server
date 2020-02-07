@@ -14,6 +14,7 @@ import javax.persistence.PersistenceUnit;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -248,6 +249,19 @@ public class SystemRESTService {
         createServiceChannelUpdateTask(serviceChannelId); 
       }
       
+      return Response.ok("ok").build();
+    }
+    
+    return Response.status(Status.FORBIDDEN).build();
+  }
+  
+  @GET
+  @Path ("/utils/ptv/electronicChannelTasks/{id}")
+  @Produces (MediaType.TEXT_PLAIN)
+  @SuppressWarnings ("squid:S3776")
+  public Response utilsPtvElectronicChannelTasks(@PathParam ("id") String id) {
+    if (inTestModeOrUnrestrictedClient()) {
+      createServiceChannelUpdateTask(kuntaApiIdFactory.createElectronicServiceChannelId(id));
       return Response.ok("ok").build();
     }
     
