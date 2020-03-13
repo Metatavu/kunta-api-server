@@ -67,7 +67,6 @@
     <!-- Integrations -->
     
     <management-rest-client.version>0.0.31</management-rest-client.version>
-    <mikkelinyt.rest-model.version>0.1.1</mikkelinyt.rest-model.version>
 
     <!-- PTV -->
     
@@ -138,6 +137,7 @@
       <plugin>
         <groupId>org.bsc.maven</groupId>
         <artifactId>maven-processor-plugin</artifactId>
+        <version>3.3.3</version>
         <executions>
           <execution>
             <id>process</id>
@@ -171,7 +171,7 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
-         
+      
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -285,12 +285,6 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <scope>provided</scope>
-    </dependency>
-    
-    <dependency>
-      <groupId>fi.metatavu.mikkelinyt.mikkelinyt-rest-model</groupId>
-      <artifactId>mikkelinyt-rest-model</artifactId>
-      <version>${mikkelinyt.rest-model.version}</version>
     </dependency>
     
     <dependency>
@@ -894,7 +888,7 @@
             </executions>
           </plugin>
           
-           <plugin>
+          <plugin>
             <groupId>org.wildfly.plugins</groupId>
             <artifactId>wildfly-maven-plugin</artifactId>
             <version>2.0.0.Final</version>
@@ -958,7 +952,7 @@
                   </resources>
                 </configuration>
               </execution>              
-               
+              
               <execution>
                 <id>wildfly-configure</id>
                 <phase>pre-integration-test</phase>
