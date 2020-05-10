@@ -16,6 +16,7 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.elasticsearch.xpack.client.PreBuiltXPackTransportClient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,10 +48,8 @@ public abstract class AbstractIndexHander {
   
   @PostConstruct
   public void init() {
-    String[] hosts = systemSettingController.getSettingValues(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_SEARCH_HOSTS, DEFAULT_HOSTS);
-    String clusterName = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_CLUSTER_NAME, DEFAULT_CLUSTERNAME);
     index = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_INDEX, DEFAULT_INDEX);
-    client = createTransportClient(hosts, clusterName);
+    client = createTransportClient();
     setup();
   }
   
@@ -88,7 +87,59 @@ public abstract class AbstractIndexHander {
     return index;
   }
   
-  private TransportClient createTransportClient(String[] hosts, String clusterName) {
+  private TransportClient createTransportClient() {
+    boolean enableSsl = "true".equals(System.getenv("ELASTIC_SSL"));
+    String clusterId = System.getenv("ELASTIC_ID");
+    String password = System.getenv("ELASTIC_PASSWORD");
+    String username = System.getenv("ELASTIC_USERNAME");
+    String region = System.getenv("ELASTIC_REGION");
+    
+    logger.log(Level.INFO, "Connecting to Elastic Search");
+    
+    if (clusterId != null) {
+      logger.log(Level.INFO, String.format("Using cloud (%s, %s, %s)", clusterId, username, password));
+      return createCloudTransportClient(clusterId, region, username, password, enableSsl);
+    } else {
+      logger.log(Level.INFO, String.format("Using default transport", clusterId, username, password));
+      String[] hosts = systemSettingController.getSettingValues(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_SEARCH_HOSTS, DEFAULT_HOSTS);
+      String clusterName = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_CLUSTER_NAME, DEFAULT_CLUSTERNAME);
+      index = systemSettingController.getSettingValue(KuntaApiConsts.SYSTEM_SETTING_ELASTIC_INDEX, DEFAULT_INDEX);
+      return createDefaultTransportClient(hosts, clusterName);
+    }
+  }
+  
+  private TransportClient createCloudTransportClient(String clusterId, String region, String username, String password, boolean enableSsl) {
+    try {
+      String hostname = clusterId + "." + region + ".aws.found.io";
+      int port = Integer.parseInt(System.getProperty("ELASTIC_PORT", "9343"));
+      
+      logger.log(Level.INFO, String.format("Elastic client host: %s", hostname));
+      
+      Settings settings = Settings.builder()
+        .put("client.transport.nodes_sampler_interval", "5s")
+        .put("client.transport.sniff", false)
+        .put("transport.tcp.compress", true)
+        .put("cluster.name", clusterId)
+        .put("xpack.security.transport.ssl.enabled", enableSsl)
+        .put("request.headers.X-Found-Cluster", clusterId)
+        .put("xpack.security.user", String.format("%s:%s", username, password))
+        .put("xpack.security.transport.ssl.verification_mode", "none")
+        .build();
+
+      TransportClient client = new PreBuiltXPackTransportClient(settings);
+      client.addTransportAddress(resolveTransportAddress(hostname, port));
+      
+      prepareIndex(client);
+
+      return client;
+    } catch (Exception e) {
+      logger.log(Level.SEVERE, "Elastic client creation failed. All search functions are disbled", e);
+    }
+
+    return null;
+  }
+  
+  private TransportClient createDefaultTransportClient(String[] hosts, String clusterName) {
     try {
       TransportClient transportClient;
       Settings settings = Settings.builder()

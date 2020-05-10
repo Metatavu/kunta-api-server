@@ -19,7 +19,7 @@ import fi.metatavu.kuntaapi.server.settings.SystemSettingController;
  */
 public abstract class AbstractJob implements Job {
   
-  private static final long MINIMUM_WARMUP = 1000l * 60;
+  private static final long MINIMUM_WARMUP = 1000l * 60 * 5;
 
   @Inject
   private Logger logger;

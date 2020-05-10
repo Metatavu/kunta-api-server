@@ -482,6 +482,12 @@
     </dependency>
     
     <dependency>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>x-pack-transport</artifactId>
+        <version>${elasticsearch.version}</version>
+    </dependency>
+    
+    <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
       <version>${lucene.version}</version>
@@ -1077,6 +1083,18 @@
       <url>http://repository.jboss.org/nexus/content/groups/public/</url>
       <layout>default</layout>
     </repository>
+    
+    <repository>
+       <id>elasticsearch-releases</id>
+       <url>https://artifacts.elastic.co/maven</url>
+       <releases>
+          <enabled>true</enabled>
+       </releases>
+       <snapshots>
+          <enabled>false</enabled>
+       </snapshots>
+    </repository>
+      
   </repositories>
   
 </project>
