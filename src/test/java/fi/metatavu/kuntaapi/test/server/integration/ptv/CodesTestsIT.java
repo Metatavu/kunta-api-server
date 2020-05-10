@@ -19,7 +19,6 @@ public class CodesTestsIT extends AbstractIntegrationTest {
   /**
    * Starts WireMock
    */
-   /**
   @Rule
   public WireMockRule wireMockRule = new WireMockRule(getWireMockPort());
   
@@ -244,5 +243,5 @@ public class CodesTestsIT extends AbstractIntegrationTest {
       .body("names[0][0].type", nullValue())
       .body("extra[0].size()", is(0));
   }
- */
+  
 }

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+$0/run-tests.sh ElectronicServiceChannelInTestsIT,PrintableFormServiceChannelInTestsIT,ServiceLocationServiceChannelInTestsIT,WebpageServiceChannelInTestsIT,OrganizationsTestsIT,ServiceChannelsTestsIT,ServicesTestsIT,PhoneServiceChannelInTestsIT,ServiceInTestsIT
