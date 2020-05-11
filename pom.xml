@@ -89,10 +89,6 @@
     
     <liquibase.version>3.6.2</liquibase.version>
     
-    <!-- VCard -->
-    
-    <ez-vcard.version>0.10.4</ez-vcard.version>
-    
     <!-- slf4j-api -->
     
     <slf4j-api.version>1.7.22</slf4j-api.version>
@@ -588,12 +584,6 @@
       <artifactId>liquibase-cdi</artifactId>
       <version>${liquibase.version}</version>
     </dependency>
-
-    <dependency>
-      <groupId>com.googlecode.ez-vcard</groupId>
-      <artifactId>ez-vcard</artifactId>
-      <version>${ez-vcard.version}</version>
-    </dependency>
     
     <!-- osgeo.proj4j -->
     
@@ -983,7 +973,6 @@
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvServiceChannelEntityDiscoverJob:add(level=WARN)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.tasks.metaflow.TaskQueueDistributor:add(level=WARN)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.rest.SlowRequestFilter:add(level=FATAL)</command>
-                    <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.tilannehuone.updaters.TilannehuoneIdDiscoverJob:add(level=SEVERE)</command>
                     <command>/subsystem=logging/logger=fi.metatavu.kuntaapi.server.integrations.ptv.updaters.PtvOrganizationEntityDiscoverJob:add(level=WARN)</command>
                     <command>/subsystem=infinispan/cache-container=kunta-api:add()</command>
                     <command>/subsystem=infinispan/cache-container=hibernate/local-cache=entity/component=transaction:write-attribute(name=locking,value=OPTIMISTIC)</command>
@@ -998,7 +987,6 @@
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-service-channels:add(entries=[java:/jms/queue/ptv-service-channels])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-services:add(entries=[java:/jms/queue/ptv-services])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=ptv-organizations:add(entries=[java:/jms/queue/ptv-organizations])</command>
-                    <command>/subsystem=messaging-activemq/server=default/jms-queue=tilannehuone-emergencies:add(entries=[java:/jms/queue/tilannehuone-emergencies])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=tpt-jobs:add(entries=[java:/jms/queue/tpt-jobs])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-announcements:add(entries=[java:/jms/queue/management-announcements])</command>
                     <command>/subsystem=messaging-activemq/server=default/jms-queue=management-menus:add(entries=[java:/jms/queue/management-menus])</command>
