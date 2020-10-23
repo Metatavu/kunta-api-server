@@ -38,6 +38,7 @@ import org.apache.http.util.EntityUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -462,6 +463,7 @@ public class GenericHttpClient {
         return new Response<>(statusCode, message, (T) xmlMapper.readValue(httpResponseContent, typeReference));
       } else {
         ObjectMapper objectMapper = getJsonObjectMapper();
+        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         return new Response<>(statusCode, message, (T) objectMapper.readValue(httpResponseContent, typeReference));
       }
     } catch (Exception e) {
