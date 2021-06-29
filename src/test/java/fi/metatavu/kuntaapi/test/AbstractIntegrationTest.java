@@ -68,8 +68,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
   protected static final String IMAGE_GIF = "image/gif";
   protected static final String IMAGE_PNG = "image/png";
 
-  private KuntarekryMocker kuntarekryMocker = new KuntarekryMocker();
-  private TptMocker tptMocker = new TptMocker(); 
   private ManagementPageMappingMocker managementPageMappingMocker = new ManagementPageMappingMocker();
   private ManagementTagMocker managementTagMocker = new ManagementTagMocker();
   private ManagementCategoryMocker managementCategoryMocker = new ManagementCategoryMocker();
@@ -124,8 +122,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvOrganizationMocker.stop();
     ptvCodesMocker.endMock();
     managementPostMenuOrderMocker.endMock();
-    kuntarekryMocker.endMock();
-    tptMocker.endMock();
     fmiWeatherAlertsWfsMocker.endMock();
 
     deleteOrganizationPermissions();
@@ -189,8 +185,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     ptvOrganizationMocker.start();
     ptvServiceChannelMocker.start();
     ptvServiceMocker.start();
-    kuntarekryMocker.startMock();
-    tptMocker.startMock();
     managementPageMocker.startMock();
     managementPostMocker.startMock();
     managementShortlinkMocker.startMock();
@@ -218,14 +212,6 @@ public abstract class AbstractIntegrationTest extends AbstractTest {
     return ptvServiceMocker;
   }
 
-  public KuntarekryMocker getKuntarekryMocker() {
-    return kuntarekryMocker;
-  }
-  
-  public TptMocker getTptMocker() {
-    return tptMocker;
-  }
-  
   public ManagementMenuMocker getManagementMenuMocker() {
     return managementMenuMocker;
   }

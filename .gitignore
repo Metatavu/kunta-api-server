@@ -11,3 +11,5 @@
 /.factorypath
 /.vscode
 /elasticplugins/
+/.idea
+/kunta-api-server.iml

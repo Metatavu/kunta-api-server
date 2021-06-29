@@ -27,7 +27,6 @@ import fi.metatavu.kuntaapi.server.controllers.FileController;
 import fi.metatavu.kuntaapi.server.controllers.FragmentController;
 import fi.metatavu.kuntaapi.server.controllers.HttpCacheController;
 import fi.metatavu.kuntaapi.server.controllers.IncidentController;
-import fi.metatavu.kuntaapi.server.controllers.JobController;
 import fi.metatavu.kuntaapi.server.controllers.MenuController;
 import fi.metatavu.kuntaapi.server.controllers.NewsController;
 import fi.metatavu.kuntaapi.server.controllers.OrganizationController;
@@ -69,9 +68,6 @@ import fi.metatavu.kuntaapi.server.integrations.EmergencySortBy;
 import fi.metatavu.kuntaapi.server.integrations.EnvironmentalWarningSortBy;
 import fi.metatavu.kuntaapi.server.integrations.EventProvider;
 import fi.metatavu.kuntaapi.server.integrations.IncidentSortBy;
-import fi.metatavu.kuntaapi.server.integrations.JobProvider;
-import fi.metatavu.kuntaapi.server.integrations.JobProvider.JobOrder;
-import fi.metatavu.kuntaapi.server.integrations.JobProvider.JobOrderDirection;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiIdFactory;
 import fi.metatavu.kuntaapi.server.integrations.NewsSortBy;
@@ -160,9 +156,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
   @Inject
   private EventController eventController;
 
-  @Inject
-  private JobController jobController;
-  
   @Inject
   private SecurityController securityController;
 
@@ -1207,59 +1200,12 @@ public class OrganizationsApiImpl extends OrganizationsApi {
 
   @Override
   public Response findOrganizationJob(String organizationIdParam, String jobIdParam, @Context Request request) {
-    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
-    if (organizationId == null) {
-      return createNotFound(NOT_FOUND);
-    }
-    
-    JobId jobId = toJobId(organizationId, jobIdParam);
-    if (jobId == null) {
-      return createNotFound(NOT_FOUND);
-    }
-
-    Response notModified = restResponseBuilder.getNotModified(request, jobId);
-    if (notModified != null) {
-      return notModified;
-    }
-
-    Job job = jobController.findJob(organizationId, jobId);
-    if (job != null) {
-      return restResponseBuilder.sendModified(job, job.getId());
-    }
-    
-    return createNotFound(NOT_FOUND);
+    return createNotImplemented("This API is moved to jobs-api.kunta-api.fi");
   }
 
   @Override
   public Response listOrganizationJobs(String organizationIdParam, String sortBy, String sortDir, Long firstResult, Long maxResults, @Context Request request) {
-    Response validateResponse = validateListLimitParams(firstResult, maxResults);
-    if (validateResponse != null) {
-      return validateResponse;
-    }
-    
-    OrganizationId organizationId = kuntaApiIdFactory.createOrganizationId(organizationIdParam);
-    if (organizationId == null) {
-      return createNotFound(NOT_FOUND);
-    }
-    
-    JobOrder order = null;
-    JobOrderDirection orderDirection = null;
-    
-    if (StringUtils.isNotBlank(sortBy)) {
-      order = EnumUtils.getEnum(JobProvider.JobOrder.class, sortBy);
-      if (order == null) {
-        return createBadRequest(INVALID_VALUE_FOR_SORT_BY);
-      }
-    }
-    
-    if (StringUtils.isNotBlank(sortDir)) {
-      orderDirection = EnumUtils.getEnum(JobOrderDirection.class, sortDir);
-      if (orderDirection == null) {
-        return createBadRequest(INVALID_VALUE_FOR_SORT_DIR);
-      }
-    }
-    
-    return listOrganizationJobs(request, organizationId, order, orderDirection, firstResult, maxResults);
+    return createNotImplemented("This API is moved to jobs-api.kunta-api.fi");
   }
   
   /* Announcements */
@@ -1949,18 +1895,6 @@ public class OrganizationsApiImpl extends OrganizationsApi {
     }
     
     return sortBy;
-  }
-  
-  private Response listOrganizationJobs(Request request, OrganizationId organizationId, JobOrder order, JobOrderDirection orderDirection, Long firstResult, Long maxResults) {
-    List<Job> result = jobController.listJobs(organizationId, order, orderDirection, firstResult, maxResults);
-    
-    List<String> ids = httpCacheController.getEntityIds(result);
-    Response notModified = httpCacheController.getNotModified(request, ids);
-    if (notModified != null) {
-      return notModified;
-    }
-
-    return httpCacheController.sendModified(result, ids);
   }
 
   private Response listOrganizationAnnouncements(Request request, OrganizationId organizationId, String slug, AnnouncementOrder order, AnnouncementOrderDirection orderDirection, Integer firstResult, Integer maxResults) {
