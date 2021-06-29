@@ -1,12 +1,8 @@
 package fi.metatavu.kuntaapi.test;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-
-import fi.metatavu.kuntaapi.server.integrations.kuntarekry.KuntaRekryJob;
 import fi.metatavu.kuntaapi.server.integrations.ptv.PtvConsts;
 
 public class PtvCodesMocker extends AbstractMocker {
@@ -39,12 +35,6 @@ public class PtvCodesMocker extends AbstractMocker {
     Map<String, String> params = new HashMap<>();
     params.put("page", String.valueOf(page));
     mockGetString(String.format("/ptv/api/%s%s", PtvConsts.VERSION, path), "application/json", readFile(String.format("ptv/codes/%s", file)), params);
-  }
-  
-  public PtvCodesMocker mockKuntaRekryFeed(String path, String file) {
-    List<KuntaRekryJob> jobs = readXMLFile(file, new TypeReference<List<KuntaRekryJob>>() { });
-    mockGetXML(path, jobs, null);
-    return this;
   }
   
 }
