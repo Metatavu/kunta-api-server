@@ -404,7 +404,7 @@ public class GenericHttpClient {
       logger.log(Level.SEVERE, RESPONSE_PARSING_FAILED, e);
       return new Response<>(500, RESPONSE_PARSING_FAILED, null);
     } catch (IOException e) {
-      logger.log(Level.SEVERE, REQUEST_TIMED_OUT, e);
+      logger.log(Level.SEVERE, String.format("Request to %s failed on IOException", request.getURI()), e);
       return new Response<>(408, REQUEST_TIMED_OUT, null);
     }
   }

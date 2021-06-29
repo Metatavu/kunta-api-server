@@ -11,6 +11,7 @@ import fi.metatavu.kuntaapi.server.id.OrganizationId;
 import fi.metatavu.kuntaapi.server.integrations.KuntaApiConsts;
 import fi.metatavu.kuntaapi.server.persistence.dao.OrganizationExternalAccessTokenDAO;
 import fi.metatavu.kuntaapi.server.persistence.model.OrganizationExternalAccessToken;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Controller for external access tokens.
@@ -89,6 +90,12 @@ public class ExternalAccessTokenController {
    * @param expires the time the token expires
    */
   public void setOrganizationExternalAccessToken(OrganizationId organizationId, String tokenType, String accessToken, OffsetDateTime expires) {
+    if (StringUtils.isBlank(accessToken)) {
+      logger.warning("Received empty external access token. Skipping");
+      return;
+    }
+
+
     OrganizationExternalAccessToken externalAccessToken = getOrganizationExternalAccessToken(organizationId, tokenType);
     if (externalAccessToken == null) {
       createOrganizationExternalAccessToken(organizationId, tokenType, accessToken, expires);
